@@ -2,6 +2,7 @@
 
 ### Présentation 
 Un website mettant en relation des personnes enseignant à jouer d'un instrument de musique, avec des personnes souhaitant apprendre.  
+Le but du website serait de mettre en relation des gens qui souhaitent enseigner à jouer d'un instrument de musique avec des personnes qui souhaitent apprendre. Les cours se ferait en visio (google meet ou autre...).  
 
 
 ### Définitions des besoins et des objectifs auquels répond le projet:
@@ -15,8 +16,9 @@ Un website mettant en relation des personnes enseignant à jouer d'un instrument
 
 - Connexion
 - Inscription
-- page instruments  
-- page profs
+- page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument...)
+- page profs (necessité d'une presentation, necessité d'un certificat prouvant la possibilité de donner des cours avant aval d'un admin + niveau possible des cours : debutant, faux debutant, intermediaire, avancé. gestion personnel de son agenda avec ses disponibilités et son jour réservé aux premiers cours, possibilité de faire des posts sur sa page personnel pour parler musique/activités musicales/concerts/instruments ou de sa vie...)
+- page eleves (possibilité de prendre rdv sur un creneau libre d'un prof. gestion basique d'un compte client, possibilité d'effacer son compte, possibilité de faire un like)
 - link profs/instruments
 - Prise de rendez-vous
 - Compteur de like
@@ -24,12 +26,14 @@ Un website mettant en relation des personnes enseignant à jouer d'un instrument
 
   - V2:
     - page profs
-    - gestion des paiements en ligne (woo commerce)
+    - gestion des paiements en ligne (woo commerce - le site prend une commission)
     - Home (affichage des instruments/profs?)
     - catégories pour les instruments
+    - page eleve (depot d'avis)
 
 - V3:
     - envoie auto d'un lien (pour l'élève et le prof) vers google meet aprés inscription de l'élève à son cours 
+    - page d'activité (page activité regroupant des projet/propositions faits par les profs ou clients : par exemple se retrouver un jour donné sur google meet (ou autre) pour l'enregistrement d'une video youtube OU se retrouver a un endroit donné pour participer a un evenement musical et monter sur scene pour une apparition, un concert remunéré ou bénévole...)
 
 ### Liste des technologies
 
@@ -62,6 +66,7 @@ A tester
     - Page Perso
       - Gestion d'agenda (prof)
       - Prise de RDV (élève)
+      - Suppression de compte
 - 404
 
 
@@ -69,6 +74,7 @@ A tester
 
 - home
 - register
+- delete
 - login
 - student
 - student-profile
@@ -83,31 +89,21 @@ A tester
 
  ### Users stories
 
- |En tant que  |        Je veux        |Afin de (si besoin/nécessaire)|
- |--|--|--|
- |Visiteur    |          |Afin de (si besoin/nécessaire)|
- |Visiteur    |          |Afin de (si besoin/nécessaire)|
- |Visiteur    |          |Afin de (si besoin/nécessaire)|
- |Elève    |          |Afin de (si besoin/nécessaire)|
+ | En tant que | Je veux                                             | Afin de (si besoin/nécessaire) |
+ | ----------- | --------------------------------------------------- | ------------------------------ |
+ | Visiteur    | pouvoir consulter la liste des instruments          | --                             |
+ | Visiteur    | pouvoir consulter la liste des professeurs          | --                             |
+ | Visiteur    | pouvoir s'inscrire                                  | --                             |
+ | Elève       | pouvoir se connecter                                | --                             |
+ | Elève       | pouvoir consulter sa page perso                     | --                             |
+ | Elève       | pouvoir prendre rendez-vous                         | --                             |
+ | Elève       | pouvoir consulter la liste des instruments          | --                             |
+ | Elève       | pouvoir consulter la liste des professeurs          | --                             |
+ | Elève       | pouvoir consulter la page de profil d'un professeur | --                             |
+ | Elève       | pouvoir supprimer son compte                        | --                             |
+ | Professeur  | pouvoir se connecter                                | --                             |
+ | Professeur  | pouvoir consulter sa page perso                     | --                             |
+ | Professeur  | pouvoir confirmer un rendez-vous                    | --                             |
+ | Professeur  | pouvoir consulter mon agenda                        | --                             |
+ | Professeur  | pouvoir supprimer son compte                        | --                             |
 
-
-Cela se fait deja sans doute, mais je propose quand meme ! Le but du website serait de mettre en relation des gens qui souhaitent enseigner à jouer d'un instrument de musique avec des personnes qui souhaitent apprendre. Les cours se ferait en visio (google meet ou autre...).  
-
-Sur le site en lui meme :
-- Gestion d'un compte professeur (necessité d'une presentation, necessité d'un certificat prouvant la possibilité de donner des cours avant aval d'un admin + niveau possible des cours : debutant, faux debutant, intermediaire, avancé. gestion personnel de son agenda avec ses disponibilités et son jour réservé aux premiers cours, possibilité de faire des posts sur sa page personnel pour parler musique/activités musicales/concerts/instruments ou de sa vie...)
-- Presentation des instruments de musique pour lesquels il y a des cours (contenu de presentation, lien vers les profs qui enseignent l'instrument...)
-- Gestion d'agenda pour chaque prof (possibilité pour client de prendre un premier rdv sur un creneau libre d'un prof, le/les rdv suivant(s) est/sont pris en accord avec le prof lors de la premiere seance
-- Gestion des paiements en ligne (V2, le site prend une commission)
-- Gestion d'un compte client (gestion basique d'un compte client, + depots d'avis, + prise d'un premier rendez vous pour un cours de 50min uniquement un jour donné, + possibilité d'effacer son compte, + possibilité de faire un like
-- Pour la custom table, je propose un compteur de like (les apprenants qui like les profs. La page d'activité que je proposais la derniere fois pourra faire partie d'une version 2 : (page activité regroupant des projet/propositions faits par les profs ou clients : par exemple se retrouver un jour donné sur google meet (ou autre) pour l'enregistrement d'une video youtube OU se retrouver a un endroit donné pour participer a un evenement musical et monter sur scene pour une apparition, un concert remunéré ou bénévole...).
-- Rajouter la notation en etoile ? si le temps ? (cf wp-bonus-bilan)
-
-### Opportunités  
-L'opportunité de faire un Website !!!  
-Toucher a woocommerce (V2) + gestion d'agendas + CPT/Taxonomy/Role (plugin), creation d'un theme...  
-Roles : admins (gestion du site), authors (gestions des articles sur instruments), teachers (gestion de son compte + gestion d'activités), customers (gestion de son compte + gestion d'activités)...
-Quelles seront/pourraient être les technologies utilisées ?  
-Wordpress !!! , PHP, HTML/CSS...
-
-### Avez-vous une idée de l'équipe qui conviendrait à ce projet ?  
-J'aime pas le back, donc il faudrait quelqu'un d'autre qui aime ca... je dirais 4 personnes : 2 pour le front et 2 pour le back... Après pour les termes exactes... j'aime pas coller des étiquettes donc chacun choisira son appellation préférée !
