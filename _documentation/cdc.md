@@ -23,6 +23,16 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 - Prise de rendez-vous
 - Compteur de like
 
+#### MVP 
+
+  | SPRINT 0                          | SPRINT 1                                             | SPRINT 2                      | SPRINT 3 |
+ | -----------                       | --------------------------------------------------- | ------------------------------ | ----------------------- |
+ |documentation | page instrument ( presentation)   | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument)|  test/debug          |
+ | | page connexion                    | page professeur (prise de RDV)                                                       | amelioration visuelle du site    | 
+ | | Page inscription                  | like                                                                                  | --                             |
+ | | page professeur                   |                                                                                        | --                             |
+ | | page élève                        |                                                                                        | --                             |
+
 
   - V2:
     - page profs
@@ -118,4 +128,13 @@ graph TD;
  | Professeur  | pouvoir confirmer un rendez-vous                    | --                             |
  | Professeur  | pouvoir consulter mon agenda                        | --                             |
  | Professeur  | pouvoir supprimer son compte                        | --                             |
+
+### La liste des rôles de chacun
+
+- PRODUCT OWNER : Stefan
+- SCRUM MASTER, : Stephanie B
+- LEAD DEV : Stephanie M
+- GIT MASTER : Stefan 
+- REFERENT TECHNIQUE : Stephanie B
+
 
