@@ -8,4 +8,5 @@
 ## Lundi 29/11/21
 
 - Fin de rédaction du cahier des charges
+- MCD terminer
 - 
