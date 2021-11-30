@@ -1,4 +1,4 @@
-## Carnet de bord
+# Carnet de bord
 
 ## Sprint 0
 
