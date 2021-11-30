@@ -105,6 +105,21 @@ graph TD;
 - instrument
 - 404
  
+  ## A mettre à jour
+  
+ | URL | HTTP Method | Controller | Method | Title | Content | Comment |
+|--|--|--|--|--|--|--|
+| `/` | `GET` | `---` | `home` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `register` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `delete` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `login` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `student` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `student-profile` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `teachers` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `teacher-profile` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `instrument` | Backoffice oShop | Backoffice dashboard | - |
+| `/` | `GET` | `---` | `404` | Backoffice oShop | Backoffice dashboard | - |
+
 - V2
   - (about => contact,mentions légales)
  
