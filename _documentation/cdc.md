@@ -69,17 +69,29 @@ A tester
       - Suppression de compte
 - 404
 
-```mermaid
-graph TD;
-    Home-Instruments-->Instrument;
-    Instrument-->Profs;
-    Profs-->Prof/Agendas;
-    Home-Instruments-->Connexion/Inscription;
-    Connexion/Inscription-->Page-perso-Prof-->Gestion-d'agenda-->Supression-de-compte;
-    Connexion/Inscription-->Page-perso-Elève-->Pride-RDV-->Supression-de-compte;
-    Home-Instruments-->404;
-```
+  ```mermaid
+  graph TD;
 
+        Connexion/Inscription--->Home-Instrument-->Instrument-->Profs-->Prof/Agendas-->**Prise-RDV**;
+          
+        Connexion/Inscription---->**Page-perso-Prof**-->Gestion-d'agenda--->Supression-de-compte;
+
+        Connexion/Inscription-->**Page-perso-Elève**-->Prise/anulation-RDV--->Supression-de-compte;
+ 
+
+        **Page-perso-Prof**-->Modifier-votre-profile 
+
+        **Page-perso-Prof**-->Profil-Elève
+
+        **Page-perso-Elève**--->Profil-prof
+
+        **Page-perso-Elève**-->Modifier-votre-profile
+
+        404
+         
+ 
+   ```
+ **Les `**   **` indique que l'utilisateur doit être connecté pour acceder à ces pages**
 
 
 ### Liste des routes
