@@ -14,6 +14,8 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 ### Fonctionnalitées du projet:
 
+##### MVP
+
 - Connexion
 - Inscription
 - page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument...)
@@ -23,7 +25,7 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 - Prise de rendez-vous
 - Compteur de like
 
-#### MVP 
+#####  Planning de dévelopement
 
   | SPRINT 0      | SPRINT 1                        | SPRINT 2                                                                               | SPRINT 3                      |
   | ------------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
@@ -68,16 +70,6 @@ A tester
 
 ### Arborescence  (tester avec extension markdown preview)
 
-- HOME (Instruments)
-  - Instrument
-    - Profs
-      - Prof/Agenda
-  - Connexion/Inscription
-    - Page Perso
-      - Gestion d'agenda (prof)
-      - Prise de RDV (élève)
-      - Suppression de compte
-- 404
 
   ```mermaid
   graph TD;

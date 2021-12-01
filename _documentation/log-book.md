@@ -28,4 +28,17 @@
  - Logo du site 
    - Créer sur le site : https://fr.freelogodesign.org/
   
-  
+### Mercredi 01/12/21
+
+- Réunion avec nos helper Damien et Guillaume concernant notre démarrage du projet.
+  - Correction des points :
+    - MCD : table like
+    - User storie : ajout de "pouvoir supprimer mon compte" et "liker un prof"
+    - wireframe: 
+      - ajout d'un lien supprimer mon compte 
+      - d'un lien email élève sur la liste des élèves (dans page prof)
+      - d'une page "modifier votre profil"
+    - CDC : 
+      - Modification de l'arborescence 
+
+A Faire modif des routes dans le CDC
