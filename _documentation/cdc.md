@@ -18,7 +18,7 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 - Connexion
 - Inscription
-- page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument...)
+- page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument, diaporama...)
 - page profs (necessité d'une presentation, necessité d'un certificat prouvant la possibilité de donner des cours avant aval d'un admin + niveau possible des cours : debutant, faux debutant, intermediaire, avancé. gestion personnel de son agenda avec ses disponibilités et son jour réservé aux premiers cours, possibilité de faire des posts sur sa page personnel pour parler musique/activités musicales/concerts/instruments ou de sa vie...)
 - page eleves (possibilité de prendre rdv sur un creneau libre d'un prof. gestion basique d'un compte client, possibilité d'effacer son compte, possibilité de faire un like)
 - link profs/instruments
@@ -114,16 +114,18 @@ A tester
   
  | URL | HTTP Method | Controller | Method            | Title            | Content              | Comment |
  | --- | ----------- | ---------- | ----------------- | ---------------- | -------------------- | ------- |
- | `/` | `GET`       | `---`      | `home`            | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `register`        | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `delete`          | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `login`           | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `student`         | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `student-profile` | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `teachers`        | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `teacher-profile` | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `instrument`      | Backoffice oShop | Backoffice dashboard | -       |
- | `/` | `GET`       | `---`      | `404`             | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `home`            | Page d'accueil | home page | -       |
+ | `/register/` | `POST`      | `---`      | `register`        | page d'inscription | register page | -       |
+ | `/delete/` | `POST`      | `---`      | `delete`          | page suppression compte | delete account | -       |
+ | `/update/` | `POST`      | `---`      | `update`          | MAJ compte | update account | -       |
+ | `/login/` | `GET`       | `---`      | `login`           | Connexion | login | -       |
+ | `/student/` | `GET`       | `---`      | `student`         | Page élève | student page | -       |
+ | `/student/profile/` | `GET`       | `---`      | `student-profile` | profil élève | student profile  | -       |
+ | `/teachers/` | `GET`       | `---`      | `teachers`        | page prof | teachers | -       |
+ | `/teacher/profile/` | `GET`       | `---`      | `teacher-profile` | profil prof | teacher profile | -       |
+ | `/instrument/[id]` | `GET`       | `---`      | `instrument`      | page instrument | instrument | -       |
+ | `/404/` | `GET`       | `---`      | `404`             | page erreur | 404 | -       |
+
 
 - V2
   - (about => contact,mentions légales)
@@ -138,14 +140,19 @@ A tester
  | Visiteur    | pouvoir s'inscrire                                  | --                             |
  | Elève       | pouvoir se connecter                                | --                             |
  | Elève       | pouvoir consulter sa page perso                     | --                             |
+ | Elève       | pouvoir modifier ma page de profil                  | --                             |
  | Elève       | pouvoir prendre rendez-vous                         | --                             |
+ | Elève       | pouvoir supprimer un rendez-vous                    | --                             |
  | Elève       | pouvoir consulter la liste des instruments          | --                             |
  | Elève       | pouvoir consulter la liste des professeurs          | --                             |
  | Elève       | pouvoir consulter la page de profil d'un professeur | --                             |
  | Elève       | pouvoir supprimer son compte                        | --                             |
+ | Elève       | pouvoir liker mes professeurs                       | --                             |
  | Professeur  | pouvoir se connecter                                | --                             |
  | Professeur  | pouvoir consulter sa page perso                     | --                             |
+ | Professeur  | pouvoir modifier ma page de profil                  | --                             |
  | Professeur  | pouvoir confirmer un rendez-vous                    | --                             |
+ | Professeur  | pouvoir supprimer un rendez-vous                    | --                             |
  | Professeur  | pouvoir consulter mon agenda                        | --                             |
  | Professeur  | pouvoir supprimer son compte                        | --                             |
 
