@@ -25,13 +25,13 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 #### MVP 
 
-  | SPRINT 0                          | SPRINT 1                                             | SPRINT 2                      | SPRINT 3 |
- | -----------                       | --------------------------------------------------- | ------------------------------ | ----------------------- |
- |documentation | page instrument ( presentation)   | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument)|  test/debug          |
- | | page connexion                    | page professeur (prise de RDV)                                                       | amelioration visuelle du site    | 
- | | Page inscription                  | like                                                                                  | --                             |
- | | page professeur                   |                                                                                        | --                             |
- | | page élève                        |                                                                                        | --                             |
+  | SPRINT 0      | SPRINT 1                        | SPRINT 2                                                                               | SPRINT 3                      |
+  | ------------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+  | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
+  | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
+  | --            | Page inscription                | like                                                                                   | --                            |
+  | --            | page professeur                 | --                                                                                     | --                            |
+  | --            | page élève                      | --                                                                                     | --                            |
 
 
   - V2:
@@ -107,23 +107,23 @@ graph TD;
  
   ## A mettre à jour
   
- | URL | HTTP Method | Controller | Method | Title | Content | Comment |
-|--|--|--|--|--|--|--|
-| `/` | `GET` | `---` | `home` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `register` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `delete` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `login` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `student` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `student-profile` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `teachers` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `teacher-profile` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `instrument` | Backoffice oShop | Backoffice dashboard | - |
-| `/` | `GET` | `---` | `404` | Backoffice oShop | Backoffice dashboard | - |
+ | URL | HTTP Method | Controller | Method            | Title            | Content              | Comment |
+ | --- | ----------- | ---------- | ----------------- | ---------------- | -------------------- | ------- |
+ | `/` | `GET`       | `---`      | `home`            | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `register`        | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `delete`          | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `login`           | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `student`         | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `student-profile` | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `teachers`        | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `teacher-profile` | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `instrument`      | Backoffice oShop | Backoffice dashboard | -       |
+ | `/` | `GET`       | `---`      | `404`             | Backoffice oShop | Backoffice dashboard | -       |
 
 - V2
   - (about => contact,mentions légales)
  
-
+ 
  ### Users stories
 
  | En tant que | Je veux                                             | Afin de (si besoin/nécessaire) |
