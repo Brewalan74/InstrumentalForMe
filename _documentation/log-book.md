@@ -24,6 +24,8 @@
     https://startbootstrap.com/previews/one-page-wonder
  - Trello
    - https://trello.com/b/kSZ3MaMF/instrumental4me
- - MLD?
- - Logo du site ()
- - 
+ - MLD et MPD
+ - Logo du site 
+   - Créer sur le site : https://fr.freelogodesign.org/
+  
+  
