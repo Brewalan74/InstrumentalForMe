@@ -70,6 +70,13 @@ A tester
 
 ### Arborescence  (tester avec extension markdown preview)
 
+!!! note Entitées truc
+  
+
+    
+       
+
+<div style="background-color: #e8eef0">
 
   ```mermaid
   graph TD;
@@ -93,6 +100,8 @@ A tester
          
  
    ```
+
+   </div>
  **Les `**   **` indique que l'utilisateur doit être connecté pour acceder à ces pages**
 
 
