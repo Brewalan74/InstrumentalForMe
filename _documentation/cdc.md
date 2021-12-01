@@ -31,13 +31,12 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
   | ------------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
-  | --            | Page inscription                | like                                                                                   | --                            |
-  | --            | page professeur                 | page modifier son profil                                                               | --                            |
+  | --            | Page inscription                | page modifier son profil                                                               | --                            |
+  | --            | page professeur                 | Diaporama (carousel) si le temps                                                       | --                            |
   | --            | page élève                      | --                                                                                     | --                            |
 
 
   - V2:
-    - page profs
     - gestion des paiements en ligne (woo commerce - le site prend une commission)
     - Home (affichage des instruments/profs?)
     - catégories pour les instruments
@@ -47,11 +46,14 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
     - envoie auto d'un lien (pour l'élève et le prof) vers google meet aprés inscription de l'élève à son cours 
     - page d'activité (page activité regroupant des projet/propositions faits par les profs ou clients : par exemple se retrouver un jour donné sur google meet (ou autre) pour l'enregistrement d'une video youtube OU se retrouver a un endroit donné pour participer a un evenement musical et monter sur scene pour une apparition, un concert remunéré ou bénévole...)
 
+- V4:
+    - Calendrier
+
 ### Liste des technologies
 
 - wordpress
 - php
-- vue.js
+- vue.js (carousel)
 - bootstrap
 - axios
 
@@ -121,19 +123,19 @@ A tester
  
   ## A mettre à jour
   
- | URL | HTTP Method | Controller | Method            | Title            | Content              | Comment |
- | --- | ----------- | ---------- | ----------------- | ---------------- | -------------------- | ------- |
- | `/` | `GET`       | `---`      | `home`            | Page d'accueil | home page | -       |
- | `/register/` | `POST`      | `---`      | `register`        | page d'inscription | register page | -       |
- | `/delete/` | `POST`      | `---`      | `delete`          | page suppression compte | delete account | -       |
- | `/update/` | `POST`      | `---`      | `update`          | MAJ compte | update account | -       |
- | `/login/` | `GET`       | `---`      | `login`           | Connexion | login | -       |
- | `/student/` | `GET`       | `---`      | `student`         | Page élève | student page | -       |
- | `/student/profile/` | `GET`       | `---`      | `student-profile` | profil élève | student profile  | -       |
- | `/teachers/` | `GET`       | `---`      | `teachers`        | page prof | teachers | -       |
- | `/teacher/profile/` | `GET`       | `---`      | `teacher-profile` | profil prof | teacher profile | -       |
- | `/instrument/[id]` | `GET`       | `---`      | `instrument`      | page instrument | instrument | -       |
- | `/404/` | `GET`       | `---`      | `404`             | page erreur | 404 | -       |
+ | URL                 | HTTP Method | Controller | Method            | Title                   | Content         | Comment |
+ | ------------------- | ----------- | ---------- | ----------------- | ----------------------- | --------------- | ------- |
+ | `/`                 | `GET`       | `---`      | `home`            | Page d'accueil          | home page       | -       |
+ | `/register/`        | `POST`      | `---`      | `register`        | page d'inscription      | register page   | -       |
+ | `/delete/`          | `POST`      | `---`      | `delete`          | page suppression compte | delete account  | -       |
+ | `/update/`          | `POST`      | `---`      | `update`          | MAJ compte              | update account  | -       |
+ | `/login/`           | `GET`       | `---`      | `login`           | Connexion               | login           | -       |
+ | `/student/`         | `GET`       | `---`      | `student`         | Page élève              | student page    | -       |
+ | `/student/profile/` | `GET`       | `---`      | `student-profile` | profil élève            | student profile | -       |
+ | `/teachers/`        | `GET`       | `---`      | `teachers`        | page prof               | teachers        | -       |
+ | `/teacher/profile/` | `GET`       | `---`      | `teacher-profile` | profil prof             | teacher profile | -       |
+ | `/instrument/[id]`  | `GET`       | `---`      | `instrument`      | page instrument         | instrument      | -       |
+ | `/404/`             | `GET`       | `---`      | `404`             | page erreur             | 404             | -       |
 
 
 - V2
@@ -156,7 +158,6 @@ A tester
  | Elève       | pouvoir consulter la liste des professeurs          | --                             |
  | Elève       | pouvoir consulter la page de profil d'un professeur | --                             |
  | Elève       | pouvoir supprimer son compte                        | --                             |
- | Elève       | pouvoir liker mes professeurs                       | --                             |
  | Professeur  | pouvoir se connecter                                | --                             |
  | Professeur  | pouvoir consulter sa page perso                     | --                             |
  | Professeur  | pouvoir modifier ma page de profil                  | --                             |
