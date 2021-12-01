@@ -32,7 +32,7 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
   | --            | Page inscription                | like                                                                                   | --                            |
-  | --            | page professeur                 | --                                                                                     | --                            |
+  | --            | page professeur                 | page modifier son profil                                                               | --                            |
   | --            | page élève                      | --                                                                                     | --                            |
 
 
@@ -107,6 +107,7 @@ A tester
 - teachers
 - teacher-profile
 - instrument
+- 
 - 404
  
   ## A mettre à jour
