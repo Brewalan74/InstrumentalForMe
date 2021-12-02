@@ -40,5 +40,19 @@
       - d'une page "modifier votre profil"
     - CDC : 
       - Modification de l'arborescence 
+      - modif des routes dans le CDC
 
-A Faire modif des routes dans le CDC
+### Jeudi 02/12/21
+
+- Modifications:
+  - Wireframes
+  - MCD
+  - MLD
+  - Dico des données :http://mocodo.wingi.net/
+- Recherches des images dont nous auront besoins :
+    - https://www.pexels.com/fr-fr/
+    - https://pixabay.com/fr/
+- MIse à jour des fonctionnalitées :
+    - les likes ,le calendrier et l'upload certificate ont étaient basculés en V4
+    - Ajout des taxonomies en sprint 1
+     
