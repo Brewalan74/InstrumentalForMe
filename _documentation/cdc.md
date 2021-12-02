@@ -112,11 +112,12 @@ A tester
 - register
 - delete
 - login
-- student
+- signup
 - student-profile
-- teachers
 - teacher-profile
 - instrument
+- update
+- appointment
 - 
 - 404
  
@@ -129,11 +130,11 @@ A tester
  | `/delete/`          | `POST`      | `---`      | `delete`          | page suppression compte | delete account  | -       |
  | `/update/`          | `POST`      | `---`      | `update`          | MAJ compte              | update account  | -       |
  | `/login/`           | `GET`       | `---`      | `login`           | Connexion               | login           | -       |
- | `/student/`         | `GET`       | `---`      | `student`         | Page élève              | student page    | -       |
  | `/student/profile/` | `GET`       | `---`      | `student-profile` | profil élève            | student profile | -       |
- | `/teachers/`        | `GET`       | `---`      | `teachers`        | page prof               | teachers        | -       |
  | `/teacher/profile/` | `GET`       | `---`      | `teacher-profile` | profil prof             | teacher profile | -       |
  | `/instrument/[id]`  | `GET`       | `---`      | `instrument`      | page instrument         | instrument      | -       |
+ | `/appointment/`     | `POST`       | `---`      | `appointment`     | page appointment        | RDV             | -       |
+ | `/update/`          | `POST`       | `---`      | `update`          | page update             | update          | -       |
  | `/404/`             | `GET`       | `---`      | `404`             | page erreur             | 404             | -       |
 
 
