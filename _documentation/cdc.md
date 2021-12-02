@@ -19,11 +19,12 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 - Connexion
 - Inscription
 - page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument, diaporama...)
-- page profs (necessité d'une presentation, necessité d'un certificat prouvant la possibilité de donner des cours avant aval d'un admin + niveau possible des cours : debutant, faux debutant, intermediaire, avancé. gestion personnel de son agenda avec ses disponibilités et son jour réservé aux premiers cours, possibilité de faire des posts sur sa page personnel pour parler musique/activités musicales/concerts/instruments ou de sa vie...)
-- page eleves (possibilité de prendre rdv sur un creneau libre d'un prof. gestion basique d'un compte client, possibilité d'effacer son compte, possibilité de faire un like)
-- link profs/instruments
+- Page profil :
+  - profs (necessité d'une presentation, necessité d'un certificat prouvant la possibilité de donner des cours avant aval d'un admin + niveau possible des cours : debutant, faux debutant, intermediaire, avancé...)
+  - eleves (possibilité de prendre rdv sur un creneau libre d'un prof. gestion basique d'un compte client, possibilité d'effacer son compte)
+- link profs/instruments/eleveq
 - Prise de rendez-vous
-- Compteur de like
+- Taxonomy : instruments, certificates, music styles
 
 #####  Planning de dévelopement
 
@@ -32,8 +33,8 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
   | --            | Page inscription                | page modifier son profil                                                               | --                            |
-  | --            | page professeur                 | Diaporama (carousel) si le temps                                                       | --                            |
-  | --            | page élève                      | --                                                                                     | --                            |
+  | --            | page profil (prof + eleve)      | Diaporama (carousel) si le temps                                                       | --                            |
+  | --            | taxonomies                      | --                                                                                     | --                            |
 
 
   - V2:
@@ -48,6 +49,7 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 - V4:
     - Calendrier
+    - like
 
 ### Liste des technologies
 
@@ -103,8 +105,8 @@ A tester
  
    ```
 
-   </div>
- **Les `**   **` indique que l'utilisateur doit être connecté pour acceder à ces pages**
+</div>
+ **Les `** xxxx **` indique que l'utilisateur doit être connecté pour acceder à ces pages**
 
 
 ### Liste des routes
