@@ -20,10 +20,10 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 - Inscription
 - page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument, diaporama...)
 - Page profil :
-  - profs (necessité d'une presentation, necessité d'un certificat prouvant la possibilité de donner des cours avant aval d'un admin + niveau possible des cours : debutant, faux debutant, intermediaire, avancé...)
+  - profs (necessité d'une presentation, necessité d'un certificat sous forme de taxonomy + niveau possible des cours : debutant, faux debutant, intermediaire, avancé...)
   - eleves (possibilité de prendre rdv sur un creneau libre d'un prof. gestion basique d'un compte client, possibilité d'effacer son compte)
-- link profs/instruments/eleveq
-- Prise de rendez-vous
+- link profs/instruments/eleves
+- Prise de rendez-vous sous forme de formulaire
 - Taxonomy : instruments, certificates, music styles
 
 #####  Planning de dévelopement
@@ -50,6 +50,7 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 - V4:
     - Calendrier
     - like
+    - upload certificate
 
 ### Liste des technologies
 
