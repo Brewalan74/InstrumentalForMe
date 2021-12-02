@@ -30,12 +30,11 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
   | SPRINT 0      | SPRINT 1                        | SPRINT 2                                                                               | SPRINT 3                      |
   | ------------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
-  | --            | Integration theme + plugins     | taxonomies                                                                             |                               |
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
   | --            | Page inscription                | page modifier son profil                                                               | --                            |
   | --            | page profil (prof + eleve)      | Diaporama (carousel) si le temps                                                       | --                            |
-  | --            |                                 | --                                                                                     | --                            |
+  | --            | taxonomies                      | --                                                                                     | --                            |
 
 
   - V2:
@@ -74,7 +73,7 @@ A tester
 - Edge
 - Safari
 
-### Arborescence  (tester avec extension markdown preview)
+### Arborescence  
 
 
 <div style="background-color: #e8eef0">
@@ -83,29 +82,27 @@ A tester
   ```mermaid
   graph TD;
 
-        Connexion/Inscription--->Home-Instrument-->Instrument-->Profs-->Prof/Agendas-->**Prise-RDV**;
-          
-        Connexion/Inscription---->**Page-perso-Prof**-->Gestion-d'agenda--->Supression-de-compte;
+ 404 
 
-        Connexion/Inscription-->**Page-perso-Elève**-->Prise/anulation-RDV--->Supression-de-compte;
+ Home-Instrument--->**Profil-prof**--->**Profil-élève**-->**MAJ-profile**
+ Home-Instrument--->**Profil-élève**-->**Profil-prof**-->**MAJ-profile**
+
+
+
+ Home-Instrument--->Connexion-->**Profil-élève**
+ Connexion-->**Profil-prof**
  
+ Home-Instrument--->Inscription-->**Profil-élève**
+ Inscription-->**Profil-prof**
 
-        **Page-perso-Prof**-->Modifier-votre-profile 
+ Home-Instrument--->Instrument-->**Profil-prof**-->**Appointment**
 
-        **Page-perso-Prof**-->Profil-Elève
+   
 
-        **Page-perso-Elève**--->Profil-prof
+```
 
-        **Page-perso-Elève**-->Modifier-votre-profile
-
-        404
-         
- 
-   ```
-
-</div>
  **Les `** xxxx **` indique que l'utilisateur doit être connecté pour acceder à ces pages**
-
+</div>
 
 ### Liste des routes
 
@@ -119,7 +116,6 @@ A tester
 - instrument
 - update
 - appointment
-- 
 - 404
  
   ## A mettre à jour
@@ -135,6 +131,7 @@ A tester
  | `/teacher/profile/` | `GET`       | `---`      | `teacher-profile` | profil prof             | teacher profile | -       |
  | `/instrument/[id]`  | `GET`       | `---`      | `instrument`      | page instrument         | instrument      | -       |
  | `/appointment/`     | `POST`      | `---`      | `appointment`     | page appointment        | RDV             | -       |
+ | `/update/`          | `POST`      | `---`      | `update`          | page update             | update          | -       |
  | `/404/`             | `GET`       | `---`      | `404`             | page erreur             | 404             | -       |
 
 
