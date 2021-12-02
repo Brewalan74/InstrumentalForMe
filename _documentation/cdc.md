@@ -75,13 +75,9 @@ A tester
 
 ### Arborescence  (tester avec extension markdown preview)
 
-!!! note Entitées truc
-  
-
-    
-       
 
 <div style="background-color: #e8eef0">
+
 
   ```mermaid
   graph TD;
