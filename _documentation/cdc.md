@@ -30,11 +30,12 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
   | SPRINT 0      | SPRINT 1                        | SPRINT 2                                                                               | SPRINT 3                      |
   | ------------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+  | --            | Integration Theme + plugins     | taxonomies                                                                             | --                            |
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
   | --            | Page inscription                | page modifier son profil                                                               | --                            |
-  | --            | page profil (prof + eleve)      | Diaporama (carousel) si le temps                                                       | --                            |
-  | --            | taxonomies                      | --                                                                                     | --                            |
+  | --            | page profil (prof + eleve)      | "Diaporama (carousel) si le temps"                                                     | --                            |
+  | --            |                                 | --                                                                                     | --                            |
 
 
   - V2:
@@ -133,8 +134,8 @@ A tester
  | `/student/profile/` | `GET`       | `---`      | `student-profile` | profil élève            | student profile | -       |
  | `/teacher/profile/` | `GET`       | `---`      | `teacher-profile` | profil prof             | teacher profile | -       |
  | `/instrument/[id]`  | `GET`       | `---`      | `instrument`      | page instrument         | instrument      | -       |
- | `/appointment/`     | `POST`       | `---`      | `appointment`     | page appointment        | RDV             | -       |
- | `/update/`          | `POST`       | `---`      | `update`          | page update             | update          | -       |
+ | `/appointment/`     | `POST`      | `---`      | `appointment`     | page appointment        | RDV             | -       |
+ | `/update/`          | `POST`      | `---`      | `update`          | page update             | update          | -       |
  | `/404/`             | `GET`       | `---`      | `404`             | page erreur             | 404             | -       |
 
 
