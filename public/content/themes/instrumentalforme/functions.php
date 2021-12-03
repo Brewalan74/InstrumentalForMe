@@ -55,5 +55,5 @@ if (!function_exists('instrumentalforme_loadAssets')) {
 
 add_action(
     'wp_enqueue_scripts',
-    'grayscale_loadAssets'
+    'instrumentalforme_loadAssets'
 );
