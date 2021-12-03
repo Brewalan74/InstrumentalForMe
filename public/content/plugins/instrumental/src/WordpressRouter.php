@@ -7,7 +7,7 @@ class WordpressRouter
 
     // STEP router Ne pas oublier de configurer wordpress pour les routes custom
     protected $customRoutes = [
-        'instrumental-all' => 'instrumental/.*',
+        'user-all' => 'user/.*',
     ];
 
     public function __construct()

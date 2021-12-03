@@ -9,6 +9,8 @@ use WP_Query;
 class CoreController
 {
 
+
+
     public function isConnected()
     {
         return is_user_logged_in();

@@ -209,7 +209,7 @@ class UserRegistration
             </p>
 
             <br/>
-
+            ========================== a mettre en page profile pour supp compte================
             <p>
                 <label for="user_accept_conditions">Accept terms and conditions</label>
                 <input required type="checkbox" name="user_accept_conditions" id="user_accept_conditions"/>

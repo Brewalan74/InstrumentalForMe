@@ -9,7 +9,10 @@ class RoleManager
     {
         remove_role('teacher');
     }
-
+    public function deleteStudentRole()
+    {
+        remove_role('student');
+    }
     public function createTeacherRole()
     {
         add_role(
@@ -26,11 +29,6 @@ class RoleManager
                 'read_private_events' => true,
             ]
         );
-    }
-
-    public function deleteStudentRole()
-    {
-        remove_role('student');
     }
 
     public function createStudentRole()
