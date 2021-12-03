@@ -20,7 +20,7 @@ content/*
 
 content/themes/*
 !content/themes
-#!content/themes/custom_theme
+!content/themes/instrumentalforme
 
 content/plugins/*
 !content/plugins/
