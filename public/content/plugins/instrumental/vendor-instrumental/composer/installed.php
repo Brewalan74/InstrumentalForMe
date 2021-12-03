@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '24c8ee5cf552007696256718d996060217a87a95',
+        'reference' => '39106b523d8200a3a42d958f342870a0604fd936',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '24c8ee5cf552007696256718d996060217a87a95',
+            'reference' => '39106b523d8200a3a42d958f342870a0604fd936',
             'dev_requirement' => false,
         ),
         'altorouter/altorouter' => array(
