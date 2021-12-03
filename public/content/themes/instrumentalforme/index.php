@@ -32,6 +32,7 @@
         </div>
     </nav>
     <!-- Header-->
+    <?php get_header(); ?>
     <header class="masthead text-center text-white">
         <div class="masthead-content">
             <div class="container px-5">
@@ -103,6 +104,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
+    <?php get_footer(); ?>
 </body>
 
 </html>
