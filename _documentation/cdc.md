@@ -30,11 +30,12 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
   | SPRINT 0      | SPRINT 1                        | SPRINT 2                                                                               | SPRINT 3                      |
   | ------------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
+  | --            | Integration theme + plugins     | Taxonomies                                                                             | --                            |
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
   | --            | Page inscription                | page modifier son profil                                                               | --                            |
   | --            | page profil (prof + eleve)      | Diaporama (carousel) si le temps                                                       | --                            |
-  | --            | taxonomies                      | --                                                                                     | --                            |
+  | --            |                                 | --                                                                                     | --                            |
 
 
   - V2:
