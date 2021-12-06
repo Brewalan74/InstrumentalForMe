@@ -21,6 +21,8 @@ class Plugin
 
     protected $roleManager;
 
+    protected $customFields;
+
     public function __construct()
     {
         add_action(
@@ -38,6 +40,7 @@ class Plugin
         $this->certificateTaxonomy = new Certificate();
         $this->musicStyleTaxonomy = new MusicStyle();
         $this->roleManager = new RoleManager();
+        $this->customFields = new CustomFields();
     }
 
     public function activate()
