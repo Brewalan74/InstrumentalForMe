@@ -13,7 +13,7 @@ class Instrument
 
         register_taxonomy(
             'instrument',   // idenfiant de la taxonomy
-            ['profile-teacher', 'profile-student'],   // la taxonomy technologie peut s'appliquer sur les CPT developer-profile et project
+            'profile-teacher',   // la taxonomy technologie peut s'appliquer sur les CPT developer-profile et project
             [
                 'show_in_rest' => true, // la taxonomy est accessible en mode API ; nécessaire pour l'éditeur de bloc (Gutemberg)
                 'label' => 'Instrument',
