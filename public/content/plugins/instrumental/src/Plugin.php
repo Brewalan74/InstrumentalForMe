@@ -1,11 +1,14 @@
 <?php
 namespace Instrumental;
 
-use Instrumental\CustomPostType\Profile;
+use Instrumental\CustomPostType\ProfileTeacher;
+use Instrumental\CustomPostType\ProfileStudent;
 
 class Plugin
 {
-    protected $profileCPT;
+    protected $profileTeacherCPT;
+
+    protected $profileStudentCPT;
 
     protected $roleManager;
 
@@ -20,7 +23,8 @@ class Plugin
 
     public function initialize()
     {
-        $this->profileCPT = new Profile();
+        $this->profileTeacherCPT = new ProfileTeacher();
+        $this->profileStudentCPT = new ProfileStudent();
         $this->roleManager = new RoleManager();
     }
 
