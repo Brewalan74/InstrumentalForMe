@@ -1,0 +1,36 @@
+/* How to create social media buttons : https://www.w3schools.com/howto/howto_css_social_media_buttons.asp */
+
+.fa {
+    padding: 15px;
+    font-size: 20px;
+    width: auto;
+    height: auto;
+    text-align: center;
+    text-decoration: none;
+    margin: 15px 2px;
+}
+
+.fa:hover {
+    opacity: 0.7;
+    color: black;
+}
+
+.fa-facebook {
+    background: #3B5998;
+    color: white;
+}
+
+.fa-twitter {
+    background: #55ACEE;
+    color: white;
+}
+
+.fa-youtube {
+    background: #df2323;
+    color: white;
+}
+
+.fa-instagram {
+    background: #125688;
+    color: white;
+}
