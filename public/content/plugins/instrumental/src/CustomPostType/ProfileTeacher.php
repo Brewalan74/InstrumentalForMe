@@ -2,14 +2,14 @@
 
 namespace Instrumental\CustomPostType;
 
-class Profile
+class ProfileTeacher
 {
     public function __construct()
     {
         register_post_type(
-            'profile', 
+            'profile-teacher', 
             [ 
-                'label' => 'Profile',
+                'label' => 'Profile teacher',
             
                 'show_in_rest' => true,
             
@@ -31,7 +31,7 @@ class Profile
                     'author',
                 ],
                 
-                'capability_type' => 'profile',
+                'capability_type' => 'profile-teacher',
                 'map_meta_cap' => true,
             ]
         ); 
