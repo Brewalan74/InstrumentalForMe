@@ -10,24 +10,18 @@ class Profile
             'profile', 
             [ 
                 'label' => 'Profile',
-
-              
+            
                 'show_in_rest' => true,
-
-                
+            
                 'public' => true,
-
-                
+           
                 'hierarchical' => false,
-
                
                 'menu_icon' => 'dashicons-buddicons-buddypress-logo',
-
-               
+           
                 'has_archive' => true,
 
-
-                
+            
                 // NOTICE PLUGIN, fonctionnalités activable pour un cpt :  ‘title’, ‘editor’, ‘comments’, ‘revisions’, ‘trackbacks’, ‘author’, ‘excerpt’, ‘page-attributes’, ‘thumbnail’, ‘custom-fields’, and ‘post-formats’.
                 'supports' => [
                     'title',
@@ -36,7 +30,6 @@ class Profile
                     'editor',
                     'author',
                 ],
-
                 
                 'capability_type' => 'profile',
                 'map_meta_cap' => true,
