@@ -184,23 +184,29 @@ class UserRegistration
             </p>
 
             <p>
-                <label for="user_password_confirmation">Je m\'inscrit en tant que </label>
+                <label for="user-type">Je m\'inscrit en tant que </label>
                 <select id="user_type" name="user_type">
+                    <option selected value="choisir">Choisir</option>
                     <option value="teacher">Professeur</option>
                     <option value="student">Elève</option>
-            </select>
-            </p>';
+                </select>
+                </p>';
+            if(isset($_POST['user_type']))
+            {
+                $selectedRole = ($_POST['user_type']);
+                if($selectedRole == 'teacher'){
+                echo'
+                <p>
+                <input type="checkbox" name="BEM" id="BEM" checked="checked" />
+                </p>
+             ';
+            }   
+            }
+            
 
-                if('teacher' === 'true' ){
-                   echo'
-                    <p>
-                        <label for="certificate">Je selectionne mon diplôme</label>
-                        <select id="certificate" name="certificate">
-                            <option value="bts">bts</option>
-                            <option value="prepa">prepa</option>
-                        </select>
-                    </p>';
-                }
+
+          
+
                 
  
 
