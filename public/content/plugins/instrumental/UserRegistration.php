@@ -89,7 +89,7 @@ class UserRegistration
 
     public function steUserPassword($newUserId)
     {
-        
+        $password = filter_input(INPUT_POST,'user_password');
     }
 
 
