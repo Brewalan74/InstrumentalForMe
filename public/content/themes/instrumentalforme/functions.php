@@ -27,9 +27,25 @@ if (!function_exists('instrumentalforme_initializeTheme')) {
 if (!function_exists('instrumentalforme_loadAssets')) {
     function instrumentalforme_loadAssets()
     {
+
         wp_enqueue_style(
             'instrumentalforme-styles',
             get_theme_file_uri('css/styles.css')
+        );
+
+        wp_enqueue_style(
+            'font-awesome-style',
+            'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css'
+        );
+
+        wp_enqueue_style(
+            'social-styles',
+            get_theme_file_uri('css/social.css')
+        );
+
+        wp_enqueue_style(
+            'instrumental-styles',
+            get_theme_file_uri('css/instrumental.css')
         );
 
         wp_enqueue_style(
