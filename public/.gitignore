@@ -24,4 +24,4 @@ content/themes/*
 
 content/plugins/*
 !content/plugins/
-#!content/plugins/custom_plugin
+!content/plugins/instrumental
