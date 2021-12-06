@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= get_bloginfo('language'); ?>">
 
 <head>
     <meta charset="utf-8" />

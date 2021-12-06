@@ -8,3 +8,26 @@
         font-size: 1.5em !important;
     }
 }
+
+/* CSS Profiles */
+.profileH2 {
+    text-align: center;
+    margin: 1em;
+}
+
+.profileDescription {
+    text-align: justify;
+    margin: 0em 2em 2em 2em;
+    padding: 2em;
+    border: 1px solid #660000;
+    border-radius: 12.5px;
+}
+
+.threePart {
+    width: calc(100%/3);
+    border: 1px solid black;
+}
+
+.profileTeacherInstrument {
+    margin: 0em 2em 2em 2em;
+}

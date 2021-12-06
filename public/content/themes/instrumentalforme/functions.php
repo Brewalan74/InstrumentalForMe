@@ -73,3 +73,10 @@ add_action(
     'wp_enqueue_scripts',
     'instrumentalforme_loadAssets'
 );
+
+
+add_filter('get_the_excerpt', function ($excerpt) {
+
+    // Get the 250 first characters
+    return substr($excerpt, 0, 250) . '...';
+});
