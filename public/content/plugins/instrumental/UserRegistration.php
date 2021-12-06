@@ -87,7 +87,7 @@ class UserRegistration
 
     }
 
-    public function steUserPassword($newUserId)
+    public function setUserPassword($newUserId)
     {
         $password = filter_input(INPUT_POST,'user_password');
     }
