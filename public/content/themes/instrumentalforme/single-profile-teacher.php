@@ -23,6 +23,13 @@ the_post();
     <section>
         <div class="profileH2">
             <p>Vous êtes sur la page de profil de</p>
+            <p><?= get_avatar(
+                    $post->ID,
+                    $size = 96,
+                    $default = '',
+                    $alt = '',
+                    $args = null
+                ); ?></p>
             <h2><?= get_the_title(); ?></h2>
         </div>
 
@@ -31,15 +38,43 @@ the_post();
         </div>
 
         <div class="profileTeacherInstrument">
-            <p><?= get_the_title(); ?> enseigne :</p>
+            <h4><?= get_the_title(); ?> enseigne :</h4>
             <?php
             $teacherInstrument = get_the_terms(
                 $post->ID,
                 'instrument'
             );
-            $instrumentsName = join(', ', wp_list_pluck($teacherInstrument, 'name'));
-            ?>
-            <p><?= $instrumentsName; ?></p>
+            foreach ($teacherInstrument as $key => $value) : ?>
+                <ul>
+                    <li><?= $value->name; ?></li>
+                </ul>
+
+            <?php endforeach; ?>
+
+        </div>
+        <div class="profileTeacherCertificate">
+            <h4>Les certificats de <?= get_the_title(); ?> sont :</h4>
+            <?php
+            $teacherCertificate = get_the_terms(
+                $post->ID,
+                'certificate'
+            );
+            // dump($teacherCertificate);
+            // exit;
+            foreach ($teacherCertificate as $key => $value) : ?>
+                <ul>
+                    <li><?= $value->name; ?></li>
+                </ul>
+
+            <?php endforeach; ?>
+        </div>
+
+        <div class="profileTeacherAppointment">
+            <h4>Choisissez date et horaire de votre leçon</h4>
+            <form action="">
+                <input type="date" name="" id="">
+                <input type="submit" value="Submit">
+            </form>
         </div>
 
     </section>
