@@ -38,43 +38,19 @@ the_post();
         </div>
 
         <div class="profileInstrument">
-            <h4><?= get_the_title(); ?> enseigne :</h4>
+            <h4><?= get_the_title(); ?> aime :</h4>
             <?php
-            $teacherInstrument = get_the_terms(
+            $studentMusicStyle = get_the_terms(
                 $post->ID,
-                'instrument'
+                'music-style'
             );
-            foreach ($teacherInstrument as $key => $value) : ?>
+            foreach ($studentMusicStyle as $key => $value) : ?>
                 <ul>
                     <li><?= $value->name; ?></li>
                 </ul>
 
             <?php endforeach; ?>
 
-        </div>
-        <div class="profileCertificate">
-            <h4>Les certificats de <?= get_the_title(); ?> sont :</h4>
-            <?php
-            $teacherCertificate = get_the_terms(
-                $post->ID,
-                'certificate'
-            );
-            // dump($teacherCertificate);
-            // exit;
-            foreach ($teacherCertificate as $key => $value) : ?>
-                <ul>
-                    <li><?= $value->name; ?></li>
-                </ul>
-
-            <?php endforeach; ?>
-        </div>
-
-        <div class="profileAppointment">
-            <h4>Choisissez date et horaire de votre leçon</h4>
-            <form action="">
-                <input type="date" name="" id="">
-                <input type="submit" value="Submit">
-            </form>
         </div>
 
     </section>

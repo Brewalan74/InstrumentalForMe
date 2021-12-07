@@ -29,17 +29,17 @@
     border: 1px solid black;
 }
 
-.profileTeacherInstrument {
+.profileInstrument {
     margin-left: 2em;
     margin-bottom: 2em;
 }
 
-.profileTeacherCertificate {
+.profileCertificate {
     margin-left: 2em;
     margin-bottom: 2em;
 }
 
-.profileTeacherAppointment {
+.profileAppointment {
     margin-left: 2em;
     margin-bottom: 2em;
 }
