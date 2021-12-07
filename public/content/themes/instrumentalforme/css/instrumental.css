@@ -1,10 +1,45 @@
 /* Change font-size title to adapt to small smartphone */
 @media (max-width: 575px) {
     h1 {
-        font-size: 2.5em !important;
+        font-size: 1.5em !important;
     }
 
     h2 {
         font-size: 1.5em !important;
     }
+
+}
+
+/* CSS Profiles */
+.profileH2 {
+    text-align: center;
+    margin: 1em;
+}
+
+.profileDescription {
+    text-align: justify;
+    margin: 0em 2em 2em 2em;
+    padding: 2em;
+    border: 1px solid #660000;
+    border-radius: 12.5px;
+}
+
+.threePart {
+    width: calc(100%/3);
+    border: 1px solid black;
+}
+
+.profileInstrument {
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+.profileCertificate {
+    margin-left: 2em;
+    margin-bottom: 2em;
+}
+
+.profileAppointment {
+    margin-left: 2em;
+    margin-bottom: 2em;
 }
