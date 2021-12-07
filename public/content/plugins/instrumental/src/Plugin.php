@@ -9,8 +9,14 @@ use Instrumental\CustomTaxonomy\MusicStyle;
 
 class Plugin
 {
+    /**
+     * @var [ProfileTeacherCPT]
+     */
     protected $profileTeacherCPT;
 
+    /**
+     * @var [ProfileStudentCPT]
+     */
     protected $profileStudentCPT;
 
     protected $instrumentTaxonomy;
@@ -22,6 +28,8 @@ class Plugin
     protected $roleManager;
 
     protected $customFields;
+
+    protected $userRegistration;
 
     public function __construct()
     {
@@ -40,6 +48,7 @@ class Plugin
         $this->certificateTaxonomy = new Certificate();
         $this->musicStyleTaxonomy = new MusicStyle();
         $this->roleManager = new RoleManager();
+        $this->userRegistration = new UserRegistration();
         $this->customFields = new CustomFields();
     }
 
