@@ -41,7 +41,8 @@
     - CDC : 
       - Modification de l'arborescence 
       - modif des routes dans le CDC
-
+- On à fait une liste des instruments que nous allions présenter en premier sur le sîte.
+- 
 ### Jeudi 02/12/21
 
 - Modifications:
@@ -55,4 +56,37 @@
 - MIse à jour des fonctionnalitées :
     - les likes ,le calendrier et l'upload certificate ont étaient basculés en V4
     - Ajout des taxonomies en sprint 1
-     
+- Installation de Wordpress et dépendances.
+- 
+### Vendredi 03/12/21
+
+- Première rétrospective : Stefan fera la 1ere présentation (du sprint 0)
+- Attente de validation de notre doc pour la suite
+- Commencer:
+  - intégration du théme bootsrap par Stefan
+  - début le plugin par Steph.M et Steph.B 
+
+#### Résumé de la semaine
+
+Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
+
+## Sprint 1
+
+### Lundi 06/12/21
+
+- Stefan se charge de la partie front
+    -  (création de nos différente page ),
+    -  ajout des link réseaux sociaux dans le footer,
+    -  profilTeacher
+- 
+- Steph.M continue  la partie CPT et Taxonomy du plugin 
+  -  la début de la Homepage
+ 
+- Je me charge de la partie formulaire d'inscription 
+  
+### Mardi 07/12/21
+
+Prévu pour aujourd'hui
+  - Finir dynamisation de la homepage
+  - Finir d'afficher les diplômes si teacher selectionner dans le formulaire d'inscription
+  - Finir profil teacher et start profil student

@@ -3,6 +3,9 @@ namespace Instrumental;
 
 use Instrumental\CustomPostType\ProfileTeacher;
 use Instrumental\CustomPostType\ProfileStudent;
+use Instrumental\CustomTaxonomy\Instrument;
+use Instrumental\CustomTaxonomy\Certificate;
+use Instrumental\CustomTaxonomy\MusicStyle;
 
 class Plugin
 {
@@ -16,16 +19,17 @@ class Plugin
      */
     protected $profileStudentCPT;
 
-    /**
-     * @var [RoleManager]
-     */
+    protected $instrumentTaxonomy;
+
+    protected $certificateTaxonomy;
+
+    protected $musicStyleTaxonomy;
+
     protected $roleManager;
 
-    /**
-     * @var UserRegistration
-     */
-    protected $userRegistration;
+    protected $customFields;
 
+    protected $userRegistration;
 
     public function __construct()
     {
@@ -40,8 +44,12 @@ class Plugin
     {
         $this->profileTeacherCPT = new ProfileTeacher();
         $this->profileStudentCPT = new ProfileStudent();
+        $this->instrumentTaxonomy = new Instrument();
+        $this->certificateTaxonomy = new Certificate();
+        $this->musicStyleTaxonomy = new MusicStyle();
         $this->roleManager = new RoleManager();
         $this->userRegistration = new UserRegistration();
+        $this->customFields = new CustomFields();
     }
 
     public function activate()

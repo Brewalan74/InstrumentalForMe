@@ -180,44 +180,46 @@ class UserRegistration
             <p>
                 <label for="user_password_confirmation">Confirmer votre mot de passe</label>
                 <input type="text" name="user_password_confirmation" id="user_password_confirmation" class="input" value="" size="20" autocapitalize="off">
-        </p>
-                 <div>
-                             <input type="radio" id="teacher" name="type_user" value="teacher" onclick="viewCertificate()">
-                             <label for="teacher">teacher</label> 
+            </p>
+            <div>
+                <input type="radio" id="teacher" name="type_user" value="teacher" onclick="viewCertificate()">
+                <label for="teacher">Teacher</label> 
 
-                             <input type="radio" id="student" name="type_user" value="student" onclick="viewCertificate()">
-                             <label for="student">student</label><br>
-                     
-                 </div>
-             
-             <div id="certificate" style="display:none">
+                <input type="radio" id="student" name="type_user" value="student" onclick="viewCertificate()">
+                <label for="student">Student</label><br>
+            </div>
+            <div id="certificate" style="display:none">';
 
-             
+
+                $certificates = get_terms('certificate',  array(
+                    'hide_empty' => false,
+                ));
+
+                foreach($certificates as $index => $certificat) {
                 
-        
-      
-                <input type="checkbox" id="certif1" name="certif1" value="certif1">
-                <label for="certif1">certif1</label><br>
-               
+                    echo '<input type="checkbox" id="certif' . $index . '" name="certificates[]" value="' . $certificat->term_id . '">' .
+                        '<label for="certif' . $index . '">' . $certificat->name . '</label><br>';
+                }
+
+            echo '
              </div>
  
-                <script>
+            <script>
+            
+            function viewCertificate() {
+
+                let radioTeacher = document.querySelector("#teacher");
+                let div = document.querySelector("#certificate");
                 
-                function viewCertificate()
-                 {
-
-                    let radioTeacher = document.getElementById("teacher");
-                    let div = document.getElementById("certificate");
-                   
-                   
-                    if (radioTeacher.checked == true){
-                        div.style.display = "block";
-                    } else {
-                        div.style.display = "none";
-                    }
-
+                
+                if (radioTeacher.checked == true){
+                    div.style.display = "block";
+                } else {
+                    div.style.display = "none";
                 }
-                </script>
-                ';
+
+            }
+            </script>
+            ';
     }
 }
