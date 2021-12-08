@@ -96,7 +96,7 @@ class UserRegistration
            Cotrôle du formulaire
       =============================== */
 
-    public function chekErrors($errors)
+    public function checkErrors($errors)
     {
         $password0 = filter_input(INPUT_POST, 'user_password');
         $password1 = filter_input(INPUT_POST, 'user_password_confirmation');
