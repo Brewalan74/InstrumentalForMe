@@ -30,12 +30,12 @@ class UserRegistration
            ======================================*/
 
         add_action( // Affectation du rôle de l'utilisateur 
-            'registeur_new_user',
+            'register_new_user',
             [$this, 'setUserRole']
         );
 
         add_action( //  Création de la page profil
-            'registeur_new_user',
+            'register_new_user',
             [$this, 'createUserProfile']
         );
 
@@ -79,6 +79,7 @@ class UserRegistration
         } elseif ($role === 'student') {
             $postType = 'profile-student';
         }
+        
         wp_insert_post([
             'post_author' => $newUserId,
             'post_title'  => $user->data->display_name . " 's profile",
@@ -98,12 +99,14 @@ class UserRegistration
 
     public function checkErrors($errors)
     {
+        
         $password0 = filter_input(INPUT_POST, 'user_password');
         $password1 = filter_input(INPUT_POST, 'user_password_confirmation');
         $role = filter_input(INPUT_POST, 'user_type');
         $allowedRoles = [
             'teacher',
             'student'
+            
         ];
         if (!in_array($role, $allowedRoles)) {
             $errors->add(
@@ -151,6 +154,7 @@ class UserRegistration
             );
         }
         return $errors;
+        
     }
 
     /*===============================
