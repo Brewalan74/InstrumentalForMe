@@ -171,7 +171,7 @@ class UserRegistration
     {
 
         echo '
-        
+           
             <p>
                 <label for="user_password">Mot de passe</label>
                 <input type="text" name="user_password" id="user_password" class="input" value="" size="20" autocapitalize="off">

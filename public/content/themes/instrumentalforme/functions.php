@@ -29,8 +29,8 @@ if (!function_exists('instrumentalforme_loadAssets')) {
     {
 
         wp_enqueue_style(
-            'userRegistration-styles',
-            get_theme_file_uri('css/userRegistration.css')
+            'instrumentalforme-styles',
+            get_theme_file_uri('css/styles.css')
         );
 
         wp_enqueue_style(
