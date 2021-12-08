@@ -9,7 +9,7 @@ class UserRegistration
 {
     public function __construct()
     {
-
+        
         add_action( //Charger un css custom sur nos pages login & register
             'login_enqueue_scripts',
             [$this, 'loadAssets']
@@ -35,14 +35,17 @@ class UserRegistration
         );
 
         add_action( //  Création de la page profil
+           
             'register_new_user',
             [$this, 'createUserProfile']
+            
         );
 
         add_action( // Affectation du MdP choisit par l'utilisateur
             'register_new_user',
             [$this, 'setUserPassword']
         );
+        
     }
 
     /*====================
@@ -53,33 +56,33 @@ class UserRegistration
     {
         $user = new WP_User($newUserId);
         $role = filter_input(INPUT_POST, 'user_type'); // Controle des données enregistrer par l'utilisateur (si rôle non autorisé = suppression de compte et blocage de la page)
-
+       
         $allowedRoles = [
             'teacher',
             'student'
         ];
-        if (!in_array($role, $allowedRoles)) {
+        // if (!in_array($role, $allowedRoles)) {
 
-            require_once ABSPATH . '/wp-admin/includes/user.php';
-            wp_delete_user($newUserId);
-            exit('SOMETHING WRONG HAPPENED');
-        } else {
+        //     require_once ABSPATH . '/wp-admin/includes/user.php';
+        //     wp_delete_user($newUserId);
+        //     exit('SOMETHING WRONG HAPPENED');
+        // } else {
             $user->add_role($role);
             $user->remove_role('subscriber');
-        }
+        //}
     }
 
     public function createUserProfile($newUserId)
     {
-        $user = new WP_User($newUserId);
         $role = filter_input(INPUT_POST, 'user_type');
+        $user = new WP_User($newUserId);
+        
 
         if ($role === 'teacher') {
             $postType = 'profile-teacher';
         } elseif ($role === 'student') {
             $postType = 'profile-student';
         }
-        
         wp_insert_post([
             'post_author' => $newUserId,
             'post_title'  => $user->data->display_name . " 's profile",
@@ -94,19 +97,17 @@ class UserRegistration
     }
 
     /*===============================
-           Cotrôle du formulaire
+           Contrôle du formulaire
       =============================== */
 
     public function checkErrors($errors)
     {
-        
         $password0 = filter_input(INPUT_POST, 'user_password');
         $password1 = filter_input(INPUT_POST, 'user_password_confirmation');
         $role = filter_input(INPUT_POST, 'user_type');
         $allowedRoles = [
             'teacher',
             'student'
-            
         ];
         if (!in_array($role, $allowedRoles)) {
             $errors->add(
@@ -154,7 +155,6 @@ class UserRegistration
             );
         }
         return $errors;
-        
     }
 
     /*===============================
@@ -178,18 +178,18 @@ class UserRegistration
            
             <p>
                 <label for="user_password">Mot de passe</label>
-                <input type="text" name="user_password" id="user_password" class="input" value="" size="20" autocapitalize="off">
+                <input type="password" name="user_password" id="user_password" class="input" value="" size="20" autocapitalize="off">
             </p>
 
             <p>
                 <label for="user_password_confirmation">Confirmer votre mot de passe</label>
-                <input type="text" name="user_password_confirmation" id="user_password_confirmation" class="input" value="" size="20" autocapitalize="off">
+                <input type="password" name="user_password_confirmation" id="user_password_confirmation" class="input" value="" size="20" autocapitalize="off">
             </p>
             <div>
-                <input type="radio" id="teacher" name="type_user" value="teacher" onclick="viewCertificate()">
+                <input type="radio" id="teacher" name="user_type" value="teacher" onclick="viewCertificate()">
                 <label for="teacher">Teacher</label> 
 
-                <input type="radio" id="student" name="type_user" value="student" onclick="viewCertificate()">
+                <input type="radio" id="student" name="user_type" value="student" onclick="viewCertificate()">
                 <label for="student">Student</label><br>
             </div>
             <div id="certificate" style="display:none">';
