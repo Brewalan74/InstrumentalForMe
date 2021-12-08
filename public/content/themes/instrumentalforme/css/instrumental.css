@@ -9,9 +9,9 @@
     }
 
 
-    .instrument__picture {  
-         height: 50px !important;
-         
+    .instrument__picture {
+        height: 50px !important;
+
     }
 }
 
@@ -19,6 +19,10 @@
 .profileH2 {
     text-align: center;
     margin: 1em;
+}
+
+.profileView {
+    font-size: 1.5em;
 }
 
 .profileDescription {
@@ -35,12 +39,12 @@
 }
 
 .profileInstrument {
-    margin-left: 2em;
+    margin-left: 3em;
     margin-bottom: 2em;
 }
 
 .profileCertificate {
-    margin-left: 2em;
+    margin-left: 3em;
     margin-bottom: 2em;
 }
 
@@ -49,6 +53,38 @@
     margin-bottom: 2em;
 }
 
+form {
+    text-align: center;
+}
+
+h4 {
+    text-align: center;
+    margin-top: 2em;
+}
+
+.profileCertificate_ul-p {
+    text-align: justify;
+    margin-top: 2em;
+    margin-bottom: 0em;
+    color: black;
+}
+
+.profileCertificate_ul-p a {
+    color: black;
+}
+
+.profileMusicStyle_ul-p {
+    text-align: justify;
+    margin-top: 2em;
+    margin-bottom: 0em;
+}
+
+.profileMusicStyle_ul-p a {
+    color: black;
+}
+
+
+/* Display instrument taxonomy */
 .instrument-container:nth-child(odd) .instrument {
     flex-direction: row-reverse;
 }
@@ -58,4 +94,13 @@
     background-position: 50% 50%;
     height: 400px;
     border-radius: 50%;
+}
+
+/* General */
+h2 a {
+    color: #660000;
+}
+
+.taxoLayout {
+    margin: 0 2em;
 }

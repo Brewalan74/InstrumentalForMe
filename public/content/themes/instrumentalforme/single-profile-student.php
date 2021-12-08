@@ -22,7 +22,7 @@ the_post();
 
     <section>
         <div class="profileH2">
-            <p>Vous êtes sur la page de profil de</p>
+            <p class="profileView">Vous êtes sur la page de profil de</p>
             <p><?= get_avatar(
                     $post->ID,
                     $size = 96,
@@ -46,9 +46,9 @@ the_post();
             );
             foreach ($studentMusicStyle as $key => $value) : ?>
                 <ul>
-                    <li><?= $value->name; ?></li>
+                    <h6 class="profileMusicStyle_ul-p"><a href="<?= get_term_link($value->term_id); ?>"><?= $value->name; ?></a></h6>
+                    <p class="taxoLayout"><?= substr($value->description, 0, 500) . '...'; ?></p>
                 </ul>
-
             <?php endforeach; ?>
 
         </div>
