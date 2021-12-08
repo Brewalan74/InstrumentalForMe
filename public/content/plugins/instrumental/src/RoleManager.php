@@ -27,16 +27,16 @@ class RoleManager
             'Teacher',   // Libéllé du rôle
             // Capabilities for teacher
             [
-                'delete_others_profile-teachers' => false,
-                'delete_private_profile-teachers' => false,
-                'delete_profile-teachers' => false,
-                'delete_published_profile-teachers' => true,
-                'edit_others_profile-teachers' => false,
-                'edit_private_profile-teachers' => false,
-                'edit_profile-teachers' => false,
-                'edit_published_profile-teachers' => true,
-                'publish_profile-teachers' => true,
-                'read_private_profile-teachers' => true,
+                'delete_others_profile-teacher' => false,
+                'delete_private_profile-teacher' => false,
+                'delete_profile-teacher' => false,
+                'delete_published_profile-teacher' => true,
+                'edit_others_profile-teacher' => false,
+                'edit_private_profile-teacher' => false,
+                'edit_profile-teacher' => false,
+                'edit_published_profile-teacher' => true,
+                'publish_profile-teacher' => true,
+                'read_private_profile-teacher' => true,
             ]
         );
     }
@@ -45,21 +45,21 @@ class RoleManager
     public function createStudentRole()
     {
         add_role(
-            'customer',    // idenfiant du rôle
-            'Customer',   // Libéllé du rôle
+            'student',    // idenfiant du rôle
+            'Student',   // Libéllé du rôle
 
             // Capabilities for student
             [
-                'delete_student-profiles' => false,
-                'delete_others_student-profiles' => false,
-                'delete_private_student-profiles' => false,
-                'delete_published_student-profiles' => true,
-                'edit_student-profiles' => false,
-                'edit_others_student-profiles' => false,
-                'edit_private_student-profiles' => false,
-                'edit_published_student-profiles' => true,
-                'publish_student-profiles' => true,
-                'read_private_student-profiles' => false,
+                'delete_profile-student' => false,
+                'delete_others_profile-student' => false,
+                'delete_private_profile-student' => false,
+                'delete_published_profile-student' => true,
+                'edit_profile-student' => false,
+                'edit_others_profile-student' => false,
+                'edit_private_profile-student' => false,
+                'edit_published_profile-student' => true,
+                'publish_profile-student' => true,
+                'read_private_profile-student' => false,
             ]
         );
     }
