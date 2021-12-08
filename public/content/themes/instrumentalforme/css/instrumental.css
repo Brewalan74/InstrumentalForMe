@@ -43,3 +43,14 @@
     margin-left: 2em;
     margin-bottom: 2em;
 }
+
+.instrument-container:nth-child(odd) .instrument {
+    flex-direction: row-reverse;
+}
+
+.instrument__picture {
+    background-size: cover;
+    background-position: 50% 50%;
+    height: 400px;
+    border-radius: 50%;
+}
