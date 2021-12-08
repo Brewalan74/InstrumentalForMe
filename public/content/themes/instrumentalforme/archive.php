@@ -36,7 +36,7 @@ $taxonomyImage = get_field('picture', 'instrument_' . $termId);
 ?>
 
        
-TOTO
+
 
 <!-- Content section 1-->
 <section id="scroll">
