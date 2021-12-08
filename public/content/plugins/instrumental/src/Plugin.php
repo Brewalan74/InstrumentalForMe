@@ -6,11 +6,12 @@ use Instrumental\CustomPostType\ProfileStudent;
 use Instrumental\CustomTaxonomy\Instrument;
 use Instrumental\CustomTaxonomy\Certificate;
 use Instrumental\CustomTaxonomy\MusicStyle;
-use Instrumental\Models\CoreModel;
+
 use Instrumental\Models\TeacherInstrumentModel;
 
 class Plugin
 {
+    /*===================CPT===================*/
     /**
      * @var [ProfileTeacherCPT]
      */
@@ -21,24 +22,55 @@ class Plugin
      */
     protected $profileStudentCPT;
 
+    /*=================TAXONOMY=================*/
+
+    /** 
+     * @var [InstrumentTaxonomy]
+     */
     protected $instrumentTaxonomy;
 
+    /**
+     * @var [CertificateTaxonomy]
+     */
     protected $certificateTaxonomy;
 
+    /**
+     * @var [MusicStyleTaxonomy]
+     */
     protected $musicStyleTaxonomy;
 
+     /*===================UTILE===================*/
+
+     /**
+     * Propriété gérant les traitements concernant les rôles
+     *
+     * @var RoleManager
+     */
     protected $roleManager;
 
+    /**
+     * @var CustomFields
+     */
     protected $customFields;
 
+    /**
+     * @var UserRegistration
+     */
     protected $userRegistration;
 
+     /**
+     * Configuration du router wordpress
+     *
+     * @var WordpressRouter
+     */
     protected $wordpressRouter;
 
-    protected $coreModel;
+     /*===================MODEL===================*/
 
     protected $teacherInstrumentModel;
 
+     /*============================================
+       ============================================*/
     public function __construct()
     {
         add_action(
@@ -50,16 +82,20 @@ class Plugin
 
     public function initialize()
     {
+        /*===================CPT===================*/
         $this->profileTeacherCPT = new ProfileTeacher();
         $this->profileStudentCPT = new ProfileStudent();
+        /*=================TAXONOMY=================*/
         $this->instrumentTaxonomy = new Instrument();
         $this->certificateTaxonomy = new Certificate();
         $this->musicStyleTaxonomy = new MusicStyle();
+        /*===================UTILE===================*/
         $this->roleManager = new RoleManager();
         $this->userRegistration = new UserRegistration();
         $this->customFields = new CustomFields();
         $this->wordpressRouter = new WordpressRouter();
-        $this->coreModel = new CoreModel();
+        
+        /*===================MODEL===================*/
         $this->teacherInstrumentModel = new TeacherInstrumentModel();
     }
 
