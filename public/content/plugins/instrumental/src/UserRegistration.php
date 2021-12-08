@@ -10,10 +10,10 @@ class UserRegistration
     public function __construct()
     {
 
-        // add_action( //Charger un css custom sur nos pages login & register
-        //     'login_enqueue_scripts',
-        //     [$this, 'loadAssets']
-        // );
+        add_action( //Charger un css custom sur nos pages login & register
+            'login_enqueue_scripts',
+            [$this, 'loadAssets']
+        );
 
         add_action( // Inserrer du code Html dans le formulaire de WP afin de le personnaliser
             'register_form',
@@ -96,7 +96,7 @@ class UserRegistration
            Cotrôle du formulaire
       =============================== */
 
-    public function chekErrors($errors)
+    public function checkErrors($errors)
     {
         $password0 = filter_input(INPUT_POST, 'user_password');
         $password1 = filter_input(INPUT_POST, 'user_password_confirmation');
@@ -163,7 +163,7 @@ class UserRegistration
 
           wp_enqueue_style(
               'login-form-css',
-              get_theme_file_uri('assets/css/user-registration.css')
+              get_theme_file_uri('css/userRegistration.css')
           );
       } 
     
@@ -171,7 +171,7 @@ class UserRegistration
     {
 
         echo '
-        
+           
             <p>
                 <label for="user_password">Mot de passe</label>
                 <input type="text" name="user_password" id="user_password" class="input" value="" size="20" autocapitalize="off">
