@@ -104,7 +104,7 @@ class Plugin
         // à l'activation du plugin, nous initialisons ce dernier
         $this->initialize();
 
-        // nous tous les droits à l'administrateur sur le cpt DeveloperProfile
+        // nous donnons tous les droits à l'administrateur sur les cpt profileStudent et profileTeacher
         // le role "administrator" est un role par défaut de wordpress
         $this->roleManager->giveAllCapabilitiesOnCPT('teacher', 'administrator');
         $this->roleManager->giveAllCapabilitiesOnCPT('student', 'administrator');
