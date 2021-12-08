@@ -1,3 +1,6 @@
+<?php
+the_post();
+?>
 <!DOCTYPE html>
 <!-- STEP E7 THEME déclaration de la langue utilisée sur le site //-->
 <html lang="<?=get_bloginfo('language');?>">
@@ -13,7 +16,7 @@
 
     <main>
         <?php
-            get_template_part('partials/header-nav.tpl');
+            get_template_part('partials/navbar.tpl');
         ?>
         <!--================================================================================-->
 
@@ -36,22 +39,39 @@
                 <?php
                     if(is_user_logged_in()) {
                         $user = wp_get_current_user();
-                        echo "Content de vous revoir " . $user->display_name;
+                        echo "Bonjour " . $user->display_name;
+                        //dump($user);
                     }
                 ?>
             </h1>
-
-
         </section>
 
+        <section>
+            <p><?= get_the_content(); ?></p>
+        </section>
+
+
+        <section>
+            <h3>Vos nouvelles demandes de RDV</h3>
+        </section>
+
+
+        <section>
+            <h3>Liste de vos cours</h3>
+        </section>
+
+
+        <section>
+            <h3>Liste de vos élèves</h3>
+        </section>
 
 
     </main>
 
     <footer class="section footer">
         <?php
-           /* get_template_part('partials/footer-about.tpl');
-            get_template_part('partials/footer-menu.tpl');
+            get_template_part('partials/footer.tpl');
+            /*get_template_part('partials/footer-menu.tpl');
             get_template_part('partials/footer-social-links.tpl');  */
         ?>
     </footer>

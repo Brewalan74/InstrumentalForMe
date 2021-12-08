@@ -3,7 +3,6 @@
 
 // déclaration du router. Nous allons avoir besoin de ce router dans de nombreux fichier. Ce n'est pas propre mais pour des raisons de simplicité de code ; nous déclarons ce router comme étant une variable globale
 
-use Instrumental\Controllers\CoreController;
 use Instrumental\Controllers\UserController;
 
 global $router;
