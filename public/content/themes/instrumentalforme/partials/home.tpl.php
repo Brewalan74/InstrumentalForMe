@@ -16,7 +16,7 @@ for($i = 0; $i < count($terms); $i++):
     $taxonomyImageData = get_field('picture', 'instrument_' . $terms[$i]->term_id);
     $taxonomyImage = $taxonomyImageData['url'];
     //dump($taxonomyImageData);
-    dump($terms[$i]);
+    //dump($terms[$i]);
     // $taxonomyImage = $terms[$i]->term_id;
      //dump($taxonomyImage);
 ?>
@@ -33,7 +33,7 @@ for($i = 0; $i < count($terms); $i++):
                 <div class="p-5">
                     <h2 class="display-4"><a href="<?=get_term_link($terms[$i]->term_id);?>"><?= $terms[$i]->name; ?></a></h2>
 
-                    <p><?= $terms[$i]->description; ?></p>
+                    <p><?= get_the_excerpt(); ?></p>
                 </div>
             </div>
         </div>

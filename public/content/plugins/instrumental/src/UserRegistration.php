@@ -10,10 +10,10 @@ class UserRegistration
     public function __construct()
     {
 
-        // add_action( //Charger un css custom sur nos pages login & register
-        //     'login_enqueue_scripts',
-        //     [$this, 'loadAssets']
-        // );
+        add_action( //Charger un css custom sur nos pages login & register
+            'login_enqueue_scripts',
+            [$this, 'loadAssets']
+        );
 
         add_action( // Inserrer du code Html dans le formulaire de WP afin de le personnaliser
             'register_form',
@@ -163,7 +163,7 @@ class UserRegistration
 
           wp_enqueue_style(
               'login-form-css',
-              get_theme_file_uri('assets/css/user-registration.css')
+              get_theme_file_uri('css/userRegistration.css')
           );
       } 
     
