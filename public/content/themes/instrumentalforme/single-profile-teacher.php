@@ -1,5 +1,11 @@
 <?php
 the_post();
+// $term = get_queried_object();
+// $termId = $term->term_id;
+// $taxonomyImage = get_field('picture', 'instrument_' . $termId);
+// dump($term);
+// dump($taxonomyImage['url']);
+//exit;
 ?>
 
 <!DOCTYPE html>
@@ -44,10 +50,29 @@ the_post();
                 $post->ID,
                 'instrument'
             );
-            foreach ($teacherInstrument as $key => $value) : ?>
-                <ul>
+            dump($teacherInstrument);
+            foreach ($teacherInstrument as $key => $value) :
+                $taxonomyImageData = get_field('picture', 'instrument_' . $value->term_id);
+                $taxonomyImage = $taxonomyImageData['url']; ?>
+                <!-- <ul>
                     <li><?= $value->name; ?></li>
-                </ul>
+                </ul> -->
+                <section class="instrument-container">
+                    <div class="container px-5">
+                        <div class="row gx-5 align-items-center instrument">
+                            <div class="col-lg-6 order-lg-2">
+                                <div class="p-5 instrument__picture" style="background-image: url(<?= $taxonomyImage; ?>)"></div>
+                            </div>
+                            <div class="col-lg-6 order-lg-1 instrument__description">
+                                <div class="p-5">
+                                    <h2 class="display-4"><a href="<?= get_term_link($value->term_id); ?>"><?= $value->name; ?></a></h2>
+
+                                    <p><?= get_the_excerpt(); ?></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
             <?php endforeach; ?>
 
@@ -63,15 +88,16 @@ the_post();
             // exit;
             foreach ($teacherCertificate as $key => $value) : ?>
                 <ul>
-                    <li><?= $value->name; ?></li>
+                    <p class="profileCertificate_ul-p"><?= $value->name; ?></p>
+                    <p><?= $value->description; ?></p>
                 </ul>
 
             <?php endforeach; ?>
         </div>
 
-        <div class="profileAppointment">
+        <div class="profileAppointment divForm">
             <h4>Choisissez date et horaire de votre leçon</h4>
-            <form action="">
+            <form action="" class="profileAppointment_form">
                 <input type="date" name="" id="">
                 <input type="submit" value="Submit">
             </form>

@@ -46,7 +46,8 @@ the_post();
             );
             foreach ($studentMusicStyle as $key => $value) : ?>
                 <ul>
-                    <li><?= $value->name; ?></li>
+                    <p class="profileMusicStyle_ul-p"><?= $value->name; ?></p>
+                    <p><?= $value->description; ?></p>
                 </ul>
 
             <?php endforeach; ?>
