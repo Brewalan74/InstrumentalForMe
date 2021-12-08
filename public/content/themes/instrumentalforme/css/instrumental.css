@@ -8,6 +8,11 @@
         font-size: 1.5em !important;
     }
 
+
+    .instrument__picture {  
+         height: 50px !important;
+         
+    }
 }
 
 /* CSS Profiles */

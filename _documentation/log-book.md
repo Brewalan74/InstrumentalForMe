@@ -86,7 +86,23 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
   
 ### Mardi 07/12/21
 
-Prévu pour aujourd'hui
+#### Prévu pour aujourd'hui:
   - Finir dynamisation de la homepage
   - Finir d'afficher les diplômes si teacher selectionner dans le formulaire d'inscription
   - Finir profil teacher et start profil student
+
+#### Ce que l'on à fait:
+- La dynamisation de la page est casiment finit :reste le lien connexion/inscription
+- Page instrument faite
+- page profil student et teacher à finir
+
+
+### Mercredi 08/12/21
+
+- Terminer les pages profil  teacher et student 
+- Home link vers inscription/connexion et inversement une fois connecter
+- MVC Plugin
+- CSS Form inscription/connexion
+- function et page update pour Stefan  + les droits
+- Steph.M ;vers les page home-> profils....
+- Steph.B finition Form inscription

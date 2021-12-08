@@ -16,7 +16,7 @@ for($i = 0; $i < count($terms); $i++):
     $taxonomyImageData = get_field('picture', 'instrument_' . $terms[$i]->term_id);
     $taxonomyImage = $taxonomyImageData['url'];
     //dump($taxonomyImageData);
-    //dump($terms[$i]);
+    dump($terms[$i]);
     // $taxonomyImage = $terms[$i]->term_id;
      //dump($taxonomyImage);
 ?>
