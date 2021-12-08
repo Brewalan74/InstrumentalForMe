@@ -21,6 +21,10 @@
     margin: 1em;
 }
 
+.profileView {
+    font-size: 1.5em;
+}
+
 .profileDescription {
     text-align: justify;
     margin: 0em 2em 2em 2em;
@@ -35,12 +39,12 @@
 }
 
 .profileInstrument {
-    margin-left: 2em;
+    margin-left: 3em;
     margin-bottom: 2em;
 }
 
 .profileCertificate {
-    margin-left: 4em;
+    margin-left: 3em;
     margin-bottom: 2em;
 }
 
@@ -49,16 +53,8 @@
     margin-bottom: 2em;
 }
 
-.divform {
-    display: block;
+form {
     text-align: center;
-}
-
-profileAppointment_form {
-    display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
 }
 
 h4 {
@@ -68,12 +64,23 @@ h4 {
 
 .profileCertificate_ul-p {
     text-align: justify;
+    margin-top: 2em;
     margin-bottom: 0em;
+    color: black;
+}
+
+.profileCertificate_ul-p a {
+    color: black;
 }
 
 .profileMusicStyle_ul-p {
     text-align: justify;
+    margin-top: 2em;
     margin-bottom: 0em;
+}
+
+.profileMusicStyle_ul-p a {
+    color: black;
 }
 
 
@@ -92,4 +99,8 @@ h4 {
 /* General */
 h2 a {
     color: #660000;
+}
+
+.taxoLayout {
+    margin: 0 2em;
 }

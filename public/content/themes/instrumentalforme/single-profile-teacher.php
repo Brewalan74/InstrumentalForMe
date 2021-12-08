@@ -28,7 +28,7 @@ the_post();
 
     <section>
         <div class="profileH2">
-            <p>Vous êtes sur la page de profil de</p>
+            <p class="profileView">Vous êtes sur la page de profil de</p>
             <p><?= get_avatar(
                     $post->ID,
                     $size = 96,
@@ -50,7 +50,7 @@ the_post();
                 $post->ID,
                 'instrument'
             );
-            dump($teacherInstrument);
+
             foreach ($teacherInstrument as $key => $value) :
                 $taxonomyImageData = get_field('picture', 'instrument_' . $value->term_id);
                 $taxonomyImage = $taxonomyImageData['url']; ?>
@@ -67,37 +67,52 @@ the_post();
                                 <div class="p-5">
                                     <h2 class="display-4"><a href="<?= get_term_link($value->term_id); ?>"><?= $value->name; ?></a></h2>
 
-                                    <p><?= get_the_excerpt(); ?></p>
+                                    <p><?= substr($value->description, 0, 500) . '...'; ?></p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-
             <?php endforeach; ?>
 
         </div>
+
+        <div class="profileInstrument">
+            <h4><?= get_the_title(); ?> aime :</h4>
+            <?php
+            $teacherMusicStyle = get_the_terms(
+                $post->ID,
+                'music-style'
+            ); ?>
+            <ul>
+                <?php foreach ($teacherMusicStyle as $key => $value) : ?>
+                    <h6 class="profileMusicStyle_ul-p"><a href="<?= get_term_link($value->term_id); ?>"><?= $value->name; ?></a></h6>
+                    <p class="taxoLayout"><?= substr($value->description, 0, 500) . '...'; ?></p>
+                <?php endforeach; ?>
+            </ul>
+
+        </div>
+
         <div class="profileCertificate">
-            <h4>Les certificats de <?= get_the_title(); ?> sont :</h4>
+            <h4>Les certificats de <?= get_the_title(); ?> :</h4>
             <?php
             $teacherCertificate = get_the_terms(
                 $post->ID,
                 'certificate'
-            );
-            // dump($teacherCertificate);
-            // exit;
-            foreach ($teacherCertificate as $key => $value) : ?>
-                <ul>
-                    <p class="profileCertificate_ul-p"><?= $value->name; ?></p>
-                    <p><?= $value->description; ?></p>
-                </ul>
+            ); ?>
 
-            <?php endforeach; ?>
+            <ul>
+                <?php foreach ($teacherCertificate as $key => $value) : ?>
+                    <h6 class="profileCertificate_ul-p"><a href="<?= get_term_link($value->term_id); ?>"><?= $value->name; ?></a></h6>
+                    <p class="taxoLayout"><?= substr($value->description, 0, 500) . '...'; ?></p>
+                <?php endforeach; ?>
+            </ul>
+
         </div>
 
-        <div class="profileAppointment divForm">
+        <div class="profileAppointment">
             <h4>Choisissez date et horaire de votre leçon</h4>
-            <form action="" class="profileAppointment_form">
+            <form action="">
                 <input type="date" name="" id="">
                 <input type="submit" value="Submit">
             </form>
