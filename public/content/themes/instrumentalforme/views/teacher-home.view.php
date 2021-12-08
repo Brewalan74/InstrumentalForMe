@@ -31,7 +31,7 @@
         }*/
         ?>
 
-        <section class="hero" style="<?=$style;?>">
+        <section class="hero">
             <h1 class="hero__title">
                 <?php
                     if(is_user_logged_in()) {

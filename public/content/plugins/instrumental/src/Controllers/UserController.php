@@ -25,6 +25,7 @@ class UserController extends CoreController
     public function home()
     {
         $this->show('views/user-home.view');
+        //$this->show('views/teacher-home.view');
     }
 
     /*
