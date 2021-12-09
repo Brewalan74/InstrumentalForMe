@@ -30,7 +30,6 @@ class UserController extends CoreController
 
     public function updateProfile()
     {
-
         // si l'utilisateur n'est pas connecté, nous affichons une page d'erreur avec l'entête http "forbidden"
         if (!$this->isConnected()) {
 
