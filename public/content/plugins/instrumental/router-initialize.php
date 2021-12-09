@@ -1,5 +1,4 @@
 <?php
-// STEP E9 Router Initialisation du router
 
 // déclaration du router. Nous allons avoir besoin de ce router dans de nombreux fichier. Ce n'est pas propre mais pour des raisons de simplicité de code ; nous déclarons ce router comme étant une variable globale
 
@@ -30,12 +29,12 @@ $router->map(
 
 $router->map(
     'GET,POST',
-    '/user/update-form/',
+    '/user/update-profile/',
     function () {
         $userController = new UserController();
-        $userController->updateForm();
+        $userController->updateProfile();
     },
-    'user-update-form'
+    'user-update-profile'
 );
 
 /*
@@ -62,7 +61,6 @@ $router->map(
 
 
 // ===========================================================
-// STEP E11 route custom POST ; enregistrement des niveaux de maitrise pour les technologiess
 
 $router->map(
     'POST',
@@ -91,7 +89,6 @@ $router->map(
     'model-tests-create-project-developer-table'
 );
 
-// STEP E11 INSERT route test
 
 $router->map(
     'GET',
@@ -125,12 +122,10 @@ $router->map(
 );
 
 
-// STEP E11 ROUTING url avec variable
 $router->map(
     'GET',
     // a la fin de l'url, nous devrons passer l'id du déveloper
     // [i:id] veut dire qu'à la fin de l'url il y aura un nombre (i:) qui sera stocké dans une variable nommé "id" 
-    // DOC E11 altorouter, types de variable https://altorouter.com/usage/mapping-routes.html
     '/model-tests/developer-technology/select-by-developer-id/[i:id]/',
     function($id) {
 
@@ -205,11 +200,6 @@ $router->map(
     },
     'user-project-leave'
 );
-
-// STEP E12 bonus gestion de l'espace "customer
-
-
-
 
 $router->map(
     'GET,POST', // surveille les appels HTTP de type GET

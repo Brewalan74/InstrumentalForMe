@@ -28,7 +28,7 @@ class UserController extends CoreController
         //$this->show('views/teacher-home.view');
     }
 
-    public function updateForm()
+    public function updateProfile()
     {
 
         // si l'utilisateur n'est pas connecté, nous affichons une page d'erreur avec l'entête http "forbidden"
