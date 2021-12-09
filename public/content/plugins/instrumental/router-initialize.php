@@ -21,11 +21,21 @@ $router->setBasePath($baseURI);
 $router->map(
     'GET', // surveille les appels HTTP de type GET
     '/user/dashboard/', // url a surveiller
-    function() {
+    function () {
         $userController = new UserController();
         $userController->home();
     },
     'user-home'
+);
+
+$router->map(
+    'GET,POST',
+    '/user/update-form/',
+    function () {
+        $userController = new UserController();
+        $userController->updateForm();
+    },
+    'user-update-form'
 );
 
 /*
@@ -49,16 +59,6 @@ $router->map(
     'user-confirm-delete-account'
 );
 
-
-$router->map(
-    'GET,POST',
-    '/user/update-form/',
-    function() {
-        $userController = new UserController();
-        $userController->updateForm();
-    },
-    'user-update-form'
-);
 
 
 // ===========================================================
@@ -225,7 +225,7 @@ $router->map(
 $router->map(
     'GET', // surveille les appels HTTP de type GET
     '/teacher/dashboard/', // url a surveiller
-    function() {
+    function () {
         $userController = new UserController();
         $userController->home();
     },
