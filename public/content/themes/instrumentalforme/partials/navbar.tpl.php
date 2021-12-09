@@ -24,8 +24,8 @@
 
                     // BONUS E10 CUSTOM ROUTE générer une url custom dans un template wordpress
 
-                    echo '<li><a href="' . $url . '">' . 'Mon profil' . '</a></li>';
-                    echo '<li><a href="' . wp_logout_url() . '">Se déconnecter</a></li>';
+                    echo '<li class="navbarLayout-li"><a href="' . $url . '">' . 'Mon profil' . '</a></li>';
+                    echo '<li class="navbarLayout-li"><a href="' . wp_logout_url() . '">Se déconnecter</a></li>';
                 }
                 ?>
 
