@@ -103,6 +103,13 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 - Home link vers inscription/connexion et inversement une fois connecter
 - MVC Plugin
 - CSS Form inscription/connexion
-- function et page update pour Stefan  + les droits
-- Steph.M ;vers les page home-> profils....
-- Steph.B finition Form inscription
+  
+- Determiner les droits des users,mis en page des pages profils,mis en page des onglets, debug affichage de la page teacher view avec Stef.M et de user registration avec Stef.B.
+- Steph.M  finit la dynamisation la home pagedynamisation entre la home-> profils teacher
+- Steph.B finit le formulaire d'inscription ainsi que le css
+
+### Jeudi 09/12/21
+
+- function et page update pour Stefan 
+- page profil student
+- afficher la liste des profs sur la page instrument et commencer la page appointment
