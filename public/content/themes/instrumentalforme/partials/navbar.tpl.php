@@ -19,7 +19,7 @@
                     if (in_array('teacher', $user->roles)) {
                         $url = $router->generate('user-home');
                     } else {
-                        $url = $router->generate('teacher-home');
+                        $url = $router->generate('user-home');
                     }
 
                     // BONUS E10 CUSTOM ROUTE générer une url custom dans un template wordpress

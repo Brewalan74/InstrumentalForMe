@@ -43,8 +43,15 @@ the_post();
 //dump($test);
 // RENVOIE ""
 
-$test = get_the_content();
-dump($test);
+//$test = get_the_content();
+//dump($test);
+
+//$current_user = wp_get_current_user();
+//dump($current_user);
+//$userdata = get_userdata($current_user->ID);
+//dump($userdata);
+//$userName = $userdata->description;
+//dump($userName);
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
@@ -132,7 +139,7 @@ dump($test);
                     if(is_user_logged_in()) {
                         $user = wp_get_current_user();
                         echo "Bonjour " . $user->display_name;
-                        dump($user);
+                        //dump($user);
                     };
             '</h1>';
             
