@@ -111,6 +111,8 @@ class Plugin
 
         $this->roleManager->createTeacherRole();
         $this->roleManager->createStudentRole();
+
+        $this->teacherInstrumentModel->createTable();
     }
 
     public function deactivate()
