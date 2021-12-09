@@ -104,3 +104,38 @@ h2 a {
 .taxoLayout {
     margin: 0 2em;
 }
+
+.name-profil-perso {
+    /*text-align: center;*/
+    margin: 1em;
+}
+
+.profile-perso {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.description-perso {
+    border : solid black 2px !important;
+    border-radius: 20px;
+}
+
+.container-recap {
+    display: flex;
+}
+
+.recap {
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.link-profil {
+    color:black;
+}
+
+.link-profil:hover {
+    color: #660000;
+}
+
+
+
