@@ -27,7 +27,6 @@ the_post();
 
     $userdata = get_userdata($current_user->ID);
     $userName = $userdata->first_name;
-    dump(__FILE__ . ':' . __LINE__, $userdata);
     ?>
 
     <h2 class="profileH2">Modification de votre profil</h2>
@@ -36,7 +35,7 @@ the_post();
 
         <div class="containerUpdate">
             <p>
-                <label for="username">Votre Prénom</label>
+                <label for="username">Username</label>
                 <input type="text" name="name" id="username" class="input" value="<?= $userdata->user_nicename ?>" size="20" autocapitalize="off" readonly>
             </p>
             <?php if ($userdata->first_name) : ?>
