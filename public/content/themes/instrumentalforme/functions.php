@@ -74,6 +74,7 @@ add_action(
     'instrumentalforme_loadAssets'
 );
 
+//1 Add action : add first name and last name in the default registration form
 add_action('register_form', 'myplugin_register_form');
 function myplugin_register_form()
 {
@@ -118,7 +119,6 @@ function myplugin_user_register($user_id)
         update_user_meta($user_id, 'last_name', trim($_POST['last_name']));
     }
 }
-
 
 add_filter('get_the_excerpt', function ($excerpt) {
 

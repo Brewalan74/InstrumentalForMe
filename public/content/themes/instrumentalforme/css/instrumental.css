@@ -120,8 +120,9 @@ h4 {
     margin-bottom: 3em;
 }
 
-.textareaUpdate {
-    width: 100em;
+.textareaDescription {
+    width: 50em;
+    height: 15em;
 }
 
 .containerUpdateRadio {

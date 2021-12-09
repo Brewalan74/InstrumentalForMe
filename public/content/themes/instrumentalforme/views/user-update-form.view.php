@@ -26,10 +26,11 @@ the_post();
     $current_user = wp_get_current_user();
 
     $userdata = get_userdata($current_user->ID);
-    $userName = $userdata->first_name;
+    $userName = $userdata->description;
+    // dump(__FILE__ . ':' . __LINE__, $userName);
     ?>
 
-    <h2 class="profileH2">Modification de votre profil</h2>
+    <h2 class="profileH2">Modifier votre profil</h2>
 
     <section>
 
@@ -80,12 +81,13 @@ the_post();
         <div class="containerUpdate">
             <p>
                 <label for="user_description">Votre description</label><br>
-                <textarea name="user_description" id="user_description" class="textarea" value="<?= $userdata->description ?>" size="20" autocapitalize="off">
+                <textarea name="user_description" id="user_description" class="textareaDescription" size="250" autocapitalize="off">
+                <?= $userdata->description ?>
                 </textarea>
             </p>
         </div>
 
-        <div class="containerUpdateRadio">
+        <!-- <div class="containerUpdateRadio">
             <input type="radio" id="teacher" name="user_type" value="teacher" onclick="viewCertificate()">
             <label for="teacher">Teacher</label>
             <input type="radio" id="student" name="user_type" value="student" onclick="viewCertificate()">
@@ -103,7 +105,7 @@ the_post();
 
             <?php endforeach; ?>
 
-        </div>
+        </div> -->
     </section>
 
     <p class="layoutUpdateButton">
@@ -111,8 +113,8 @@ the_post();
         $options = array(
             'post_id' => 'user_' . $current_user->ID,
             // 'field_groups' => array(77),
-            // 'form' => true,
-            // 'return' => add_query_arg( 'updated', 'true', get_permalink() ),
+            'form' => true,
+            'return' => add_query_arg('updated', 'true', get_permalink()),
             'html_before_fields' => '',
             'html_after_fields' => '',
             'submit_value' => 'Update'
