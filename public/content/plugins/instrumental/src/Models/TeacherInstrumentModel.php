@@ -3,53 +3,50 @@ namespace Instrumental\Models;
 
 class TeacherInstrumentModel extends CoreModel
 {
-/*
+
     public function createTable()
     {
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix . 'developer_technology';
+        $tableName = $tablePrefix . 'teacher-instrument';
 
         $sql = '
             CREATE TABLE `' . $tableName . '` (
-                `developer_id` int(8) unsigned NOT NULL,
-                `technology_id` int(8) unsigned NOT NULL,
-                `level` tinyint(2) unsigned NOT NULL,
+                `teacher_id` int(8) unsigned NOT NULL,
+                `instrument_id` int(8) unsigned NOT NULL,
                 `created_at` datetime NOT NULL,
                 `updated_at` datetime NULL
             );
         ';
 
-        // inclusion des fonctions nécessaire pour modifier la bdd
         require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 
         dbDelta($sql);
 
-        $primaryKeySQL = 'ALTER TABLE `' . $tableName . '` ADD PRIMARY KEY `developer_id_technology_id` (`developer_id`, `technology_id`)';
+        $primaryKeySQL = 'ALTER TABLE `' . $tableName . '` ADD PRIMARY KEY `teacher_id_instrument_id` (`teacher_id`, `technology_id`)';
         $this->wpdb->query($primaryKeySQL);
     }
 
     public function dropTable()
     {
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'developer_technology';
+        $tableName = $tablePrefix.'teacher_instrument';
 
         $sql = 'DROP TABLE `' . $tableName . '`';
         $this->wpdb->query($sql);
     }
 
 
-    // STEP E11 CUSTOM TABLE insert
-    public function insert($developerId, $technologyId, $level)
+    
+    public function insert($teacherId, $instrumentId)
     {
         $data = [
-            'developer_id' => $developerId,
-            'technology_id' => $technologyId,
-            'level' => $level,
+            'teacher_id' => $teacherId,
+            'instrument_id' => $instrumentId,
             'created_at' => date('Y-m-d H:i:s')
         ];
 
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix . 'developer_technology';
+        $tableName = $tablePrefix . 'teacher_instrument';
 
         return $this->wpdb->insert(
             $tableName,
@@ -59,16 +56,13 @@ class TeacherInstrumentModel extends CoreModel
 
     
 
-    // STEP E11 CUSTOM TABLE select
-    // permet de récupérer pour un développeur toutes les technologies qui lui sont associées
+    
+    // permet de récupérer pour un teacher toutes les instruments qui lui sont associés
     public function getByTeacherId($teacherId)
     {
         $tablePrefix = $this->wpdb->prefix;
         $tableName = $tablePrefix.'teacher_instrument';
 
-        // IMPORTANT il faut utiliser des requêtes préparées dès qu'il y a des partie variables dans la requêtes. Sinon vous créez des failles de sécurité
-        // %d dans la requête signifie qu'il y aura un nombre injecté à cet endroit
-        // DOC E11 WPDB query spécification des types de paramètre attendu https://www.php.net/sprintf (%d == nombre; %s == string)
         $sql = "
             SELECT * FROM `" . $tableName . "`
             WHERE
@@ -88,23 +82,23 @@ class TeacherInstrumentModel extends CoreModel
 
     
 
-    public function getByDeveloperIdAndTechnologyId($developerId, $technologyId)
+    public function getByTeacherIdAndInstrumentId($teacherId, $instrumentId)
     {
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'developer_technology';
+        $tableName = $tablePrefix.'teacher_instrument';
 
         $sql = "
             SELECT * FROM `" . $tableName . "`
             WHERE
-                developer_id = %d
-                AND technology_id = %d
+                teacher_id = %d
+                AND instrument_id = %d
         ";
 
         $preparedStatement = $this->wpdb->prepare(
             $sql,
             [
-                $developerId,
-                $technologyId
+                $teacherId,
+                $instrumentId
             ]
         );
         $rows = $this->wpdb->get_results($preparedStatement);
@@ -113,13 +107,13 @@ class TeacherInstrumentModel extends CoreModel
     }
 
 
-    public function deleteByDeveloperId($developerId)
+    public function deleteByTeacherId($teacherId)
     {
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'developer_technology';
+        $tableName = $tablePrefix.'teacher_instrument';
 
         $conditions = [
-            'developer_id' => $developerId, // équivalent à WHERE developer_id = $developerId
+            'teacher_id' => $teacherId, 
         ];
 
         $this->wpdb->delete(
@@ -127,6 +121,6 @@ class TeacherInstrumentModel extends CoreModel
             $conditions
         );
     }
-    */
+    
 }
 

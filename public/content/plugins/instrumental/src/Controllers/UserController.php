@@ -28,6 +28,27 @@ class UserController extends CoreController
         //$this->show('views/teacher-home.view');
     }
 
+    public function updateProfile()
+    {
+
+        // si l'utilisateur n'est pas connecté, nous affichons une page d'erreur avec l'entête http "forbidden"
+        if (!$this->isConnected()) {
+
+            header("HTTP/1.1 403 Forbidden"); // équivalent à http_response_code(403);
+            header("EasterEgg: Hello wonderland");
+
+            $this->show('views/user-forbidden');
+        } else {
+
+
+            $profile = $this->getProfile();
+
+            $this->show('views/user-update-form.view', [
+                'profile' => $profile
+            ]);
+        }
+    }
+
     /*
 
     public function instruments()
@@ -65,30 +86,7 @@ class UserController extends CoreController
     }
 
 
-    public function updateForm()
-    {
 
-        // si l'utilisateur n'est pas connecté, nous affichons une page d'erreur avec l'entête http "forbidden"
-        if(!$this->isConnected()) {
-
-
-            // BONUS E10 header il est possible de faire
-            header("HTTP/1.1 403 Forbidden"); // équivalent à http_response_code(403);
-            header("EasterEgg: Hello wonderland");
-
-
-            $this->show('views/user-forbidden');
-        }
-        else {
-
-
-            $profile = $this->getProfile();
-
-            $this->show('views/user-update-form.view', [
-                'profile' => $profile
-            ]);
-        }
-    }
 
     public function updateSkills()
     {
