@@ -2,8 +2,8 @@
 
 namespace Instrumental\Controllers;
 
-//use OProfile\Models\DeveloperTechnologyModel;
-//use OProfile\Models\ProjectDeveloperModel;
+use Instrumental\Models\TeacherInstrumentModel;
+
 use WP_Query;
 
 class UserController extends CoreController
@@ -28,8 +28,8 @@ class UserController extends CoreController
         //$this->show('views/teacher-home.view');
     }
 
-    /*
-
+   
+/*
     public function instruments()
     {
         // récupération de l'utilisateur courant
@@ -46,6 +46,22 @@ class UserController extends CoreController
     }
 
 
+*/
+    public function teachToInstrument($instrumentId)
+    {
+        $model = new TeacherInstrumentModel();
+        $user = wp_get_current_user();
+        $userId = $user->ID;
+
+        $model->insert(
+            $instrumentId,
+            $userId
+        );
+
+        $url = get_post_type_archive_link('instrument');
+        header('Location: ' . $url);
+    }
+/*
     public function confirmDeleteAccount()
     {
 
@@ -122,24 +138,8 @@ class UserController extends CoreController
 
         header('Location: ' . $skillURL);
     }
-
-    public function participateToProject($projectId)
-    {
-        // TODO vérifier que l'utilisateur est connecté et qu'il a le rôle developer
-
-        $model = new ProjectDeveloperModel();
-        $user = wp_get_current_user();
-        $userId = $user->ID;
-
-        $model->insert(
-            $projectId,
-            $userId
-        );
-
-        $url = get_post_type_archive_link('project');
-        header('Location: ' . $url);
-    }
-
+*/
+/*
     public function leaveProject($projectId)
     {
         $model = new ProjectDeveloperModel();

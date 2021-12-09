@@ -4,10 +4,15 @@ namespace Instrumental\Models;
 class TeacherInstrumentModel extends CoreModel
 {
 
-    public function createTable()
+    public function getTableName()
     {
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix . 'teacher-instrument';
+        $tableName = $tablePrefix.'teacher-instrument';
+        return $tableName;
+    }
+    public function createTable()
+    {
+        $tableName = $this->getTableName();
 
         $sql = '
             CREATE TABLE `' . $tableName . '` (
@@ -28,8 +33,7 @@ class TeacherInstrumentModel extends CoreModel
 
     public function dropTable()
     {
-        $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'teacher_instrument';
+        $tableName = $this->getTableName();
 
         $sql = 'DROP TABLE `' . $tableName . '`';
         $this->wpdb->query($sql);
@@ -45,11 +49,8 @@ class TeacherInstrumentModel extends CoreModel
             'created_at' => date('Y-m-d H:i:s')
         ];
 
-        $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix . 'teacher_instrument';
-
         return $this->wpdb->insert(
-            $tableName,
+            $this->getTableName(),
             $data
         );
     }
@@ -60,8 +61,7 @@ class TeacherInstrumentModel extends CoreModel
     // permet de récupérer pour un teacher toutes les instruments qui lui sont associés
     public function getByTeacherId($teacherId)
     {
-        $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'teacher_instrument';
+        $tableName = $this->getTableName();
 
         $sql = "
             SELECT * FROM `" . $tableName . "`
@@ -80,8 +80,50 @@ class TeacherInstrumentModel extends CoreModel
         return $rows;
     }
 
-    
+    // permet de récupérer pour un instrument tous les teachers qui lui sont associés
+    public function getByInstrumentId($instrumentId)
+    {
+        $tablePrefix = $this->wpdb->prefix;
+        $tableName = $tablePrefix.'instrument_teacher';
 
+        $sql = "
+            SELECT * FROM `" . $tableName . "`
+            WHERE
+                instrument_id = %d
+        ";
+
+        $preparedStatement = $this->wpdb->prepare(
+            $sql,
+            [
+                $instrumentId
+            ]
+        );
+        $rows = $this->wpdb->get_results($preparedStatement);
+
+        return $rows;
+    }
+
+    
+    public function getInstrumentsByTeacherId($teacherId)
+    {
+        $tablePrefix = $this->wpdb->prefix;
+        $tableName = $tablePrefix.'instrument_teacher';
+        $sql = "
+            SELECT * FROM `" . $this->getTableName() . "`
+            WHERE
+                teacher_id = %d
+        ";
+
+        $preparedStatement = $this->wpdb->prepare(
+            $sql,
+            [
+                $teacherId
+            ]
+        );
+        $rows = $this->wpdb->get_results($preparedStatement);
+
+        return $rows;
+    }
     public function getByTeacherIdAndInstrumentId($teacherId, $instrumentId)
     {
         $tablePrefix = $this->wpdb->prefix;
