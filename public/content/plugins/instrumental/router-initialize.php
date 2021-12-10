@@ -3,7 +3,9 @@
 
 // déclaration du router. Nous allons avoir besoin de ce router dans de nombreux fichier. Ce n'est pas propre mais pour des raisons de simplicité de code ; nous déclarons ce router comme étant une variable globale
 
+
 use Instrumental\Controllers\UserController;
+Use Instrumental\Controllers\TestController;
 
 global $router;
 
@@ -28,6 +30,19 @@ $router->map(
     'user-home'
 );
 
+$router->map(
+    'GET',
+    // a la fin de l'url, nous devrons passer l'id du déveloper
+    // [i:id] veut dire qu'à la fin de l'url il y aura un nombre (i:) qui sera stocké dans une variable nommé "id" 
+   
+    '/model-tests/teacher-instrument/select-by-teacher-id/[i:id]/',
+    function($id) {
+
+        $testController = new TestController();
+        $testController->selectByVariableTeacherId($id);
+    },
+    'model-tests-teacher-instrument-select-by-teacher-id-variable'
+);
 /*
 $router->map(
     'GET',
@@ -126,19 +141,7 @@ $router->map(
 
 
 // STEP E11 ROUTING url avec variable
-$router->map(
-    'GET',
-    // a la fin de l'url, nous devrons passer l'id du déveloper
-    // [i:id] veut dire qu'à la fin de l'url il y aura un nombre (i:) qui sera stocké dans une variable nommé "id" 
-    // DOC E11 altorouter, types de variable https://altorouter.com/usage/mapping-routes.html
-    '/model-tests/developer-technology/select-by-developer-id/[i:id]/',
-    function($id) {
 
-        $testController = new TestController();
-        $testController->selectByVariableDeveloperId($id);
-    },
-    'model-tests-developer-technology-select-by-developer-id-variable'
-);
 
 
 $router->map(

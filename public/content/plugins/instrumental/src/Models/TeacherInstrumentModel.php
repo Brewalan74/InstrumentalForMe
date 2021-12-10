@@ -7,7 +7,7 @@ class TeacherInstrumentModel extends CoreModel
     public function getTableName()
     {
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'teacher-instrument';
+        $tableName = $tablePrefix.'teacher_instrument';
         return $tableName;
     }
     public function createTable()
@@ -27,7 +27,7 @@ class TeacherInstrumentModel extends CoreModel
 
         dbDelta($sql);
 
-        $primaryKeySQL = 'ALTER TABLE `' . $tableName . '` ADD PRIMARY KEY `teacher_id_instrument_id` (`teacher_id`, `technology_id`)';
+        $primaryKeySQL = 'ALTER TABLE `' . $tableName . '` ADD PRIMARY KEY `teacher_id_instrument_id` (`teacher_id`, `instrument_id`)';
         $this->wpdb->query($primaryKeySQL);
     }
 
