@@ -28,7 +28,7 @@ $router->map(
 );
 
 $router->map(
-    'GET,POST',
+    'GET',
     '/user/update-profile/',
     function () {
         $userController = new UserController();
@@ -36,6 +36,17 @@ $router->map(
     },
     'user-update-profile'
 );
+
+$router->map(
+    'POST',
+    '/user/update-profile/',
+    function () {
+        $userController = new UserController();
+        $userController->saveProfile();
+    },
+    'user-save-profile'
+);
+
 
 /*
 $router->map(

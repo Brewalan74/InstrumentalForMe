@@ -134,3 +134,41 @@ add_filter('get_the_excerpt', function ($excerpt) {
     // Get the 250 first characters
     return substr($excerpt, 0, 250) . '...';
 });
+
+
+// function wpdocs_check_user_updated($user_id, $oldUserData)
+// {
+//     $oldUserFirstName = $oldUserData->first_name;
+//     $oldUserLastName = $oldUserData->last_name;
+//     $oldUserEmail = $oldUserData->user_email;
+//     $oldUserPassword = $oldUserData->user_pass;
+//     $oldUserDescription = $oldUserData->description;
+
+//     $user = get_userdata($user_id);
+//     $newUserFirstName = $user->first_name;
+//     $newUserLastName = $user->last_name;
+//     $newUseEmail = $user->user_email;
+//     $newUserPassword = $user->user_pass;
+//     $newUserDescription = $user->description;
+
+//     if ($newUserFirstName !== $oldUserFirstName) {
+//         update_user_meta($user_id, 'first_name', trim($_POST['first_name']));
+//     }
+
+//     if ($newUserLastName !== $oldUserLastName) {
+//         update_user_meta($user_id, 'last_name', trim($_POST['last_name']));
+//     }
+
+//     if ($newUseEmail !== $oldUserEmail) {
+//         update_user_meta($user_id, 'user_email', trim($_POST['user_email']));
+//     }
+
+//     if ($newUserPassword !== $oldUserPassword) {
+//         update_user_meta($user_id, 'user_pass', trim($_POST['user_pass']));
+//     }
+
+//     if ($newUserDescription !== $oldUserDescription) {
+//         update_user_meta($user_id, 'description', trim($_POST['description']));
+//     }
+// }
+// add_action('profile_update', 'wpdocs_check_user_updated', 10, 2);
