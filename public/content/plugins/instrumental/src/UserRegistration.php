@@ -205,6 +205,7 @@ class UserRegistration
                         '<label for="certif' . $index . '">' . $certificat->name . '</label><br>';
                 }
 
+                
             echo '
              </div>
  
