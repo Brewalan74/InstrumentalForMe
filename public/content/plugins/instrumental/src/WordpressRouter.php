@@ -11,8 +11,8 @@ class WordpressRouter
         // 'user-confirm-delete-account' => 'user/confirm-delete-account',
         // 'user-update-form' => 'user/update-form',
 
-        'user-all' => 'user/.*' // cette route peut remplacer toutes les précédentes
-        //'model-tests' => 'model-tests/.*', // accepte toutes les urls de la forme /model-tests/ANYTHING..
+        'user-all' => 'user/.*', // cette route peut remplacer toutes les précédentes
+        'model-tests' => 'model-tests/.*' // accepte toutes les urls de la forme /model-tests/ANYTHING..
         //'customer-all' => 'customer/.*'
     ];
 
