@@ -28,8 +28,66 @@ class UserController extends CoreController
         //$this->show('views/teacher-home.view');
     }
 
+    public function saveProfile()
+    {
+
+        if (!$this->isConnected()) {
+            header("HTTP/1.1 403 Forbidden"); // équivalent à http_response_code(403);
+            header("EasterEgg: Hello wonderland");
+            $this->show('views/user-forbidden');
+        } else {
+            // mise à jour des champs acf
+            acf_form_head();
+
+            $updateProfile = filter_input(INPUT_POST, 'update-profile');
+            if ($updateProfile && $this->isConnected()) {
+
+                // TODO il devrait y avoir un controle de token csrf (en wp chercher le terme "nonce")
+                // https://codex.wordpress.org/fr:Les_Nonces_WordPress
+
+                $user = wp_get_current_user();
+
+
+                // mise à jour des champs custom
+                $firstName = filter_input(INPUT_POST, 'user_firstname');
+                update_user_meta($user->ID, 'first_name', $firstName);
+
+                $lastName = filter_input(INPUT_POST, 'user_lastname');
+                update_user_meta($user->ID, 'last_name', $lastName);
+
+
+                $description = filter_input(INPUT_POST, 'user_description');
+                update_user_meta($user->ID, 'description', $description);
+
+                // mise à jour de l'email
+                $email = trim(filter_input(INPUT_POST, 'user_email'));
+
+                if ($email) {
+                    $args = [
+                        'ID' => $user->ID,
+                        'user_email' => $email,
+                    ];
+                    wp_update_user($args);
+                }
+
+                // TODO vérification du mot de passe
+                $password = trim(filter_input(INPUT_POST, 'user_password'));
+                $passwordConfirmation = trim(filter_input(INPUT_POST, 'user_password_confirmation'));
+                if ($password && $password == $passwordConfirmation) {
+                    // mise à jour du mot de passe
+                    wp_set_password($password, $user->ID);
+                }
+                // TODO redirection vers une page après mise à jour des informations
+
+                global $router;
+                header('Location: ' . $router->generate('user-home'));
+            }
+        }
+    }
+
     public function updateProfile()
     {
+        acf_form_head();
         // si l'utilisateur n'est pas connecté, nous affichons une page d'erreur avec l'entête http "forbidden"
         if (!$this->isConnected()) {
 
@@ -42,7 +100,7 @@ class UserController extends CoreController
 
             $profile = $this->getProfile();
 
-            $this->show('views/user-update-form.view', [
+            $this->show('views/user-update-profile.view', [
                 'profile' => $profile
             ]);
         }
@@ -83,7 +141,7 @@ class UserController extends CoreController
         $url = get_post_type_archive_link('instrument');
         header('Location: ' . $url);
     }
-/*
+    /*
     public function confirmDeleteAccount()
     {
 
@@ -94,7 +152,6 @@ class UserController extends CoreController
             header("EasterEgg: Hello wonderland");
 
             header("HTTP/1.1 403 Forbidden");
-            // BONUS il es possible de faire http_response_code(403);
             $this->show('views/user-forbidden');
         }
         else {
@@ -110,7 +167,6 @@ class UserController extends CoreController
 
         // Récupération des données envoyées depuis le formulaire de selectection des niveaux de maitrise des différentes technologies
 
-        // TODO vérifier la validité des données envoyées dans $technologiesLevels
         $technologiesLevels = $_POST['technologiesLevels'];
 
         // récupération de l'utilisateur courant
@@ -137,8 +193,23 @@ class UserController extends CoreController
 
         header('Location: ' . $skillURL);
     }
-*/
-/*
+
+    public function participateToProject($projectId)
+    {
+
+        $model = new ProjectDeveloperModel();
+        $user = wp_get_current_user();
+        $userId = $user->ID;
+
+        $model->insert(
+            $projectId,
+            $userId
+        );
+
+        $url = get_post_type_archive_link('project');
+        header('Location: ' . $url);
+    }
+
     public function leaveProject($projectId)
     {
         $model = new ProjectDeveloperModel();

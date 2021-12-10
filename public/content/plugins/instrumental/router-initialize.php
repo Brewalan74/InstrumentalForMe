@@ -4,7 +4,7 @@
 
 
 use Instrumental\Controllers\UserController;
-Use Instrumental\Controllers\TestController;
+use Instrumental\Controllers\TestController;
 
 global $router;
 
@@ -30,7 +30,7 @@ $router->map(
 );
 
 $router->map(
-    'GET,POST',
+    'GET',
     '/user/update-profile/',
     function () {
         $userController = new UserController();
@@ -42,15 +42,26 @@ $router->map(
     'GET',
     // a la fin de l'url, nous devrons passer l'id du déveloper
     // [i:id] veut dire qu'à la fin de l'url il y aura un nombre (i:) qui sera stocké dans une variable nommé "id" 
-   
+
     '/model-tests/teacher-instrument/select-by-teacher-id/[i:id]/',
-    function($id) {
+    function ($id) {
 
         $testController = new TestController();
         $testController->selectByVariableTeacherId($id);
     },
     'model-tests-teacher-instrument-select-by-teacher-id-variable'
 );
+$router->map(
+    'POST',
+    '/user/update-profile/',
+    function () {
+        $userController = new UserController();
+        $userController->saveProfile();
+    },
+    'user-save-profile'
+);
+
+
 /*
 $router->map(
     'GET',

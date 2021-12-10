@@ -70,37 +70,37 @@ the_post();
     <?php get_template_part('partials/header.tpl'); ?>
 
 
-    <?php 
+    <?php
     $user = wp_get_current_user();
     $roles = $user->roles;
 
-    if(in_array('teacher', $roles)) {
+    if (in_array('teacher', $roles)) {
         $isTeacher = true;
-    }
-    else {
+    } else {
         $isTeacher = false;
     }
 
     if ($isTeacher) {
-        echo '<section class="text-center">
-            <h1 class="m-5"> ';
-                
-                    if(is_user_logged_in()) {
-                        $user = wp_get_current_user();
-                        echo "Bonjour " . $user->display_name;
-                        //dump($user);
-                    };
-            '</h1>';           
+        echo '<section class="name-profil-perso text-center">
+            <h1 class="profil-perso"> ';
+
+        if (is_user_logged_in()) {
+            $user = wp_get_current_user();
+            echo "Bonjour " . $user->display_name;
+            //dump($user);
+        };
+        '</h1>';
         echo '</section>
         
-        <p class="text-center">'; 
-        echo get_avatar(
-            $post->ID,
-            $size = 96,
-            $default = '',
-            $alt = '',
-            $args = null
-        ); echo '</p>
+        <p class="text-center">';
+
+        // affichage de l'avatar
+        $avatar = get_field('avatar', 'user_' . $user->ID);
+        if ($avatar) {
+            echo '<img src="' . $avatar['url'] . '"/>';
+        }
+
+        '</p>
 
         <div>
         <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
@@ -108,7 +108,9 @@ the_post();
 
 
         <section class="m-5 text-center descriptionPerso">
-            <p>'; echo get_the_content(); '</p>
+            <p>';
+        echo get_the_content();
+        '</p>
         </section>';
 
 
@@ -136,24 +138,25 @@ the_post();
     } else {
         echo '<section class="text-center">
             <h1 class="m-5"> ';
-                
-                    if(is_user_logged_in()) {
-                        $user = wp_get_current_user();
-                        echo "Bonjour " . $user->display_name;
-                        //dump($user);
-                    };
-            '</h1>';
-            
-        echo'</section>
 
-        <p class="text-center">'; 
+        if (is_user_logged_in()) {
+            $user = wp_get_current_user();
+            echo "Bonjour " . $user->display_name;
+            //dump($user);
+        };
+        '</h1>';
+
+        echo '</section>
+
+        <p class="text-center">';
         echo get_avatar(
             $post->ID,
             $size = 96,
             $default = '',
             $alt = '',
             $args = null
-        ); echo '</p>
+        );
+        echo '</p>
 
         <div>
         <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
@@ -161,7 +164,9 @@ the_post();
 
 
         <section class="m-5 text-center descriptionPerso">
-            <p>'; echo get_the_content(); '</p>
+            <p>';
+        echo get_the_content();
+        '</p>
         </section>';
 
 
@@ -183,15 +188,14 @@ the_post();
     }
     ?>
 
-      
-<div>
 
-    <!-- Footer-->
-    <?php get_template_part('partials/footer.tpl'); ?>
-</div>
+    <div>
+
+        <!-- Footer-->
+        <?php get_template_part('partials/footer.tpl'); ?>
+    </div>
     <!-- wp footer -->
     <?php get_footer(); ?>
 </body>
 
 </html>
-
