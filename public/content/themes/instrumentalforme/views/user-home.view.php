@@ -46,11 +46,11 @@ the_post();
 //$test = get_the_content();
 //dump($test);
 
-//$current_user = wp_get_current_user();
+$current_user = wp_get_current_user();
 //dump($current_user);
-//$userdata = get_userdata($current_user->ID);
+$userdata = get_userdata($current_user->ID);
 //dump($userdata);
-//$userName = $userdata->user_nicename;
+$userName = $userdata->description;
 //dump($userName);
 ?>
 <!DOCTYPE html>
@@ -103,12 +103,12 @@ the_post();
         );'</p>
 
         <div>
-        <p class="text-end mx-5"><a class="fs-5 text-end link-profil" href="#">Modifier votre profile</a></p>
+        <p class="text-end mx-5"><a class="fs-5 text-end link-profil" href="' . get_the_permalink(). '">Modifier votre profile</a></p>
         </div>
 
 
         <section class="text-center description-perso">
-            <p>'; echo get_the_content(); '</p>
+            <p>'; echo $userDescription = $userdata->description; '</p>
         </section>';
 
 
@@ -160,7 +160,7 @@ the_post();
 
 
         <section class="m-5 text-center description-perso">
-            <p class="border border-primary" style="border: 2px solid red;";>'; echo get_the_content(); '</p>
+            <p class="border border-primary" style="border: 2px solid red;";>'; echo $userDescription = $userdata->description; '</p>
         </section>';
 
 
