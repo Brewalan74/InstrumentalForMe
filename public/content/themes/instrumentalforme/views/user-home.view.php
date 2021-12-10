@@ -50,7 +50,7 @@ the_post();
 //dump($current_user);
 //$userdata = get_userdata($current_user->ID);
 //dump($userdata);
-//$userName = $userdata->description;
+//$userName = $userdata->user_nicename;
 //dump($userName);
 ?>
 <!DOCTYPE html>
@@ -107,8 +107,8 @@ the_post();
         </div>
 
 
-        <section class="m-5 text-center description-perso">
-            <h2 class="border">'; echo get_the_content(); '</h2>
+        <section class="text-center description-perso">
+            <p>'; echo get_the_content(); '</p>
         </section>';
 
 
