@@ -158,22 +158,12 @@ h2 a:hover {
     margin: 0 2em;
 }
 
-.name-profil-perso {
-    /*text-align: center;*/
-    margin: 1em;
-}
-
-.profile-perso {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-.description-perso {
+.descriptionPerso {
     border : solid black 2px !important;
     border-radius: 20px;
 }
 
-.container-recap {
+.containerRecap {
     display: flex;
 }
 
@@ -182,15 +172,13 @@ h2 a:hover {
     list-style-type: none;
 }
 
-.link-profil {
+.linkProfile {
     color:black;
 }
 
-.link-profil:hover {
+.linkProfile:hover {
     color: #660000;
 }
-
-
 
 .lockedInput {
     background-color: lightgray;

@@ -82,8 +82,8 @@ the_post();
     }
 
     if ($isTeacher) {
-        echo '<section class="name-profil-perso text-center">
-            <h1 class="profil-perso"> ';
+        echo '<section class="text-center">
+            <h1 class="m-5"> ';
                 
                     if(is_user_logged_in()) {
                         $user = wp_get_current_user();
@@ -100,20 +100,20 @@ the_post();
             $default = '',
             $alt = '',
             $args = null
-        );'</p>
+        ); echo '</p>
 
         <div>
-        <p class="text-end mx-5"><a class="fs-5 text-end link-profil" href="#">Modifier votre profile</a></p>
+        <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
         </div>
 
 
-        <section class="m-5 text-center description-perso">
-            <h2 class="border">'; echo get_the_content(); '</h2>
+        <section class="m-5 text-center descriptionPerso">
+            <p>'; echo get_the_content(); '</p>
         </section>';
 
 
         echo '<section class="m-5">
-            <div class="container container-recap">
+            <div class="container containerRecap">
             
             <ul class="recap m-5">
             <h3>Vos nouvelles demandes de RDV</h3>
@@ -124,17 +124,18 @@ the_post();
             
             <ul class="recap m-5">
             <h3>Liste de vos cours</h3>
-                <li><a class="link-profil"href="#">Cours 1 A DYNAMISER</a></li>
+                <li><a class="linkProfile"href="#">Cours 1 A DYNAMISER</a></li>
             </ul>
             
             <ul class="recap m-5">
             <h3>Liste de vos élèves</h3>
-                <li><a class="link-profil" href="#">Eleve 1 A DYNAMISER</a></li>
+                <li><a class="linkProfile" href="#">Eleve 1 A DYNAMISER</a></li>
             </ul>
+            
         </section>';
     } else {
-        echo '<section class="name-profil-perso">
-            <h1 class="profil-perso text-center"> ';
+        echo '<section class="text-center">
+            <h1 class="m-5"> ';
                 
                     if(is_user_logged_in()) {
                         $user = wp_get_current_user();
@@ -152,20 +153,20 @@ the_post();
             $default = '',
             $alt = '',
             $args = null
-        );'</p>
+        ); echo '</p>
 
         <div>
-        <p class="text-end mx-5"><a class="fs-5 text-end link-profil" href="#">Modifier votre profile</a></p>
+        <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
         </div>
 
 
-        <section class="m-5 text-center description-perso">
-            <p class="border border-primary" style="border: 2px solid red;";>'; echo get_the_content(); '</p>
+        <section class="m-5 text-center descriptionPerso">
+            <p>'; echo get_the_content(); '</p>
         </section>';
 
 
         echo '<section class="m-5">
-            <div class="container container-recap">
+            <div class="container containerRecap">
             
             <ul class="recap m-5">
             <h3>Vos prochains cours</h3>
@@ -175,7 +176,7 @@ the_post();
             
             <ul class="recap m-5">
             <h3>Vos professeurs</h3>
-                <li><a class="link-profil" href="#">Prof / instrument A DYNAMISER</a></li>
+                <li><a class="linkProfile" href="#">Prof / instrument A DYNAMISER</a></li>
             </ul>
             
         </section>';
