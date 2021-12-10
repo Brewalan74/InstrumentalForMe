@@ -120,6 +120,15 @@ function myplugin_user_register($user_id)
     }
 }
 
+// Disable admin bar for all except admin
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar()
+{
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+}
+
 add_filter('get_the_excerpt', function ($excerpt) {
 
     // Get the 250 first characters
