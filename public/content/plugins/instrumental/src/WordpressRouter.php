@@ -40,7 +40,6 @@ class WordpressRouter
 
 
         // Wp enregistre les routes en bdd, il faut rafraichir les routes
-        // WARNING flush_rewrite_rules il faudrait flush les routes seulement à l'activation du plugin. flush_rewrite_rules peut être très lent en terme de performances si beaucoup de contenu
         flush_rewrite_rules();
 
         add_filter('query_vars', [$this, 'watchVariables']);

@@ -35,10 +35,8 @@ class UserRegistration
         );
 
         add_action( //  Création de la page profil
-
             'register_new_user',
             [$this, 'createUserProfile']
-
         );
 
         add_action( // Affectation du MdP choisit par l'utilisateur
@@ -47,9 +45,9 @@ class UserRegistration
         );
     }
 
-    /*====================
-                    Méthodes
-              ==================== */
+    /*======================
+            Méthodes
+    ====================== */
 
     public function setUserRole($newUserId)
     {
@@ -60,15 +58,15 @@ class UserRegistration
             'teacher',
             'student'
         ];
-        // if (!in_array($role, $allowedRoles)) {
+        if (!in_array($role, $allowedRoles)) {
 
-        //     require_once ABSPATH . '/wp-admin/includes/user.php';
-        //     wp_delete_user($newUserId);
-        //     exit('SOMETHING WRONG HAPPENED');
-        // } else {
-        $user->add_role($role);
-        $user->remove_role('subscriber');
-        //}
+            require_once ABSPATH . '/wp-admin/includes/user.php';
+            wp_delete_user($newUserId);
+            exit('SOMETHING WRONG HAPPENED');
+        } else {
+            $user->add_role($role);
+            $user->remove_role('subscriber');
+        }
     }
 
     public function createUserProfile($newUserId)

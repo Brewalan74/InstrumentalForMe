@@ -19,7 +19,6 @@ class RoleManager
         remove_role('student');
     }
 
-
     public function createTeacherRole()
     {
         add_role(
@@ -40,7 +39,6 @@ class RoleManager
             ]
         );
     }
-
 
     public function createStudentRole()
     {
@@ -63,8 +61,6 @@ class RoleManager
             ]
         );
     }
-
-
 
     // cette méthode va nous permettre de donner tous les droits sur un type de post custom à un role
     public function giveAllCapabilitiesOnCPT($cptName, $role)

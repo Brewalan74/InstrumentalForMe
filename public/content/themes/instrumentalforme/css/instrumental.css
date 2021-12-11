@@ -170,12 +170,13 @@ h2 a:hover {
 
 
 .descriptionPerso {
-    border : solid black 2px !important;
+    border: solid black 2px !important;
     border-radius: 20px;
 }
 
 .containerRecap {
     display: flex;
+    justify-content: space-evenly;
 }
 
 .recap {
@@ -184,7 +185,7 @@ h2 a:hover {
 }
 
 .linkProfile {
-    color:black;
+    color: black;
 }
 
 .linkProfile:hover {

@@ -62,45 +62,45 @@ $userName = $userdata->description;
 </head>
 
 <body>
+    <div>
+        <!-- Navigation-->
+        <?php get_template_part('partials/navbar.tpl'); ?>
 
-    <!-- Navigation-->
-    <?php get_template_part('partials/navbar.tpl'); ?>
-
-    <!-- Header-->
-    <?php get_template_part('partials/header.tpl'); ?>
+        <!-- Header-->
+        <?php get_template_part('partials/header.tpl'); ?>
 
 
-    <?php
-    $user = wp_get_current_user();
-    $roles = $user->roles;
+        <?php
+        $user = wp_get_current_user();
+        $roles = $user->roles;
 
-    if (in_array('teacher', $roles)) {
-        $isTeacher = true;
-    } else {
-        $isTeacher = false;
-    }
+        if (in_array('teacher', $roles)) {
+            $isTeacher = true;
+        } else {
+            $isTeacher = false;
+        }
 
-    if ($isTeacher) {
-        echo '<section class="name-profil-perso text-center">
+        if ($isTeacher) {
+            echo '<section class="name-profil-perso text-center">
             <h1 class="profil-perso"> ';
 
-        if (is_user_logged_in()) {
-            $user = wp_get_current_user();
-            echo "Bonjour " . $user->display_name;
-            //dump($user);
-        };
-        '</h1>';
-        echo '</section>
+            if (is_user_logged_in()) {
+                $user = wp_get_current_user();
+                echo "Bonjour " . $user->display_name;
+                //dump($user);
+            };
+            '</h1>';
+            echo '</section>
         
         <p class="text-center">';
 
-        // affichage de l'avatar
-        $avatar = get_field('avatar', 'user_' . $user->ID);
-        if ($avatar) {
-            echo '<img src="' . $avatar['url'] . '"/>';
-        }
+            // affichage de l'avatar
+            $avatar = get_field('avatar', 'user_' . $user->ID);
+            if ($avatar) {
+                echo '<img src="' . $avatar['url'] . '"/>';
+            }
 
-        '</p>
+            '</p>
 
         <div>
         <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
@@ -109,12 +109,12 @@ $userName = $userdata->description;
 
         <section class="m-5 text-center descriptionPerso">
             <p>';
-        echo get_the_content();
-        '</p>
+            echo get_the_content();
+            '</p>
         </section>';
 
 
-        echo '<section class="m-5">
+            echo '<section class="m-5">
             <div class="container containerRecap">
             
             <ul class="recap m-5">
@@ -135,28 +135,28 @@ $userName = $userdata->description;
             </ul>
             
         </section>';
-    } else {
-        echo '<section class="text-center">
+        } else {
+            echo '<section class="text-center">
             <h1 class="m-5"> ';
 
-        if (is_user_logged_in()) {
-            $user = wp_get_current_user();
-            echo "Bonjour " . $user->display_name;
-            //dump($user);
-        };
-        '</h1>';
+            if (is_user_logged_in()) {
+                $user = wp_get_current_user();
+                echo "Bonjour " . $user->display_name;
+                //dump($user);
+            };
+            '</h1>';
 
-        echo '</section>
+            echo '</section>
 
         <p class="text-center">';
-        echo get_avatar(
-            $post->ID,
-            $size = 96,
-            $default = '',
-            $alt = '',
-            $args = null
-        );
-        echo '</p>
+            echo get_avatar(
+                $post->ID,
+                $size = 96,
+                $default = '',
+                $alt = '',
+                $args = null
+            );
+            echo '</p>
 
         <div>
         <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
@@ -165,12 +165,12 @@ $userName = $userdata->description;
 
         <section class="m-5 text-center descriptionPerso">
             <p>';
-        echo get_the_content();
-        '</p>
+            echo get_the_content();
+            '</p>
         </section>';
 
 
-        echo '<section class="m-5">
+            echo '<section class="m-5">
             <div class="container containerRecap">
             
             <ul class="recap m-5">
@@ -183,17 +183,15 @@ $userName = $userdata->description;
             <h3>Vos professeurs</h3>
                 <li><a class="linkProfile" href="#">Prof / instrument A DYNAMISER</a></li>
             </ul>
+            </div>
             
         </section>';
-    }
-    ?>
-
-
-    <div>
-
-        <!-- Footer-->
-        <?php get_template_part('partials/footer.tpl'); ?>
+        }
+        ?>
     </div>
+    <!-- Footer-->
+    <?php get_template_part('partials/footer.tpl'); ?>
+
     <!-- wp footer -->
     <?php get_footer(); ?>
 </body>
