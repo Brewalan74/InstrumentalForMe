@@ -82,8 +82,10 @@ class UserRegistration
         } elseif ($role === 'student') {
             $postType = 'profile-student';
         }
+
         wp_insert_post([
             'post_author' => $newUserId,
+            'post_status' => 'publish',
             'post_title'  => $user->data->display_name . " 's profile",
             'post-type'   => $postType
         ]);

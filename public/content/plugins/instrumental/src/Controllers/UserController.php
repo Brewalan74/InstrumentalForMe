@@ -97,7 +97,6 @@ class UserController extends CoreController
             $this->show('views/user-forbidden');
         } else {
 
-
             $profile = $this->getProfile();
 
             $this->show('views/user-update-profile.view', [
