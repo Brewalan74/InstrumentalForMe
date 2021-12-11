@@ -1,8 +1,10 @@
 <?php
+
 namespace Instrumental;
 
-use Instrumental\CustomPostType\ProfileTeacher;
-use Instrumental\CustomPostType\ProfileStudent;
+use Instrumental\CustomPostType\TeacherProfile;
+use Instrumental\CustomPostType\StudentProfile;
+
 use Instrumental\CustomTaxonomy\Instrument;
 use Instrumental\CustomTaxonomy\Certificate;
 use Instrumental\CustomTaxonomy\MusicStyle;
@@ -13,14 +15,14 @@ class Plugin
 {
     /*===================CPT===================*/
     /**
-     * @var [ProfileTeacherCPT]
+     * @var [TeacherProfileCPT]
      */
-    protected $profileTeacherCPT;
+    protected $teacherProfileCPT;
 
     /**
-     * @var [ProfileStudentCPT]
+     * @var [StudentProfileCPT]
      */
-    protected $profileStudentCPT;
+    protected $studentProfileCPT;
 
     /*=================TAXONOMY=================*/
 
@@ -39,9 +41,9 @@ class Plugin
      */
     protected $musicStyleTaxonomy;
 
-     /*===================UTILE===================*/
+    /*===================UTILE===================*/
 
-     /**
+    /**
      * Propriété gérant les traitements concernant les rôles
      *
      * @var RoleManager
@@ -58,33 +60,32 @@ class Plugin
      */
     protected $userRegistration;
 
-     /**
+    /**
      * Configuration du router wordpress
      *
      * @var WordpressRouter
      */
     protected $wordpressRouter;
 
-     /*===================MODEL===================*/
+    /*===================MODEL===================*/
 
     protected $teacherInstrumentModel;
 
-     /*============================================
+    /*============================================
        ============================================*/
     public function __construct()
     {
         add_action(
-        'init',
-        [$this, 'initialize']
-    );
-
+            'init',
+            [$this, 'initialize']
+        );
     }
 
     public function initialize()
     {
         /*===================CPT===================*/
-        $this->profileTeacherCPT = new ProfileTeacher();
-        $this->profileStudentCPT = new ProfileStudent();
+        $this->teacherProfileCPT = new TeacherProfile();
+        $this->studentProfileCPT = new StudentProfile();
         /*=================TAXONOMY=================*/
         $this->instrumentTaxonomy = new Instrument();
         $this->certificateTaxonomy = new Certificate();
@@ -94,7 +95,7 @@ class Plugin
         $this->userRegistration = new UserRegistration();
         $this->customFields = new CustomFields();
         $this->wordpressRouter = new WordpressRouter();
-        
+
         /*===================MODEL===================*/
         $this->teacherInstrumentModel = new TeacherInstrumentModel();
     }
@@ -104,7 +105,7 @@ class Plugin
         // à l'activation du plugin, nous initialisons ce dernier
         $this->initialize();
 
-        // nous donnons tous les droits à l'administrateur sur les cpt profileStudent et profileTeacher
+        // nous donnons tous les droits à l'administrateur sur les cpt studentProfile et teacherProfile
         // le role "administrator" est un role par défaut de wordpress
         $this->roleManager->giveAllCapabilitiesOnCPT('teacher', 'administrator');
         $this->roleManager->giveAllCapabilitiesOnCPT('student', 'administrator');
@@ -117,7 +118,5 @@ class Plugin
 
     public function deactivate()
     {
-       
     }
-
 }

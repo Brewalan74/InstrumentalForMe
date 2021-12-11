@@ -26,10 +26,10 @@ the_post();
 //dump($test); 
 //RENVOIE TABLEAU
 
-//$args = array ('name' => 'profile-teacher');
+//$args = array ('name' => 'teacher-profile');
 //$test = get_post_types($args);
 //dump($test); 
-//RENVOIE TABLEAU "profile-teacher" => "profile-teacher"
+//RENVOIE TABLEAU "teacher-profile" => "teacher-profile"
 
 //$test = get_role('teacher');
 //dump($test);
@@ -103,7 +103,7 @@ $userName = $userdata->description;
             '</p>
 
         <div>
-        <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
+        <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_edit_post_link() . '">Modifier votre profile</a></p>
         </div>
 
 

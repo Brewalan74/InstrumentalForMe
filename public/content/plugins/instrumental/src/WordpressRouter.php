@@ -12,8 +12,10 @@ class WordpressRouter
         // 'user-update-form' => 'user/update-form',
 
         'user-all' => 'user/.*', // cette route peut remplacer toutes les précédentes
-        'model-tests' => 'model-tests/.*' // accepte toutes les urls de la forme /model-tests/ANYTHING..
+        'model-tests' => 'model-tests/.*', // accepte toutes les urls de la forme /model-tests/ANYTHING..
         //'customer-all' => 'customer/.*'
+        'teacher-all' => 'teacher/.*',
+        'student-all' => 'student/.*',
     ];
 
     public function __construct()

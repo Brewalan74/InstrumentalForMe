@@ -58,6 +58,7 @@ class UserRegistration
             'teacher',
             'student'
         ];
+
         if (!in_array($role, $allowedRoles)) {
 
             require_once ABSPATH . '/wp-admin/includes/user.php';
@@ -76,15 +77,15 @@ class UserRegistration
 
 
         if ($role === 'teacher') {
-            $postType = 'profile-teacher';
+            $postType = 'teacher-profile';
         } elseif ($role === 'student') {
-            $postType = 'profile-student';
+            $postType = 'student-profile';
         }
 
         wp_insert_post([
             'post_author' => $newUserId,
             'post_status' => 'publish',
-            'post_title'  => $user->data->display_name . " 's profile",
+            'post_title'  => $user->data->display_name . "'s profile",
             'post-type'   => $postType
         ]);
     }

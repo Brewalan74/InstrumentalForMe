@@ -2,14 +2,14 @@
 
 namespace Instrumental\CustomPostType;
 
-class ProfileTeacher
+class StudentProfile
 {
     public function __construct()
     {
         register_post_type(
-            'profile-teacher',
+            'student-profile',
             [
-                'label' => 'Profile teacher',
+                'label' => 'Student profile',
 
                 'show_in_rest' => true,
 
@@ -17,7 +17,7 @@ class ProfileTeacher
 
                 'hierarchical' => false,
 
-                'menu_icon' => 'dashicons-buddicons-buddypress-logo',
+                'menu_icon' => 'dashicons-universal-access-alt',
 
                 'has_archive' => true,
 
@@ -31,7 +31,7 @@ class ProfileTeacher
                     'author',
                 ],
 
-                'capability_type' => 'profile-teacher',
+                'capability_type' => 'student-profile',
                 'map_meta_cap' => true,
             ]
         );
