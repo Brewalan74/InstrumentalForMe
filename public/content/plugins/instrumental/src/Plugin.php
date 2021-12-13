@@ -9,6 +9,7 @@ use Instrumental\CustomTaxonomy\Instrument;
 use Instrumental\CustomTaxonomy\Certificate;
 use Instrumental\CustomTaxonomy\MusicStyle;
 
+use Instrumental\Models\LessonModel;
 use Instrumental\Models\TeacherInstrumentModel;
 
 class Plugin
@@ -71,6 +72,8 @@ class Plugin
 
     protected $teacherInstrumentModel;
 
+    protected $lessonModel;
+
     /*============================================
        ============================================*/
     public function __construct()
@@ -97,6 +100,7 @@ class Plugin
         $this->wordpressRouter = new WordpressRouter();
 
         /*===================MODEL===================*/
+        $this->lessonModel = new LessonModel();
         $this->teacherInstrumentModel = new TeacherInstrumentModel();
     }
 
@@ -113,6 +117,7 @@ class Plugin
         $this->roleManager->createTeacherRole();
         $this->roleManager->createStudentRole();
 
+        $this->lessonModel->createTable();
         $this->teacherInstrumentModel->createTable();
     }
 
