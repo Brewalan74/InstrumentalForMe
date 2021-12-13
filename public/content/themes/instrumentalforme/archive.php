@@ -66,8 +66,6 @@ use Instrumental\Models\TeacherInstrumentModel;
 
                     <div class="profileDescription">
 
-
-
                         <article class="projet">
                             <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
 
@@ -78,21 +76,37 @@ use Instrumental\Models\TeacherInstrumentModel;
                                     <?php the_title(); ?>
                                 </a>
                             </h2>
-
                             <div>
-                                <p><?php $taxo = get_the_terms( $post->ID, 'instrument' ) ;
-
-                                    if (!empty ($taxos) ) {
-                                    
-                                    echo $taxos[0]->name ; 
-                                    } ;
-                                    echo 'instrument'. $taxos ; ?></p>
+                                  <p><?php the_terms( $post->ID, 'instrument');?></p> 
+                                  
                             </div>
+
+                           
                             <div>
                                 <?php the_content(); ?>
                             </div>
                         </article>
-                        <a href="#">Prendre rendez-vous</a>
+                        <?php 
+                         if(!is_user_logged_in()) {
+                            echo ' <a href="' . wp_login_url() . '">Prendre rendez-vous</a>';
+                        }
+                        else {
+                            $user = wp_get_current_user();
+                            global $router;
+                            // dump($user);
+                            if(in_array('student', $user->roles)) {
+                                echo ' <a href="<?php '. $router->generate('user-appointment');'?>">Prendre rendez-vous</a>';
+                                
+                            }
+                            // else {
+                            //     $url = $router->generate('404');
+                            // }
+                
+                            
+                           
+                            //echo ' <a href="#">Prendre rendez-vous</a>';
+                        } ; ?>
+                       
 
 
                     </div>
