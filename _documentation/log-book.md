@@ -113,3 +113,30 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 - function et page update pour Stefan 
 - page profil student
 - afficher la liste des profs sur la page instrument et commencer la page appointment
+
+
+
+
+### Vendredi 10/12/21
+
+- Afficher la liste des profs qui enseignent l'instrument afficher dans la page 'instrument'
+- travail sur le lien Debug enseignant vers instrument : échec
+- travail sur Debug user-home.view avec get_teh_permalink : échec
+- travail sur la mise à jour du profil, aidé par Julien pour finir la page
+- Mettre à jour la barre de navigation pour obtenir la page d'accueil
+- Mise en page de certains fichiers
+- Travaillez sur le débogage de la page du registre des nouveaux utilisateurs, obtenez à l'intérieur de la publication au lieu de l'intérieur du plugin ... 
+- Page userHomeViews
+
+## Sprint 2
+
+### Lundi 13/12/21
+
+Il nous reste à faire :
+
+- linker page update avec page profile
+- debug description profil en update ( pour le moment le 'content()' n'affiche pas le descriptif du prof)
+- page rdv + link
+- Ajout de taxo ds update profile
+- Afficher les taxo instruments dans les profils des profs sur la page instrument
+- rendre le lien 'prise de rendez-vous' clickable si connecter en tant que student
