@@ -200,3 +200,7 @@ h2 a:hover {
 .center {
     text-align: center;
 }
+
+.labelForm {
+    font-weight: bolder;
+}

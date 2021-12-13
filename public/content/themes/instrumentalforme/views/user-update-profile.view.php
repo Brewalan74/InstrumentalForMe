@@ -39,28 +39,28 @@
             <input type="hidden" name="update-profile" readonly value="1">
             <div class="containerUpdate">
                 <p>
-                    <label for="username">Username</label>
+                    <label for="username" class='labelForm'>Username</label>
                     <input type="text" name="name" id="username" class="input" value="<?= $userdata->user_nicename ?>" size="20" autocapitalize="off" readonly>
                 </p>
                 <?php if ($userdata->first_name) : ?>
                     <p>
-                        <label for="user_firstname">Votre Prénom</label>
+                        <label for="user_firstname" class='labelForm'>Votre Prénom</label>
                         <input type="text" name="user_firstname" id="user_firstname" class="input" value="<?= $userdata->first_name ?>" size="20" autocapitalize="off">
                     </p>
                 <?php else : ?>
                     <p>
-                        <label for="user_firstname">Votre Prénom</label>
+                        <label for="user_firstname" class='labelForm'>Votre Prénom</label>
                         <input type="text" name="user_firstname" id="user_firstname" class="input" value="" size="20" autocapitalize="off">
                     </p>
                 <?php endif; ?>
                 <?php if ($userdata->last_name) : ?>
                     <p>
-                        <label for="user_firstname">Votre Nom</label>
+                        <label for="user_firstname" class='labelForm'>Votre Nom</label>
                         <input type="text" name="user_lastname" id="user_lastname" class="input" value="<?= $userdata->last_name ?>" size="20" autocapitalize="off">
                     </p>
                 <?php else : ?>
                     <p>
-                        <label for="user_firstname">Votre Nom</label>
+                        <label for="user_firstname" class='labelForm'>Votre Nom</label>
                         <input type="text" name="user_lastname" id="user_lastname" class="input" value="" size="20" autocapitalize="off">
                     </p>
                 <?php endif; ?>
@@ -68,22 +68,22 @@
 
             <div class="containerUpdate">
                 <p>
-                    <label for="user_email">Votre email</label>
+                    <label for="user_email" class='labelForm'>Votre email</label>
                     <input type="email" name="user_email" id="user_email" class="input" value="<?= $userdata->data->user_email ?>" size="20" autocapitalize="off">
                 </p>
                 <p>
-                    <label for="user_password">Nouveau mot de passe</label>
+                    <label for="user_password" class='labelForm'>Nouveau mot de passe</label>
                     <input type="password" name="user_password" id="user_password" class="input" value="" size="20" autocapitalize="off">
                 </p>
                 <p>
-                    <label for="user_password_confirmation">Confirmer nouveau mot de passe</label>
+                    <label for="user_password_confirmation" class='labelForm'>Confirmer nouveau mot de passe</label>
                     <input type="password" name="user_password_confirmation" id="user_password_confirmation" class="input" value="" size="20" autocapitalize="off">
                 </p>
             </div>
 
             <div class="containerUpdate">
                 <p>
-                    <label for="user_description">Votre description</label><br>
+                    <label for="user_description" class='labelForm'>Votre description</label><br>
                     <textarea name="user_description" id="user_description" class="textareaDescription" size="250" autocapitalize="off"><?= $userdata->description ?></textarea>
                 </p>
             </div>
@@ -95,9 +95,6 @@
                 <label for="student">Student</label>
             </div> -->
 
-
-
-            <label>Vos certificats</label>
             <?php
         $user = wp_get_current_user();
         $roles = $user->roles;
@@ -105,24 +102,26 @@
         if (in_array('teacher', $roles)) {
             $isTeacher = true;
             echo "<div id='certificate' class='containerUpdateRadio'>";
-             $certificates = get_terms('certificate', array('hide_empty' => false)); 
+            $certificates = get_terms('certificate', array('hide_empty' => false)); 
+            echo "<label class='labelForm'>Vos certificats</label><br>";
 
             foreach ($certificates as $index => $certificate) : 
             echo "<input type='checkbox' id='certif' $index '' name='$certificate->name;' value='$certificate->term_id'>";
             echo "<label for='certif' $index>";
             echo $certificate->name;
             echo "</label><br>";
+
              endforeach;
+             echo "<button type='button' class='btn btn-success m-2'>Update</button>";
         } else {
             
         }
         ?>
 
-        <button type="button" class="btn btn-success m-2">Update</button>
         </form>
 
 
-        <p class="layoutUpdateButton">
+        <div class="layoutUpdateButton">
         <h2>Changer mon avatar</h2>
         <?php
         $options = array(
@@ -136,12 +135,11 @@
         );
         acf_form($options);
         ?>
-        </p>
+        </div>
 
-        <button type="button" class="btn btn-danger">Supprimer votre compte</button>
+        <button type='button' class='btn btn-danger m-2'>Supprimer votre compte</button>
 
     </section>
-
 
 
     <!-- Footer-->
