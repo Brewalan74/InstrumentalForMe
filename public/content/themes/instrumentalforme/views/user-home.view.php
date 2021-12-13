@@ -102,17 +102,18 @@ $userName = $userdata->description;
 
             '</p>
 
-        <div>
-        <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_edit_post_link() . '">Modifier votre profile</a></p>
+        <div>';
+        global $router;
+        $updateProfileURL = $router->generate('user-update-profile');
+        echo 
+        '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . $updateProfileURL . '">Modifier votre profile</a></p>
         </div>
-
 
         <section class="m-5 text-center descriptionPerso">
             <p>';
             echo get_the_content();
             '</p>
         </section>';
-
 
             echo '<section class="m-5">
             <div class="container containerRecap">
@@ -158,15 +159,15 @@ $userName = $userdata->description;
             );
             echo '</p>
 
-        <div>
-        <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . get_the_permalink() . '">Modifier votre profile</a></p>
+        <div>';
+        global $router;
+        $updateProfileURL = $router->generate('user-update-profile');
+        echo '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
+        . $updateProfileURL . '">Modifier votre profile</a></p>
         </div>
 
-
         <section class="m-5 text-center descriptionPerso">
-            <p>';
-            echo get_the_content();
-            '</p>
+            <p>'; echo get_the_content(); '</p>
         </section>';
 
 
