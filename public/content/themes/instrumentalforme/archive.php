@@ -79,7 +79,9 @@ use Instrumental\Models\TeacherInstrumentModel;
                                 </a>
                             </h2>
 
-
+                            <div>
+                                <p><?php $taxos = get_the_terms(get_the_ID(), 'instrument') ;?></p>
+                            </div>
                             <div>
                                 <?php the_content(); ?>
                             </div>
@@ -93,7 +95,7 @@ use Instrumental\Models\TeacherInstrumentModel;
         <?php endif; ?>
     </section>
      
-    </div>
+   
 
     <!-- Footer-->
     <?php get_template_part('partials/footer.tpl'); ?>
