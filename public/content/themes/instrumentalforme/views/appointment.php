@@ -3,8 +3,7 @@
 // exit();
 
 $appointment = get_post();
-$id = get_the_ID();
-
+$id = url_to_postid(get_the_permalink());
 dump(__FILE__ . ':' . __LINE__, $appointment);
 dump(__FILE__ . ':' . __LINE__, $id);
 
