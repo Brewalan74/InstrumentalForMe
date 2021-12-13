@@ -32,74 +32,74 @@ use Instrumental\Models\TeacherInstrumentModel;
             <?php
             $term = get_queried_object();
             $termId = $term->term_id;
-        
+
             $taxonomyImage = get_field('picture', 'instrument_' . $termId);
             //dump($term);
-        
+
             //dump($taxonomyImage['url']);
             //exit;
             ?>
         </div>
-    
-    <!-- Content section 1-->
-    <section id="scroll">
-        <div class="container px-5">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="p-5"><a href="#"><img class="img-fluid rounded-circle" src="<?= $taxonomyImage['url']; ?>" alt="..." /></a></div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="p-5">
-                        <h2 class="display-4"><?= $term->name; ?></h2>
 
-                        <p><?= $term->description; ?></p>
+        <!-- Content section 1-->
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><a href="#"><img class="img-fluid rounded-circle" src="<?= $taxonomyImage['url']; ?>" alt="..." /></a></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4"><?= $term->name; ?></h2>
+
+                            <p><?= $term->description; ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-        
-    <section>
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
-                <div class="profileH2">
+        </section>
 
-                    <div class="profileDescription">
+        <section>
+            <?php if (have_posts()) : ?>
+                <?php while (have_posts()) : the_post(); ?>
+                    <div class="profileH2">
 
+                        <div class="profileDescription">
 
 
-                        <article class="projet">
-                            <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
 
-                            <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
+                            <article class="projet">
+                                <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
 
-                            <h2>
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h2>
+                                <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
 
-
-                            <div>
-                                <?php the_content(); ?>
-                            </div>
-                        </article>
-                        <a href="#">Prendre rendez-vous</a>
+                                <h2>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h2>
 
 
+                                <div>
+                                    <?php the_content(); ?>
+                                </div>
+                            </article>
+                            <a href="#">Prendre rendez-vous</a>
+
+
+                        </div>
                     </div>
-                </div>
-            <?php endwhile; ?>
-        <?php endif; ?>
-    </section>
-     
-    </div>
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </section>
 
-    <!-- Footer-->
-    <?php get_template_part('partials/footer.tpl'); ?>
+        </div>
 
-    <!-- wp footer -->
-    <?php get_footer(); ?>
+        <!-- Footer-->
+        <?php get_template_part('partials/footer.tpl'); ?>
+
+        <!-- wp footer -->
+        <?php get_footer(); ?>
 </body>
 
 </html>
