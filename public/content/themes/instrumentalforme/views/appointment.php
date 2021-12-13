@@ -4,9 +4,8 @@
 
 $appointment = get_post();
 $id = url_to_postid(get_the_permalink());
-dump(__FILE__ . ':' . __LINE__, $appointment);
-dump(__FILE__ . ':' . __LINE__, $id);
-
+// dump(__FILE__ . ':' . __LINE__, $appointment);
+// dump(__FILE__ . ':' . __LINE__, $id);
 
 ?>
 

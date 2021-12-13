@@ -55,7 +55,7 @@ $router->map(
 // === APPOINTMENT ===
 $router->map(
     'GET',
-    '/user/[i:id]/appointment/',
+    '/user/appointment/',
     function () {
         $appointmentController = new AppointmentController();
         $appointmentController->appointment();
