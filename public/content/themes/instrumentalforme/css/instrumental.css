@@ -196,3 +196,7 @@ h2 a:hover {
 .lockedInput {
     background-color: lightgray;
 }
+
+.labelForm {
+    font-weight: bolder;
+}
