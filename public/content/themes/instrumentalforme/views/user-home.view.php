@@ -1,5 +1,8 @@
 <?php
 the_post();
+// echo __FILE__ . ':' . __LINE__;
+// exit();
+
 ?>
 <?php
 //$test = get_terms();
@@ -47,10 +50,10 @@ the_post();
 //dump($test);
 
 $current_user = wp_get_current_user();
-//dump($current_user);
+// dump(__FILE__ . ':' . __LINE__, $curreny_user);
 $userdata = get_userdata($current_user->ID);
 //dump($userdata);
-$userName = $userdata->description;
+// $userName = $userdata->description;
 //dump($userName);
 ?>
 <!DOCTYPE html>
@@ -72,6 +75,8 @@ $userName = $userdata->description;
 
         <?php
         $user = wp_get_current_user();
+        // dump(__FILE__ . ':' . __LINE__, $user);
+
         $roles = $user->roles;
 
         if (in_array('teacher', $roles)) {
@@ -96,6 +101,8 @@ $userName = $userdata->description;
 
             // affichage de l'avatar
             $avatar = get_field('avatar', 'user_' . $user->ID);
+            dump(__FILE__ . ':' . __LINE__, $avatar);
+
             if ($avatar) {
                 echo '<img src="' . $avatar['url'] . '"/>';
             }
@@ -151,19 +158,17 @@ $userName = $userdata->description;
 
         <section>
             <p class="text-center">';
-                echo get_avatar(
-                    $post->ID,
-                    $size = 96,
-                    $default = '',
-                    $alt = '',
-                    $args = null
-                );
-                echo '</p>
+            // affichage de l'avatar
+            $avatar = get_field('avatar', 'user_' . $user->ID);
+            if ($avatar) {
+                echo '<img src="' . $avatar['url'] . '"/>';
+            }
+            echo '</p>
             <div>';
-                global $router;
-                $updateProfileURL = $router->generate('user-update-profile');
-                echo '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
-                    . $updateProfileURL . '">Modifier votre profile</a></p>
+            global $router;
+            $updateProfileURL = $router->generate('user-update-profile');
+            echo '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
+                . $updateProfileURL . '">Modifier votre profile</a></p>
             </div>
         </section>
 
@@ -192,9 +197,9 @@ $userName = $userdata->description;
         </section>';
         }
         ?>
-    </section>
+        </section>
     </div>
-    
+
     <section>
         <!-- Footer-->
         <?php get_template_part('partials/footer.tpl'); ?>

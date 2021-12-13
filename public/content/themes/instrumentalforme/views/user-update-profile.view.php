@@ -95,46 +95,47 @@
                 <label for="student">Student</label>
             </div> -->
 
+
+
+
             <?php
-        $user = wp_get_current_user();
-        $roles = $user->roles;
+            $user = wp_get_current_user();
+            $roles = $user->roles;
 
-        if (in_array('teacher', $roles)) {
-            $isTeacher = true;
-            echo "<div id='certificate' class='containerUpdateRadio'>";
-            $certificates = get_terms('certificate', array('hide_empty' => false)); 
-            echo "<label class='labelForm'>Vos certificats</label><br>";
+            if (in_array('teacher', $roles)) {
+                $isTeacher = true;
+                echo "<label>Vos certificats</label>";
+                echo "<div id='certificate' class='containerUpdateRadio'>";
+                $certificates = get_terms('certificate', array('hide_empty' => false));
 
-            foreach ($certificates as $index => $certificate) : 
-            echo "<input type='checkbox' id='certif' $index '' name='$certificate->name;' value='$certificate->term_id'>";
-            echo "<label for='certif' $index>";
-            echo $certificate->name;
-            echo "</label><br>";
+                foreach ($certificates as $index => $certificate) :
+                    echo "<input type='checkbox' id='certif' $index '' name='$certificate->name;' value='$certificate->term_id'>";
+                    echo "<label for='certif' $index>";
+                    echo $certificate->name;
+                    echo "</label><br>";
+                endforeach;
+            } else {
+            }
+            ?>
 
-             endforeach;
-             echo "<button type='button' class='btn btn-success m-2'>Update</button>";
-        } else {
-            
-        }
-        ?>
-
+            <button type="button" class="btn btn-success m-2">Update</button>
         </form>
 
 
         <div class="layoutUpdateButton">
-        <h2>Changer mon avatar</h2>
-        <?php
-        $options = array(
-            'post_id' => 'user_' . $current_user->ID,
-            // 'field_groups' => array(77),
-            // 'form' => false,
-            // 'return' => add_query_arg('updated', 'true', '?'),
-            'html_before_fields' => '',
-            'html_after_fields' => '',
-            'submit_value' => 'Update'
-        );
-        acf_form($options);
-        ?>
+            <h2>Changer mon avatar</h2>
+            <?php
+            $options = array(
+                'post_id' => 'user_' . $current_user->ID,
+                // 'field_groups' => array(77),
+                // 'form' => false,
+                // 'return' => add_query_arg('updated', 'true', '?'),
+                'html_before_fields' => '',
+                'html_after_fields' => '',
+                'submit_value' => 'Update'
+            );
+            acf_form($options);
+            ?>
         </div>
 
         <button type='button' class='btn btn-danger m-2'>Supprimer votre compte</button>
