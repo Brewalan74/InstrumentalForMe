@@ -80,7 +80,13 @@ use Instrumental\Models\TeacherInstrumentModel;
                             </h2>
 
                             <div>
-                                <p><?php $taxos = get_the_terms(get_the_ID(), 'instrument') ;?></p>
+                                <p><?php $taxo = get_the_terms( $post->ID, 'instrument' ) ;
+
+                                    if (!empty ($taxos) ) {
+                                    
+                                    echo $taxos[0]->name ; 
+                                    } ;
+                                    echo 'instrument'. $taxos ; ?></p>
                             </div>
                             <div>
                                 <?php the_content(); ?>
