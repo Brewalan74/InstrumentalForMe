@@ -93,22 +93,32 @@
                 <label for="teacher">Teacher</label>
                 <input type="radio" id="student" name="user_type" value="student" onclick="viewCertificate()">
                 <label for="student">Student</label>
-            </div>
-
-            <div id="certificate" style="display:none" class="containerUpdateRadio">
-
-                <?php $certificates = get_terms('certificate', array('hide_empty' => false)); ?>
-
-                <?php foreach ($certificates as $index => $certificate) : ?>
-
-                    <input type="checkbox" id="<?= 'certif' . $index ?>" name="<?= $certificate->name; ?> value=" <?= $certificate->term_id ?>>
-                    <label for="<?= 'certif' . $index ?>"><?= $certificate->name ?></label><br>
-
-                <?php endforeach; ?>
-
             </div> -->
 
-            <button>Update</button>
+
+
+            <label>Vos certificats</label>
+            <?php
+        $user = wp_get_current_user();
+        $roles = $user->roles;
+
+        if (in_array('teacher', $roles)) {
+            $isTeacher = true;
+            echo "<div id='certificate' class='containerUpdateRadio'>";
+             $certificates = get_terms('certificate', array('hide_empty' => false)); 
+
+            foreach ($certificates as $index => $certificate) : 
+            echo "<input type='checkbox' id='certif' $index '' name='$certificate->name;' value='$certificate->term_id'>";
+            echo "<label for='certif' $index>";
+            echo $certificate->name;
+            echo "</label><br>";
+             endforeach;
+        } else {
+            
+        }
+        ?>
+
+        <button type="button" class="btn btn-success m-2">Update</button>
         </form>
 
 
@@ -127,6 +137,8 @@
         acf_form($options);
         ?>
         </p>
+
+        <button type="button" class="btn btn-danger">Supprimer votre compte</button>
 
     </section>
 
