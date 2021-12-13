@@ -10,7 +10,8 @@ use Instrumental\CustomTaxonomy\Certificate;
 use Instrumental\CustomTaxonomy\MusicStyle;
 
 use Instrumental\Models\LessonModel;
-use Instrumental\Models\TeacherInstrumentModel;
+
+use Instrumental\Models\TeacherModel;
 
 class Plugin
 {
@@ -70,7 +71,7 @@ class Plugin
 
     /*===================MODEL===================*/
 
-    protected $teacherInstrumentModel;
+    protected $teacherModel;
 
     protected $lessonModel;
 
@@ -101,7 +102,8 @@ class Plugin
 
         /*===================MODEL===================*/
         $this->lessonModel = new LessonModel();
-        $this->teacherInstrumentModel = new TeacherInstrumentModel();
+        
+        $this->teacherModel = new TeacherModel();
     }
 
     public function activate()
@@ -118,7 +120,7 @@ class Plugin
         $this->roleManager->createStudentRole();
 
         $this->lessonModel->createTable();
-        $this->teacherInstrumentModel->createTable();
+        $this->teacherModel->createTable();
     }
 
     public function deactivate()

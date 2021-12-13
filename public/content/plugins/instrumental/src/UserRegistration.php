@@ -86,7 +86,9 @@ class UserRegistration
             'post_author' => $newUserId,
             'post_status' => 'publish',
             'post_title'  => $user->data->display_name . "'s profile",
-            'post_type'   => $postType
+            'post_type'   => $postType,
+            
+         
         ]);
     }
 
