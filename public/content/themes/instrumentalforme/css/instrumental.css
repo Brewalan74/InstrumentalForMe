@@ -15,6 +15,31 @@
     }
 }
 
+/* CSS NavBar */
+.navbarLayout-li a {
+    margin-right: 1em;
+    color: #A4A4A4;
+    font-weight: 600;
+}
+
+.homeLayout {
+    color: #A4A4A4 !important;
+}
+
+.navbarLayout-li a:hover {
+    color: #B00000;
+}
+
+.homeLayout:hover {
+    color: #B00000 !important;
+
+}
+
+.instrument-container {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
 /* CSS Profiles */
 .profileH2 {
     text-align: center;
@@ -83,6 +108,30 @@ h4 {
     color: black;
 }
 
+/* CSS update profile */
+.layoutUpdateButton {
+    margin: 1em auto;
+}
+
+.containerUpdate {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
+
+.textareaDescription {
+    width: 50em;
+    height: 15em;
+}
+
+.containerUpdateRadio {
+    text-align: center;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: 3em;
+    margin-bottom: 3em;
+}
 
 /* Display instrument taxonomy */
 .instrument-container:nth-child(odd) .instrument {
@@ -101,6 +150,50 @@ h2 a {
     color: #660000;
 }
 
+h2 a:hover {
+    color: #020000;
+}
+
 .taxoLayout {
     margin: 0 2em;
+}
+
+.name-profil-perso {
+    /*text-align: center;*/
+    margin: 1em;
+}
+
+.profile-perso {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+
+.descriptionPerso {
+    border: solid black 2px !important;
+    border-radius: 20px;
+}
+
+.containerRecap {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.recap {
+    flex-direction: row;
+    list-style-type: none;
+}
+
+.linkProfile {
+    color: black;
+}
+
+.linkProfile:hover {
+    color: #660000;
+}
+
+
+
+.lockedInput {
+    background-color: lightgray;
 }

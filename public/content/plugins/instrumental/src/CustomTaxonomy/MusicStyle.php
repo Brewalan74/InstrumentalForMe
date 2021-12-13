@@ -13,7 +13,7 @@ class MusicStyle
 
         register_taxonomy(
             'music-style',   // idenfiant de la taxonomy
-            ['profile-teacher', 'profile-student'],   // la taxonomy technologie peut s'appliquer sur les CPT developer-profile et project
+            ['teacher-profile', 'student-profile'],   // la taxonomy technologie peut s'appliquer sur les CPT developer-profile et project
             [
                 'show_in_rest' => true, // la taxonomy est accessible en mode API ; nécessaire pour l'éditeur de bloc (Gutemberg)
                 'label' => 'Style de musique',
@@ -21,6 +21,5 @@ class MusicStyle
                 'public' => true // la taxonomy est administrable depuis le backoffice de wp
             ]
         );
-
     }
 }

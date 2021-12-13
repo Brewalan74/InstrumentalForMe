@@ -101,10 +101,7 @@ use Instrumental\Models\TeacherInstrumentModel;
                             // else {
                             //     $url = $router->generate('404');
                             // }
-                
-                            
-                           
-                            //echo ' <a href="#">Prendre rendez-vous</a>';
+                                        
                         } ; ?>
                        
 

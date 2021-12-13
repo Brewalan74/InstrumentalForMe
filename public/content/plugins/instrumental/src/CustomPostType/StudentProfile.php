@@ -2,26 +2,26 @@
 
 namespace Instrumental\CustomPostType;
 
-class ProfileTeacher
+class StudentProfile
 {
     public function __construct()
     {
         register_post_type(
-            'profile-teacher', 
-            [ 
-                'label' => 'Profile teacher',
-            
+            'student-profile',
+            [
+                'label' => 'Student profile',
+
                 'show_in_rest' => true,
-            
+
                 'public' => true,
-           
+
                 'hierarchical' => false,
-               
-                'menu_icon' => 'dashicons-buddicons-buddypress-logo',
-           
+
+                'menu_icon' => 'dashicons-universal-access-alt',
+
                 'has_archive' => true,
 
-            
+
                 // NOTICE PLUGIN, fonctionnalités activable pour un cpt :  ‘title’, ‘editor’, ‘comments’, ‘revisions’, ‘trackbacks’, ‘author’, ‘excerpt’, ‘page-attributes’, ‘thumbnail’, ‘custom-fields’, and ‘post-formats’.
                 'supports' => [
                     'title',
@@ -30,10 +30,10 @@ class ProfileTeacher
                     'editor',
                     'author',
                 ],
-                
-                'capability_type' => 'profile-teacher',
+
+                'capability_type' => 'student-profile',
                 'map_meta_cap' => true,
             ]
-        ); 
+        );
     }
 }

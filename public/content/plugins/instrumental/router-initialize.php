@@ -1,11 +1,10 @@
 <?php
-// STEP E9 Router Initialisation du router
 
 // déclaration du router. Nous allons avoir besoin de ce router dans de nombreux fichier. Ce n'est pas propre mais pour des raisons de simplicité de code ; nous déclarons ce router comme étant une variable globale
 
 
 use Instrumental\Controllers\UserController;
-Use Instrumental\Controllers\TestController;
+use Instrumental\Controllers\TestController;
 
 global $router;
 
@@ -23,7 +22,7 @@ $router->setBasePath($baseURI);
 $router->map(
     'GET', // surveille les appels HTTP de type GET
     '/user/dashboard/', // url a surveiller
-    function() {
+    function () {
         $userController = new UserController();
         $userController->home();
     },
@@ -32,17 +31,37 @@ $router->map(
 
 $router->map(
     'GET',
+    '/user/update-profile/',
+    function () {
+        $userController = new UserController();
+        $userController->updateProfile();
+    },
+    'user-update-profile'
+);
+$router->map(
+    'GET',
     // a la fin de l'url, nous devrons passer l'id du déveloper
     // [i:id] veut dire qu'à la fin de l'url il y aura un nombre (i:) qui sera stocké dans une variable nommé "id" 
-   
+
     '/model-tests/teacher-instrument/select-by-teacher-id/[i:id]/',
-    function($id) {
+    function ($id) {
 
         $testController = new TestController();
         $testController->selectByVariableTeacherId($id);
     },
     'model-tests-teacher-instrument-select-by-teacher-id-variable'
 );
+$router->map(
+    'POST',
+    '/user/update-profile/',
+    function () {
+        $userController = new UserController();
+        $userController->saveProfile();
+    },
+    'user-save-profile'
+);
+
+
 /*
 $router->map(
     'GET',
@@ -65,19 +84,8 @@ $router->map(
 );
 
 
-$router->map(
-    'GET,POST',
-    '/user/update-form/',
-    function() {
-        $userController = new UserController();
-        $userController->updateForm();
-    },
-    'user-update-form'
-);
-
 
 // ===========================================================
-// STEP E11 route custom POST ; enregistrement des niveaux de maitrise pour les technologiess
 
 $router->map(
     'POST',
@@ -106,7 +114,6 @@ $router->map(
     'model-tests-create-project-developer-table'
 );
 
-// STEP E11 INSERT route test
 
 $router->map(
     'GET',
@@ -140,6 +147,12 @@ $router->map(
 );
 
 
+$router->map(
+    'GET',
+    // a la fin de l'url, nous devrons passer l'id du déveloper
+    // [i:id] veut dire qu'à la fin de l'url il y aura un nombre (i:) qui sera stocké dans une variable nommé "id" 
+    '/model-tests/developer-technology/select-by-developer-id/[i:id]/',
+    function($id) {
 // STEP E11 ROUTING url avec variable
 
 
@@ -209,11 +222,6 @@ $router->map(
     'user-project-leave'
 );
 
-// STEP E12 bonus gestion de l'espace "customer
-
-
-
-
 $router->map(
     'GET,POST', // surveille les appels HTTP de type GET
     '/customer/project/new/', // url a surveiller
@@ -228,7 +236,7 @@ $router->map(
 $router->map(
     'GET', // surveille les appels HTTP de type GET
     '/teacher/dashboard/', // url a surveiller
-    function() {
+    function () {
         $userController = new UserController();
         $userController->home();
     },

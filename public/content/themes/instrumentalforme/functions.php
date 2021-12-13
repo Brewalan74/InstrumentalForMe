@@ -74,9 +74,101 @@ add_action(
     'instrumentalforme_loadAssets'
 );
 
+//1 Add action : add first name and last name in the default registration form
+add_action('register_form', 'myplugin_register_form');
+function myplugin_register_form()
+{
+
+    $first_name = (!empty($_POST['first_name'])) ? trim($_POST['first_name']) : '';
+    $last_name = (!empty($_POST['last_name'])) ? trim($_POST['last_name']) : '';
+
+?>
+    <p>
+        <label for="first_name"><?php _e('Prénom', 'mydomain') ?><br />
+            <input type="text" name="first_name" id="first_name" class="input" value="<?php echo esc_attr(wp_unslash($first_name)); ?>" size="25" /></label>
+    </p>
+
+    <p>
+        <label for="last_name"><?php _e('Nom', 'mydomain') ?><br />
+            <input type="text" name="last_name" id="last_name" class="input" value="<?php echo esc_attr(wp_unslash($last_name)); ?>" size="25" /></label>
+    </p>
+
+<?php
+}
+
+//2. Add validation. In this case, we make sure first_name and last_name is required.
+add_filter('registration_errors', 'myplugin_registration_errors', 10, 3);
+function myplugin_registration_errors($errors, $sanitized_user_login, $user_email)
+{
+
+    if (empty($_POST['first_name']) || !empty($_POST['first_name']) && trim($_POST['first_name']) == '') {
+        $errors->add('first_name_error', __('<strong>ERROR</strong>: Vous devez ajouter votre prénom.', 'mydomain'));
+    }
+    if (empty($_POST['last_name']) || !empty($_POST['last_name']) && trim($_POST['last_name']) == '') {
+        $errors->add('last_name_error', __('<strong>ERROR</strong>: Vous devez ajouter votre nom.', 'mydomain'));
+    }
+    return $errors;
+}
+
+//3. Finally, save our extra registration user meta.
+add_action('user_register', 'myplugin_user_register');
+function myplugin_user_register($user_id)
+{
+    if (!empty($_POST['first_name'])) {
+        update_user_meta($user_id, 'first_name', trim($_POST['first_name']));
+        update_user_meta($user_id, 'last_name', trim($_POST['last_name']));
+    }
+}
+
+// Disable admin bar for all except admin
+add_action('after_setup_theme', 'remove_admin_bar');
+function remove_admin_bar()
+{
+    if (!current_user_can('administrator') && !is_admin()) {
+        show_admin_bar(false);
+    }
+}
 
 add_filter('get_the_excerpt', function ($excerpt) {
 
     // Get the 250 first characters
     return substr($excerpt, 0, 250) . '...';
 });
+
+
+// function wpdocs_check_user_updated($user_id, $oldUserData)
+// {
+//     $oldUserFirstName = $oldUserData->first_name;
+//     $oldUserLastName = $oldUserData->last_name;
+//     $oldUserEmail = $oldUserData->user_email;
+//     $oldUserPassword = $oldUserData->user_pass;
+//     $oldUserDescription = $oldUserData->description;
+
+//     $user = get_userdata($user_id);
+//     $newUserFirstName = $user->first_name;
+//     $newUserLastName = $user->last_name;
+//     $newUseEmail = $user->user_email;
+//     $newUserPassword = $user->user_pass;
+//     $newUserDescription = $user->description;
+
+//     if ($newUserFirstName !== $oldUserFirstName) {
+//         update_user_meta($user_id, 'first_name', trim($_POST['first_name']));
+//     }
+
+//     if ($newUserLastName !== $oldUserLastName) {
+//         update_user_meta($user_id, 'last_name', trim($_POST['last_name']));
+//     }
+
+//     if ($newUseEmail !== $oldUserEmail) {
+//         update_user_meta($user_id, 'user_email', trim($_POST['user_email']));
+//     }
+
+//     if ($newUserPassword !== $oldUserPassword) {
+//         update_user_meta($user_id, 'user_pass', trim($_POST['user_pass']));
+//     }
+
+//     if ($newUserDescription !== $oldUserDescription) {
+//         update_user_meta($user_id, 'description', trim($_POST['description']));
+//     }
+// }
+// add_action('profile_update', 'wpdocs_check_user_updated', 10, 2);
