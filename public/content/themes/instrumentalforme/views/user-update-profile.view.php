@@ -97,13 +97,14 @@
 
 
 
-            <!-- <label>Vos certificats</label>
+
             <?php
             $user = wp_get_current_user();
             $roles = $user->roles;
 
             if (in_array('teacher', $roles)) {
                 $isTeacher = true;
+                echo "<label>Vos certificats</label>";
                 echo "<div id='certificate' class='containerUpdateRadio'>";
                 $certificates = get_terms('certificate', array('hide_empty' => false));
 
@@ -115,7 +116,7 @@
                 endforeach;
             } else {
             }
-            ?> -->
+            ?>
 
             <button type="button" class="btn btn-success m-2">Update</button>
         </form>
