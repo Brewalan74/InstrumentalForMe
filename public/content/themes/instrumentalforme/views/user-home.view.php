@@ -103,10 +103,10 @@ $userName = $userdata->description;
             '</p>
 
         <div>';
-        global $router;
-        $updateProfileURL = $router->generate('user-update-profile');
-        echo 
-        '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . $updateProfileURL . '">Modifier votre profile</a></p>
+            global $router;
+            $updateProfileURL = $router->generate('user-update-profile');
+            echo
+            '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . $updateProfileURL . '">Modifier votre profile</a></p>
         </div>
 
         <section class="m-5 text-center descriptionPerso">
@@ -149,25 +149,28 @@ $userName = $userdata->description;
 
             echo '</section>
 
-        <p class="text-center">';
-            echo get_avatar(
-                $post->ID,
-                $size = 96,
-                $default = '',
-                $alt = '',
-                $args = null
-            );
-            echo '</p>
-
-        <div>';
-        global $router;
-        $updateProfileURL = $router->generate('user-update-profile');
-        echo '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
-        . $updateProfileURL . '">Modifier votre profile</a></p>
-        </div>
+        <section>
+            <p class="text-center">';
+                echo get_avatar(
+                    $post->ID,
+                    $size = 96,
+                    $default = '',
+                    $alt = '',
+                    $args = null
+                );
+                echo '</p>
+            <div>';
+                global $router;
+                $updateProfileURL = $router->generate('user-update-profile');
+                echo '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
+                    . $updateProfileURL . '">Modifier votre profile</a></p>
+            </div>
+        </section>
 
         <section class="m-5 text-center descriptionPerso">
-            <p>'; echo get_the_content(); '</p>
+            <p>';
+            echo get_the_content();
+            '</p>
         </section>';
 
 
@@ -189,12 +192,15 @@ $userName = $userdata->description;
         </section>';
         }
         ?>
+    </section>
     </div>
-    <!-- Footer-->
-    <?php get_template_part('partials/footer.tpl'); ?>
-
-    <!-- wp footer -->
-    <?php get_footer(); ?>
+    
+    <section>
+        <!-- Footer-->
+        <?php get_template_part('partials/footer.tpl'); ?>
+        <!-- wp footer -->
+        <?php get_footer(); ?>
+    </section>
 </body>
 
 </html>
