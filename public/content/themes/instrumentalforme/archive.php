@@ -26,9 +26,9 @@ use Instrumental\Models\TeacherInstrumentModel;
 
     <!-- Header-->
     <?php get_template_part('partials/header.tpl'); ?>
-<div>
-    <section>
-        <div>
+
+    
+        
             <?php
             $term = get_queried_object();
             $termId = $term->term_id;
@@ -39,8 +39,8 @@ use Instrumental\Models\TeacherInstrumentModel;
             //dump($taxonomyImage['url']);
             //exit;
             ?>
-        </div>
-    </section>
+       
+    
     <!-- Content section 1-->
     
         <section id="scroll">
@@ -83,31 +83,33 @@ use Instrumental\Models\TeacherInstrumentModel;
                             </article>
                             <?php
                              if(!is_user_logged_in()) {
-                                echo ' <a href="' . wp_login_url() . '">Prendre rendez-vous</a>';
+                                echo ' <a href="' . wp_login_url() . '">Prendre rendez-vous>';
                             }
                             else {
                                 $user = wp_get_current_user();
                                 global $router;
                                 // dump($user);
                                 if(in_array('student', $user->roles)) {
-                                    echo ' <a href="<?php '. $router->generate('user-appointment');'?>">Prendre rendez-vous</a>';
+                                    echo ' <a href="<?php '. $router->generate('user-appointment');'?>">Prendre rendez-vous>';
+                                   
+                                    
         
                                 }
                                 // else {
                                 //     $url = $router->generate('404');
                                 // }
-        
+                                exit;
                             } ; ?>
-        
+                           
                         </div>
                     </div>
                 <?php endwhile; ?>
             <?php endif; ?>
         </section>
-    </div>
+   
      
    
-
+ 
     <!-- Footer-->
     <?php get_template_part('partials/footer.tpl'); ?>
 
