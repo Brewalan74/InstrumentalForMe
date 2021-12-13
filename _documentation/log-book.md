@@ -140,3 +140,6 @@ Il nous reste à faire :
 - Ajout de taxo ds update profile
 - Afficher les taxo instruments dans les profils des profs sur la page instrument
 - rendre le lien 'prise de rendez-vous' clickable si connecter en tant que student
+- CustomTable Lesson!!
+- suppression de compte
+- 

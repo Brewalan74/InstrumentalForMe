@@ -9,7 +9,7 @@ use Instrumental\CustomTaxonomy\Instrument;
 use Instrumental\CustomTaxonomy\Certificate;
 use Instrumental\CustomTaxonomy\MusicStyle;
 
-use Instrumental\Models\TeacherInstrumentModel;
+use Instrumental\Models\TeacherModel;
 
 class Plugin
 {
@@ -69,7 +69,7 @@ class Plugin
 
     /*===================MODEL===================*/
 
-    protected $teacherInstrumentModel;
+    protected $teacherModel;
 
     /*============================================
        ============================================*/
@@ -97,7 +97,7 @@ class Plugin
         $this->wordpressRouter = new WordpressRouter();
 
         /*===================MODEL===================*/
-        $this->teacherInstrumentModel = new TeacherInstrumentModel();
+        $this->teacherModel = new TeacherModel();
     }
 
     public function activate()
@@ -113,7 +113,7 @@ class Plugin
         $this->roleManager->createTeacherRole();
         $this->roleManager->createStudentRole();
 
-        $this->teacherInstrumentModel->createTable();
+        $this->teacherModel->createTable();
     }
 
     public function deactivate()

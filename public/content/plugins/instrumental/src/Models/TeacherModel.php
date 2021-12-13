@@ -1,13 +1,13 @@
 <?php
 namespace Instrumental\Models;
 
-class TeacherInstrumentModel extends CoreModel
+class TeacherModel extends CoreModel
 {
 
     public function getTableName()
     {
         $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'teacher_instrument';
+        $tableName = $tablePrefix.'teacher_model';
         return $tableName;
     }
     public function createTable()
@@ -18,6 +18,8 @@ class TeacherInstrumentModel extends CoreModel
             CREATE TABLE `' . $tableName . '` (
                 `teacher_id` int(8) unsigned NOT NULL,
                 `instrument_id` int(8) unsigned NOT NULL,
+                `certificate_id` int(8) unsigned NOT NULL,
+                `musicStyle_id` int(8) unsigned NOT NULL,
                 `created_at` datetime NOT NULL,
                 `updated_at` datetime NULL
             );
@@ -27,7 +29,11 @@ class TeacherInstrumentModel extends CoreModel
 
         dbDelta($sql);
 
-        $primaryKeySQL = 'ALTER TABLE `' . $tableName . '` ADD PRIMARY KEY `teacher_id_instrument_id` (`teacher_id`, `instrument_id`)';
+        $primaryKeySQL = 'ALTER TABLE `' . $tableName . '` ADD PRIMARY KEY 
+        `teacher_id_instrument_id`,
+        `teacher_id_certificate_id`,
+        `teacher_id_musicStyle_id`,
+         (`teacher_id`, `instrument_id`, `certificate_id`, `musicStyle_id`)';
         $this->wpdb->query($primaryKeySQL);
     }
 
@@ -41,11 +47,13 @@ class TeacherInstrumentModel extends CoreModel
 
 
     
-    public function insert($teacherId, $instrumentId)
+    public function insert($teacherId, $instrumentId, $certificateId, $musicStyle)
     {
         $data = [
             'teacher_id' => $teacherId,
             'instrument_id' => $instrumentId,
+            'certificate_id' => $certificateId,
+            'musicStyle_id' => $musicStyle,
             'created_at' => date('Y-m-d H:i:s')
         ];
 
@@ -79,12 +87,13 @@ class TeacherInstrumentModel extends CoreModel
 
         return $rows;
     }
-
+    /*=========================================================
+                    Instruments & Profs
+    *=========================================================*/
     // permet de récupérer pour un instrument tous les teachers qui lui sont associés
-    public function getByInstrumentId($instrumentId)
+    public function getTeacherByInstrumentId($instrumentId)
     {
-        $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'instrument_teacher';
+        $tableName = $this->getTableName();
 
         $sql = "
             SELECT * FROM `" . $tableName . "`
@@ -106,8 +115,7 @@ class TeacherInstrumentModel extends CoreModel
     
     public function getInstrumentsByTeacherId($teacherId)
     {
-        $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'instrument_teacher';
+        $tableName = $this->getTableName();
         $sql = "
             SELECT * FROM `" . $this->getTableName() . "`
             WHERE
@@ -126,8 +134,7 @@ class TeacherInstrumentModel extends CoreModel
     }
     public function getByTeacherIdAndInstrumentId($teacherId, $instrumentId)
     {
-        $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'teacher_instrument';
+        $tableName = $this->getTableName();
 
         $sql = "
             SELECT * FROM `" . $tableName . "`
@@ -151,8 +158,7 @@ class TeacherInstrumentModel extends CoreModel
 
     public function deleteByTeacherId($teacherId)
     {
-        $tablePrefix = $this->wpdb->prefix;
-        $tableName = $tablePrefix.'teacher_instrument';
+        $tableName = $this->getTableName();
 
         $conditions = [
             'teacher_id' => $teacherId, 
@@ -164,5 +170,58 @@ class TeacherInstrumentModel extends CoreModel
         );
     }
     
+    /*=========================================================
+                    Certificats & Profs
+    *=========================================================*/
+
+    public function getByTeacherIdAndCertificateId($teacherId, $certificateId)
+    {
+        $tableName = $this->getTableName();
+
+        $sql = "
+            SELECT * FROM `" . $tableName . "`
+            WHERE
+                teacher_id = %d
+                AND certificate_id = %d
+        ";
+
+        $preparedStatement = $this->wpdb->prepare(
+            $sql,
+            [
+                $teacherId,
+                $certificateId
+            ]
+        );
+        $rows = $this->wpdb->get_results($preparedStatement);
+
+        return $rows;
+    }
+
+     /*=========================================================
+                    MusicStyle & Profs
+    *=========================================================*/
+
+    public function getByTeacherIdAndMusicStyleId($teacherId, $musicStyleId)
+    {
+        $tableName = $this->getTableName();
+
+        $sql = "
+            SELECT * FROM `" . $tableName . "`
+            WHERE
+                teacher_id = %d
+                AND musicStyle_id = %d
+        ";
+
+        $preparedStatement = $this->wpdb->prepare(
+            $sql,
+            [
+                $teacherId,
+                $musicStyleId
+            ]
+        );
+        $rows = $this->wpdb->get_results($preparedStatement);
+
+        return $rows;
+    }
 }
 
