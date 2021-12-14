@@ -43,57 +43,48 @@ use Instrumental\Models\TeacherInstrumentModel;
 
     <!-- Content section 1-->
 
-    <section id="scroll">
-        <div class="container px-5">
-            <div class="row gx-5 align-items-center">
-                <div class="col-lg-6 order-lg-2">
-                    <div class="p-5"><a href="#"><img class="img-fluid rounded-circle" src="<?= $taxonomyImage['url']; ?>" alt="..." /></a></div>
-                </div>
-                <div class="col-lg-6 order-lg-1">
-                    <div class="p-5">
-                        <h2 class="display-4"><?= $term->name; ?></h2>
-                        <p><?= $term->description; ?></p>
+    <div class="container">
+        <section id="scroll">
+            <div class="container px-5">
+                <div class="row gx-5 align-items-center">
+                    <div class="col-lg-6 order-lg-2">
+                        <div class="p-5"><a href="#"><img class="img-fluid rounded-circle" src="<?= $taxonomyImage['url']; ?>" alt="..." /></a></div>
+                    </div>
+                    <div class="col-lg-6 order-lg-1">
+                        <div class="p-5">
+                            <h2 class="display-4"><?= $term->name; ?></h2>
+                            <p><?= $term->description; ?></p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section>
-        <?php if (have_posts()) : ?>
-            <?php while (have_posts()) : the_post(); ?>
-                <div class="profileH2">
-                    <div class="profileDescription">
-                        <article class="projet">
-                            <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
-                            <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
-                            <h2>
-                                <a href="<?php the_permalink(); ?>">
-                                    <?php the_title(); ?>
-                                </a>
-                            </h2>
-                            <div>
-                                <p><?php the_terms($post->ID, 'instrument'); ?></p>
-
-                            </div>
-
-                            <div>
-                                <?php the_content(); ?>
-                            </div>
-                        </article>
-
-                        <!-- <?php
-                                global $router;
-                                $linkTeacher = is_user_logged_in() ? $router->generate('teacher-appointment') : wp_login_url();
-                                echo
-                                '<p><a href="' . $linkTeacher . '">Prendre rendez-vous</a></p>'
-                                ?> -->
-
+        </section>
+        <section>
+            <?php if (have_posts()) : ?>
+                <?php while (have_posts()) : the_post(); ?>
+                    <div class="profileH2">
+                        <div class="profileDescription">
+                            <article class="projet">
+                                <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
+                                <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
+                                <h2>
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h2>
+                                <div>
+                                    <p><?php the_terms($post->ID, 'instrument'); ?></p>
+                                </div>
+                                <div>
+                                    <?php the_content(); ?>
+                                </div>
+                            </article>
+                        </div>
                     </div>
-                </div>
-            <?php endwhile; ?>
-        <?php endif; ?>
-    </section>
+                <?php endwhile; ?>
+            <?php endif; ?>
+        </section>
+    </div>
 
 
 
