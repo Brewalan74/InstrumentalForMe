@@ -91,6 +91,8 @@ class UserRegistration
             'post_title'  => $user->data->display_name . "'s profile",
             'post_type'   => $postType,
             'tax_input' => ['certificate' => $certificates],
+            
+         
         ]);
     }
 
