@@ -40,51 +40,60 @@
             <div class="containerUpdate">
                 <p>
                     <label for="username" class='labelForm'>Username</label>
-                    <input type="text" name="name" id="username" class="input" value="<?= $userdata->user_nicename ?>" size="20" autocapitalize="off" readonly>
+                    <input type="text" name="name" id="username" class="input" value="<?= $userdata->user_nicename ?>"
+                        size="20" autocapitalize="off" readonly>
                 </p>
                 <?php if ($userdata->first_name) : ?>
-                    <p>
-                        <label for="user_firstname" class='labelForm'>Votre Prénom</label>
-                        <input type="text" name="user_firstname" id="user_firstname" class="input" value="<?= $userdata->first_name ?>" size="20" autocapitalize="off">
-                    </p>
+                <p>
+                    <label for="user_firstname" class='labelForm'>Votre Prénom</label>
+                    <input type="text" name="user_firstname" id="user_firstname" class="input"
+                        value="<?= $userdata->first_name ?>" size="20" autocapitalize="off">
+                </p>
                 <?php else : ?>
-                    <p>
-                        <label for="user_firstname" class='labelForm'>Votre Prénom</label>
-                        <input type="text" name="user_firstname" id="user_firstname" class="input" value="" size="20" autocapitalize="off">
-                    </p>
+                <p>
+                    <label for="user_firstname" class='labelForm'>Votre Prénom</label>
+                    <input type="text" name="user_firstname" id="user_firstname" class="input" value="" size="20"
+                        autocapitalize="off">
+                </p>
                 <?php endif; ?>
                 <?php if ($userdata->last_name) : ?>
-                    <p>
-                        <label for="user_firstname" class='labelForm'>Votre Nom</label>
-                        <input type="text" name="user_lastname" id="user_lastname" class="input" value="<?= $userdata->last_name ?>" size="20" autocapitalize="off">
-                    </p>
+                <p>
+                    <label for="user_firstname" class='labelForm'>Votre Nom</label>
+                    <input type="text" name="user_lastname" id="user_lastname" class="input"
+                        value="<?= $userdata->last_name ?>" size="20" autocapitalize="off">
+                </p>
                 <?php else : ?>
-                    <p>
-                        <label for="user_firstname" class='labelForm'>Votre Nom</label>
-                        <input type="text" name="user_lastname" id="user_lastname" class="input" value="" size="20" autocapitalize="off">
-                    </p>
+                <p>
+                    <label for="user_firstname" class='labelForm'>Votre Nom</label>
+                    <input type="text" name="user_lastname" id="user_lastname" class="input" value="" size="20"
+                        autocapitalize="off">
+                </p>
                 <?php endif; ?>
             </div>
 
             <div class="containerUpdate">
                 <p>
                     <label for="user_email" class='labelForm'>Votre email</label>
-                    <input type="email" name="user_email" id="user_email" class="input" value="<?= $userdata->data->user_email ?>" size="20" autocapitalize="off">
+                    <input type="email" name="user_email" id="user_email" class="input"
+                        value="<?= $userdata->data->user_email ?>" size="20" autocapitalize="off">
                 </p>
                 <p>
                     <label for="user_password" class='labelForm'>Nouveau mot de passe</label>
-                    <input type="password" name="user_password" id="user_password" class="input" value="" size="20" autocapitalize="off">
+                    <input type="password" name="user_password" id="user_password" class="input" value="" size="20"
+                        autocapitalize="off">
                 </p>
                 <p>
                     <label for="user_password_confirmation" class='labelForm'>Confirmer nouveau mot de passe</label>
-                    <input type="password" name="user_password_confirmation" id="user_password_confirmation" class="input" value="" size="20" autocapitalize="off">
+                    <input type="password" name="user_password_confirmation" id="user_password_confirmation"
+                        class="input" value="" size="20" autocapitalize="off">
                 </p>
             </div>
 
             <div class="containerUpdate">
                 <p>
                     <label for="user_description" class='labelForm'>Votre description</label><br>
-                    <textarea name="user_description" id="user_description" class="textareaDescription" size="250" autocapitalize="off"><?= $userdata->description ?></textarea>
+                    <textarea name="user_description" id="user_description" class="textareaDescription" size="250"
+                        autocapitalize="off"><?= $userdata->description ?></textarea>
                 </p>
             </div>
 
@@ -95,17 +104,16 @@
                 <label for="student">Student</label>
             </div> -->
 
-
-
-
+            <div class="containerUpdate">
             <?php
+            //CERTIFICAT TEACHER
             $user = wp_get_current_user();
             $roles = $user->roles;
 
             if (in_array('teacher', $roles)) {
                 $isTeacher = true;
-                echo "<label>Vos certificats</label>";
                 echo "<div id='certificate' class='containerUpdateRadio'>";
+                echo "<label class='labelForm'>Vos certificats</label><br>";
                 $certificates = get_terms('certificate', array('hide_empty' => false));
 
                 foreach ($certificates as $index => $certificate) :
@@ -114,10 +122,46 @@
                     echo $certificate->name;
                     echo "</label><br>";
                 endforeach;
+                echo '</div>';
             } else {
             }
-            ?>
+ 
 
+        // INSTRUMENTS    
+        echo "<div id='instrument' class='containerUpdateRadio'>";
+        echo "<br><label class='labelForm'>Vos instruments</label><br>";
+        $instruments = get_terms('instrument', array('hide_empty' => false));
+        //dump($instruments);
+
+        foreach ($instruments as $index => $instrument) :
+            echo "<input type='checkbox' id='instru' $index '' name='$instrument->name;' value='$instrument->term_id'>";
+            echo "<label for='instru' $index>";
+            echo $instrument->name;
+            echo "</label><br>";
+        endforeach;
+        echo '</div>';
+
+
+        //MUSIC STYLE
+        echo "<div id='musicStyle' class='containerUpdateRadio'>";
+        echo "<br><label class='labelForm'>Vos styles de musique</label><br>";
+        $musicStyles = get_terms('music-style', array('hide_empty' => false));
+        //dump($musicStyle);
+
+        foreach ($musicStyles as $index => $musicStyle) :
+            echo "<input type='checkbox' id='music' $index '' name='$musicStyle->name;' value='$musicStyle->term_id'>";
+            echo "<label for='music' $index>";
+            echo $musicStyle->name;
+            echo "</label><br>";
+        endforeach;
+        echo '</div>';
+        ?>
+            </div>
+
+
+
+
+            <br>
             <button type="button" class="btn btn-success m-2">Update</button>
         </form>
 
@@ -167,9 +211,10 @@
         function alertDeleteAccount() {
 
             //window.confirm("Etes-vous sur de vouloir supprimer votre compte ?");
-            
-            if (confirm ("Etes-vous sur de vouloir supprimer votre compte ?" )) {
-                document.write('<h1 class="alertDeleteAccount" role="alert">Suppression de votre compte effectuée</h1>');
+
+            if (confirm("Etes-vous sur de vouloir supprimer votre compte ?")) {
+                document.write(
+                '<h1 class="alertDeleteAccount" role="alert">Suppression de votre compte effectuée</h1>');
                 console.log('suppression de votre compte');
             } else {
 
