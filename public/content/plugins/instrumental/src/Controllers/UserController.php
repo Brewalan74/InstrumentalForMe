@@ -106,7 +106,11 @@ class UserController extends CoreController
     }
 
   
-    
+   
+
+        
+
+        
 
 
     // public function teachToInstrument($instrumentId)

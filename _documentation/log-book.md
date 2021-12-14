@@ -158,11 +158,12 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 
  - A faire:
   
-   - récuperer les infos prof quand on est sur la  page appointment
+   - récuperer les infos prof quand on est sur la  page appointment en cours mais difficile de recup les infos
    - model student a faire
    - route pour supp de compte
    - bouton update dans modif profil
    - dynamiser les rdv + liste cours + liste eleves/profs
+   - Chager les certificats a partir du formulaire (pour le moment ne fonctionne pas)
 
 - Fait:
  
