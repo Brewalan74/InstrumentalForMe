@@ -2,7 +2,7 @@
 
 namespace Instrumental\Controllers;
 
-use Instrumental\Models\TeacherInstrumentModel;
+use Instrumental\Models\TeacherModel;
 
 
 class TestController extends CoreController
@@ -12,8 +12,8 @@ class TestController extends CoreController
         $user = wp_get_current_user();
         $userId = $user->ID;
 
-        $teacherInstrumentModel = new TeacherInstrumentModel();
-        $rows = $teacherInstrumentModel->getByTeacherId($userId);
+        $teacherModel = new TeacherModel();
+        $rows = $teacherModel->getByTeacherId($userId);
 
         echo '<div style="border: solid 2px #F00">';
         echo '<div style="; background-color:#CCC">@' . __FILE__ . ' : ' . __LINE__ . '</div>';
@@ -25,8 +25,8 @@ class TestController extends CoreController
 
     public function selectByVariableTeacherId($teacherId)
     {
-        $teacherInstrumentModel = new TeacherInstrumentModel();
-        $rows = $teacherInstrumentModel->getByTeacherId(
+        $teacherModel = new TeacherModel();
+        $rows = $teacherModel->getByTeacherId(
             $teacherId
         );
 
