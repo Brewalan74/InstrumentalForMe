@@ -70,6 +70,7 @@ use Instrumental\Models\TeacherInstrumentModel;
                             <h2>
                                 <a href="<?php the_permalink(); ?>">
                                     <?php the_title(); ?>
+                                    <?php dump(__FILE__ . ':' . __LINE__, the_title()); ?>
                                 </a>
                             </h2>
                             <div>
@@ -84,7 +85,7 @@ use Instrumental\Models\TeacherInstrumentModel;
 
                         <?php
                         global $router;
-                        $linkTeacher = is_user_logged_in() ? $router->generate('user-appointment') : wp_login_url();
+                        $linkTeacher = is_user_logged_in() ? $router->generate('teacherId-appointment') : wp_login_url();
                         echo
                         '<p><a href="' . $linkTeacher . '">Prendre rendez-vous</a></p>'
                         ?>
