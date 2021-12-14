@@ -192,11 +192,14 @@ h2 a:hover {
     color: #660000;
 }
 
-
 .lockedInput {
     background-color: lightgray;
 }
 
 .labelForm {
     font-weight: bolder;
+}
+
+.alertDeleteAccount {
+    color : red;
 }

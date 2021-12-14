@@ -137,7 +137,7 @@
         ?>
         </div>
 
-        <button type='button' class='btn btn-danger m-2'>Supprimer votre compte</button>
+        <button type='button' class='btn btn-danger m-2' onclick="alertDeleteAccount()">Supprimer votre compte</button>
 
     </section>
 
@@ -161,6 +161,18 @@
                 div.style.display = "none";
             }
 
+        }
+
+        function alertDeleteAccount() {
+
+            //window.confirm("Etes-vous sur de vouloir supprimer votre compte ?");
+            
+            if (confirm ("Etes-vous sur de vouloir supprimer votre compte ?" )) {
+                document.write('<h1 class="alertDeleteAccount" role="alert">Suppression de votre compte effectuée</h1>');
+                console.log('suppression de votre compte');
+            } else {
+
+            }
         }
     </script>
 
