@@ -1,8 +1,7 @@
 <?php
 // echo __FILE__ . ':' . __LINE__;
 // exit();
-
-$appointment = the_post();
+$appointment = get_previous_posts_link();
 dump(__FILE__ . ':' . __LINE__, $appointment);
 
 ?>
