@@ -196,6 +196,10 @@ h2 a:hover {
     background-color: lightgray;
 }
 
+.center {
+    text-align: center;
+}
+
 .labelForm {
     font-weight: bolder;
 }

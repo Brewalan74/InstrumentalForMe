@@ -2,7 +2,7 @@
 
 namespace Instrumental\Controllers;
 
-use Instrumental\Models\TeacherInstrumentModel;
+use Instrumental\Models\TeacherModel;
 
 use WP_Query;
 
@@ -70,14 +70,14 @@ class UserController extends CoreController
                     wp_update_user($args);
                 }
 
-                // TODO vérification du mot de passe
+                
                 $password = trim(filter_input(INPUT_POST, 'user_password'));
                 $passwordConfirmation = trim(filter_input(INPUT_POST, 'user_password_confirmation'));
                 if ($password && $password == $passwordConfirmation) {
                     // mise à jour du mot de passe
                     wp_set_password($password, $user->ID);
                 }
-                // TODO redirection vers une page après mise à jour des informations
+               
 
                 global $router;
                 header('Location: ' . $router->generate('user-home'));
@@ -105,42 +105,30 @@ class UserController extends CoreController
         }
     }
 
+  
+    
+
+
+    // public function teachToInstrument($instrumentId)
+    // {
+    //     $model = new TeacherModel();
+    //     $user = wp_get_current_user();
+    //     $userId = $user->ID;
+
+    //     $model->insert(
+    //         $instrumentId,
+    //         $userId
+
+    //     );
+
+    //     $url = get_post_type_archive_link('instrument');
+    //     header('Location: ' . $url);
+    // }
     /*
 
-   
-/*
-    public function instruments()
-    {
-        // récupération de l'utilisateur courant
-        $currentUser = wp_get_current_user();
-        $userId = $currentUser->ID;
-
-        // nous devons récupérer toutes les lignes correspondant au niveau de maitrise de l'utilisateur courant
-        $developerTechnologyModel = new DeveloperTechnologyModel();
-        $technologiesLevels = $developerTechnologyModel->getByDeveloperId($userId);
-
-        $this->show('views/user-skills.view', [
-            'technologiesLevels' => $technologiesLevels
-        ]);
-    }
 
 
-*/
-    public function teachToInstrument($instrumentId)
-    {
-        $model = new TeacherInstrumentModel();
-        $user = wp_get_current_user();
-        $userId = $user->ID;
 
-        $model->insert(
-            $instrumentId,
-            $userId
-        );
-
-        $url = get_post_type_archive_link('instrument');
-        header('Location: ' . $url);
-    }
-    /*
     public function confirmDeleteAccount()
     {
 

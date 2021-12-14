@@ -4,6 +4,7 @@
 
 
 use Instrumental\Controllers\UserController;
+use Instrumental\Controllers\AppointmentController;
 use Instrumental\Controllers\TestController;
 
 global $router;
@@ -19,6 +20,7 @@ $router->setBasePath($baseURI);
 
 // configuration des routes
 
+// === HOME===
 $router->map(
     'GET', // surveille les appels HTTP de type GET
     '/user/dashboard/', // url a surveiller
@@ -29,6 +31,7 @@ $router->map(
     'user-home'
 );
 
+// === UPDATE ===
 $router->map(
     'GET',
     '/user/update-profile/',
@@ -38,6 +41,29 @@ $router->map(
     },
     'user-update-profile'
 );
+
+$router->map(
+    'POST',
+    '/user/update-profile/',
+    function () {
+        $userController = new UserController();
+        $userController->saveProfile();
+    },
+    'user-save-profile'
+);
+
+// === APPOINTMENT ===
+$router->map(
+    'GET',
+    '/user/appointment/',
+    function () {
+        $appointmentController = new AppointmentController();
+        $appointmentController->appointment();
+    },
+    'user-appointment'
+);
+
+// === TEST ===
 $router->map(
     'GET',
     // a la fin de l'url, nous devrons passer l'id du déveloper
@@ -51,15 +77,7 @@ $router->map(
     },
     'model-tests-teacher-instrument-select-by-teacher-id-variable'
 );
-$router->map(
-    'POST',
-    '/user/update-profile/',
-    function () {
-        $userController = new UserController();
-        $userController->saveProfile();
-    },
-    'user-save-profile'
-);
+
 
 
 /*
