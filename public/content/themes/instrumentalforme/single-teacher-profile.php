@@ -99,7 +99,8 @@ the_post();
             $teacherCertificate = get_the_terms(
                 $post->ID,
                 'certificate'
-            );dump($teacherCertificate) ;?>
+            );
+            dump($teacherCertificate); ?>
 
             <ul>
                 <?php foreach ($teacherCertificate as $key => $value) : ?>
