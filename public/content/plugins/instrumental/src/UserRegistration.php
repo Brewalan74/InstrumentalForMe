@@ -75,8 +75,8 @@ class UserRegistration
         $role = filter_input(INPUT_POST, 'user_type');
         $user = new WP_User($newUserId);
         $certificates = isset($_POST['certificates']) ? $_POST['certificates'] : [];
-        // dump($_POST);
-        // dump($certificates);
+         dump($_POST);
+         dump($certificates);
         // die;
 
         if ($role === 'teacher') {
@@ -90,10 +90,12 @@ class UserRegistration
             'post_status' => 'publish',
             'post_title'  => $user->data->display_name . "'s profile",
             'post_type'   => $postType,
-            'tax_input' => ['certificate' => $certificates],
+            // 'tax_input' => ['certificate' => $certificates],
+            'tax_input' => ['certificate' => [36, 35,23]]
             
          
         ]);
+        // wp_set_object_terms ( $newUserId, $certificates, 'certificate' , true ) ; 
     }
 
     public function setUserPassword($newUserId)

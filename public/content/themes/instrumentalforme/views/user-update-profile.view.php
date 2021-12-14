@@ -87,13 +87,13 @@
                     <textarea name="user_description" id="user_description" class="textareaDescription" size="250" autocapitalize="off"><?= $userdata->description ?></textarea>
                 </p>
             </div>
-
-            <!-- <div class="containerUpdateRadio">
+ 
+             <!-- <div class="containerUpdateRadio">
                 <input type="radio" id="teacher" name="user_type" value="teacher" onclick="viewCertificate()">
                 <label for="teacher">Teacher</label>
                 <input type="radio" id="student" name="user_type" value="student" onclick="viewCertificate()">
                 <label for="student">Student</label>
-            </div> -->
+            </div>  -->
 
 
 
@@ -114,11 +114,13 @@
                     echo $certificate->name;
                     echo "</label><br>";
                 endforeach;
-            } else {
-            }
+                } else {
+             }
             ?>
-
+               
+   
             <button type="button" class="btn btn-success m-2">Update</button>
+           
         </form>
 
 
