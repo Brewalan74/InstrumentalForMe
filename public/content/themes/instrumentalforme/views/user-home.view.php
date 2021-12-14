@@ -101,7 +101,6 @@ $userdata = get_userdata($current_user->ID);
 
             // affichage de l'avatar
             $avatar = get_field('avatar', 'user_' . $user->ID);
-            dump(__FILE__ . ':' . __LINE__, $avatar);
 
             if ($avatar) {
                 echo '<img src="' . $avatar['url'] . '"/>';
