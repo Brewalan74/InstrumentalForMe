@@ -10,7 +10,6 @@ use WP_Query;
 
 class UserController extends CoreController
 {
-
     public function getProfile()
     {
         $query = new WP_Query([
@@ -32,7 +31,6 @@ class UserController extends CoreController
 
     public function saveProfile()
     {
-
         if (!$this->isConnected()) {
             header("HTTP/1.1 403 Forbidden"); // équivalent à http_response_code(403);
             header("EasterEgg: Hello wonderland");
@@ -49,16 +47,15 @@ class UserController extends CoreController
 
                 // en fonction du roles du user, définition de post à mettre à jour
                 $user = wp_get_current_user();
-                if(in_array('teacher', $user->roles)) {
+                if (in_array('teacher', $user->roles)) {
                     $postType = 'teacher-profile';
-                }
-                else {
+                } else {
                     $postType = 'student-profile';
                 }
 
 
-                $userId= $user->ID;
-               
+                $userId = $user->ID;
+
 
                 // mise à jour des champs custom
                 $firstName = filter_input(INPUT_POST, 'user_firstname');
@@ -87,12 +84,12 @@ class UserController extends CoreController
                 }
 
                 // =============================================================================
-               
+
                 // gestion des taxonomies
 
-                $certificates = filter_input(INPUT_POST, 'certificate', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
-                $instruments = filter_input(INPUT_POST, 'instrument', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
-                $musicStyles = filter_input(INPUT_POST, 'musicStyle', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
+                $certificates = filter_input(INPUT_POST, 'certificate', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+                $instruments = filter_input(INPUT_POST, 'instrument', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
+                $musicStyles = filter_input(INPUT_POST, 'musicStyle', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
 
 
 
@@ -103,14 +100,14 @@ class UserController extends CoreController
                 ]);
 
 
-                
-                if(!empty($query->posts)) {
+
+                if (!empty($query->posts)) {
                     $profile = $query->posts[0];
                     wp_set_post_terms($profile->ID, $certificates, 'certificate');
                     wp_set_post_terms($profile->ID, $instruments, 'instrument');
                     wp_set_post_terms($profile->ID, $musicStyles, 'music-style');
                     //wp_set_post_terms($profile->ID, $description, 'description');
-                    
+
                     // mise à jour de la descroption
                     $description = filter_input(INPUT_POST, 'user_description');
                     // DOC https://developer.wordpress.org/reference/functions/wp_update_post/
@@ -128,8 +125,6 @@ class UserController extends CoreController
 
                 global $router;
                 header('Location: ' . $router->generate('user-home'));
-               
-
             }
         }
     }
@@ -139,13 +134,11 @@ class UserController extends CoreController
         acf_form_head();
         // si l'utilisateur n'est pas connecté, nous affichons une page d'erreur avec l'entête http "forbidden"
         if (!$this->isConnected()) {
-
             header("HTTP/1.1 403 Forbidden"); // équivalent à http_response_code(403);
             header("EasterEgg: Hello wonderland");
 
             $this->show('views/user-forbidden');
         } else {
-
             $profile = $this->getProfile();
 
             $this->show('views/user-update-profile.view', [
@@ -154,15 +147,14 @@ class UserController extends CoreController
         }
     }
 
-    public function deleteAccount() 
-
+    public function deleteAccount()
     {
         $this->show('views/user-delete-account.view');
-        require_once( ABSPATH.'wp-admin/includes/user.php' );
+        require_once(ABSPATH . 'wp-admin/includes/user.php');
         $current_user = wp_get_current_user();
         wp_delete_user($current_user->ID);
     }
-    
+
     public function takeLesson()
     {
         $model = new LessonModel();
@@ -183,7 +175,7 @@ class UserController extends CoreController
         global $router;
         // TODO redirection
     }
-
+}
 
 
     // public function teachToInstrument($instrumentId)
@@ -201,24 +193,14 @@ class UserController extends CoreController
     //     $url = get_post_type_archive_link('instrument');
     //     header('Location: ' . $url);
     // }
-    /*
 
 
 
 
-    public function confirmDeleteAccount()
-    {
-        $this->show('views/user-delete-account.view');
-        require_once( ABSPATH.'wp-admin/includes/user.php' );
-        $current_user = wp_get_current_user();
-        wp_delete_user($current_user->ID);
-    }
-
-  
-   
-
-        
-
-        
-
-}
+    // public function confirmDeleteAccount()
+    // {
+    //     $this->show('views/user-delete-account.view');
+    //     require_once( ABSPATH.'wp-admin/includes/user.php' );
+    //     $current_user = wp_get_current_user();
+    //     wp_delete_user($current_user->ID);
+    // }
