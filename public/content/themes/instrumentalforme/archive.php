@@ -65,11 +65,12 @@ use Instrumental\Models\TeacherInstrumentModel;
                     <div class="profileH2">
                         <div class="profileDescription">
                             <article class="projet">
+                                
                                 <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
                                 <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
                                 <h2>
                                     <a href="<?php the_permalink(); ?>">
-                                        <?php the_title(); ?>
+                                        <?php the_author(); ?>
                                     </a>
                                 </h2>
                                 <div>

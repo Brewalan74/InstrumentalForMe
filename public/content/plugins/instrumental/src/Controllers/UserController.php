@@ -45,8 +45,18 @@ class UserController extends CoreController
                 // TODO il devrait y avoir un controle de token csrf (en wp chercher le terme "nonce")
                 // https://codex.wordpress.org/fr:Les_Nonces_WordPress
 
+                // en fonction du roles du user, définition de post à mettre à jour
                 $user = wp_get_current_user();
+                if(in_array('teacher', $user->roles)) {
+                    $postType = 'teacher-profile';
+                }
+                else {
+                    $postType = 'student-profile';
+                }
 
+
+                $userId= $user->ID;
+               
 
                 // mise à jour des champs custom
                 $firstName = filter_input(INPUT_POST, 'user_firstname');
@@ -54,10 +64,6 @@ class UserController extends CoreController
 
                 $lastName = filter_input(INPUT_POST, 'user_lastname');
                 update_user_meta($user->ID, 'last_name', $lastName);
-
-
-                $description = filter_input(INPUT_POST, 'user_description');
-                update_user_meta($user->ID, 'description', $description);
 
                 // mise à jour de l'email
                 $email = trim(filter_input(INPUT_POST, 'user_email'));
@@ -77,7 +83,10 @@ class UserController extends CoreController
                     // mise à jour du mot de passe
                     wp_set_password($password, $user->ID);
                 }
+
+                // =============================================================================
                
+                // gestion des taxonomies
 
                 $certificates = filter_input(INPUT_POST, 'certificate', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
                 $instruments = filter_input(INPUT_POST, 'instrument', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
@@ -88,32 +97,37 @@ class UserController extends CoreController
                 $userId = $user->ID;
                 $query = new WP_Query([
                     'author' => $userId,
-                    'post_type' => 'teacher-profile'
+                    'post_type' => $postType
                 ]);
+
+
+                
                 if(!empty($query->posts)) {
                     $profile = $query->posts[0];
                     wp_set_post_terms($profile->ID, $certificates, 'certificate');
                     wp_set_post_terms($profile->ID, $instruments, 'instrument');
                     wp_set_post_terms($profile->ID, $musicStyles, 'music-style');
+                    //wp_set_post_terms($profile->ID, $description, 'description');
+                    
+                    // mise à jour de la descroption
+                    $description = filter_input(INPUT_POST, 'user_description');
+                    // DOC https://developer.wordpress.org/reference/functions/wp_update_post/
+                    // DOC https://developer.wordpress.org/reference/functions/wp_insert_post/
+
+
+
+                    wp_update_post([
+                        'ID' => $profile->ID,
+                        'post_content' => $description,
+                        'post_type' => $postType
+                    ]);
+                    // update_user_meta($user->ID, 'description', $description, );
                 }
 
-                /*
-                $teacherModel = new TeacherModel();
-                $teacherModel->deleteByTeacherId($userId);
-
-                    foreach($taxonomies as [$certificateId,$instrumentId,$musicStyle])
-                    {
-                        $teacherModel->insert(
-                            $userId,
-                            $certificateId,
-                            $instrumentId,
-                            $musicStyle
-
-                        );
-                    }
-                */
                 global $router;
                 header('Location: ' . $router->generate('user-home'));
+               
+
             }
         }
     }
@@ -153,105 +167,4 @@ class UserController extends CoreController
 
         
 
-
-    // public function teachToInstrument($instrumentId)
-    // {
-    //     $model = new TeacherModel();
-    //     $user = wp_get_current_user();
-    //     $userId = $user->ID;
-
-    //     $model->insert(
-    //         $instrumentId,
-    //         $userId
-
-    //     );
-
-    //     $url = get_post_type_archive_link('instrument');
-    //     header('Location: ' . $url);
-    // }
-    /*
-
-
-
-
-    public function confirmDeleteAccount()
-    {
-
-        // si l'utilisateur n'est pas connecté, nous affichons une page d'erreur avec l'entête http "forbidden"
-        if(!$this->isConnected()) {
-
-
-            header("EasterEgg: Hello wonderland");
-
-            header("HTTP/1.1 403 Forbidden");
-            $this->show('views/user-forbidden');
-        }
-        else {
-            $this->show('views/user-confirm-delete-account.view');
-        }
-    }
-
-
-
-
-    public function updateSkills()
-    {
-
-        // Récupération des données envoyées depuis le formulaire de selectection des niveaux de maitrise des différentes technologies
-
-        $technologiesLevels = $_POST['technologiesLevels'];
-
-        // récupération de l'utilisateur courant
-        $currentUser = wp_get_current_user();
-        $userId = $currentUser->ID;
-
-        // nous devons supprimer toutes les lignes de la table developer_technology pour l'utilisateur courant
-        $developerTechnologyModel = new DeveloperTechnologyModel();
-        $developerTechnologyModel->deleteByDeveloperId($userId);
-
-        // pour chaque technologies, association de la technologie à l'utilisateur
-
-        foreach($technologiesLevels as $termId => $level) {
-            $developerTechnologyModel->insert(
-                $userId,
-                $termId,
-                $level
-            );
-        }
-
-        // redirection vers la page de gestion des compétences
-        global $router;
-        $skillURL = $router->generate('user-skills');
-
-        header('Location: ' . $skillURL);
-    }
-
-    public function participateToProject($projectId)
-    {
-
-        $model = new ProjectDeveloperModel();
-        $user = wp_get_current_user();
-        $userId = $user->ID;
-
-        $model->insert(
-            $projectId,
-            $userId
-        );
-
-        $url = get_post_type_archive_link('project');
-        header('Location: ' . $url);
-    }
-
-    public function leaveProject($projectId)
-    {
-        $model = new ProjectDeveloperModel();
-        $user = wp_get_current_user();
-        $userId = $user->ID;
-
-        $model->delete($projectId, $userId);
-
-        $url = get_post_type_archive_link('project');
-        header('Location: ' . $url);
-    }
-    */
 }

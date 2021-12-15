@@ -77,7 +77,7 @@ class UserRegistration
 
         $certificates = isset($_POST['certificates']) ? $_POST['certificates'] : [];
          //dump($_POST);
-         dump($certificates);
+         //dump($certificates);
         // die;
 
         if ($role === 'teacher') {
@@ -90,15 +90,7 @@ class UserRegistration
             'post_author' => $newUserId,
             'post_status' => 'publish',
             'post_title'  => $user->data->display_name . "'s profile",
-            'post_type'   => $postType,
-            //'tax_input'   => array("certificate" => $certificates_ids)
-            //'tax_input'   => $certificates
-            //'tax_input'   => 'certificate'
-            //'tax_input'   => array('certificate', array(2,3,22,23,24,25))
-            //'tax_input'   => ['certificate' =>  $certificates],
-            //'tax_input' => ['certificate' => [36, 35,23]]
-            
-         
+            'post_type'   => $postType,           
         ]);
 
 
@@ -191,7 +183,7 @@ class UserRegistration
     {
 
         echo '
-           
+          
             <p>
                 <label for="user_password">Mot de passe</label>
                 <input type="password" name="user_password" id="user_password" class="input" value="" size="20" autocapitalize="off">

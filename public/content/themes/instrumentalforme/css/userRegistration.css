@@ -4,11 +4,15 @@ body{
     background-size: cover;
     background-repeat: no-repeat;
     background-color:black;
-    font-weight:800;
+    
+    
 }
 .login h1 a {
-    background-image: url('/public/content/themes/instrumentalforme/assets/img/logo.png');
-     position:absolute;
+     background-image: url('/public/content/themes/instrumentalforme/assets/img/logo.png');
+     position:relative;
+     border-radius:black;
+     padding-bottom: 20px;
+     
 }
 
 .login form .input {
@@ -24,3 +28,4 @@ body{
 .login .message {
     display:none;
 }
+  
