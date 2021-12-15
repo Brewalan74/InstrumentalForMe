@@ -21,6 +21,7 @@ class LessonModel extends CoreModel
                 `lesson_id` int(8) unsigned NOT NULL,
                 `teacher_id` int(8) unsigned NOT NULL,
                 `student_id` int(8) unsigned NOT NULL,
+                `instrument` varchar(100) NOT NULL,
                 `status` int(8) unsigned NOT NULL,
                 `appointment` datetime NOT NULL,
                 `student_email` varchar(100) NOT NULL,
@@ -49,12 +50,13 @@ class LessonModel extends CoreModel
     }
 
 
-    public function insert($lessonId, $teacherId, $studentId)
+    public function insert($userStudentId, $userTeacherId, $instrument, $date)
     {
         $data = [
-            'lesson_id' => $lessonId,
-            'teacher_id' => $teacherId,
-            'student_id' => $studentId,
+            'student_id' => $userStudentId,
+            'teacher_id' => $userTeacherId,
+            'instrument' => $instrument,
+            'appointment' => $date,
             'created_at' => date('Y-m-d H:i:s')
         ];
 
@@ -64,42 +66,53 @@ class LessonModel extends CoreModel
         );
     }
 
-    public function getLessonsByTeacherId($teacherId)
+    public function getLessonsByUserId($userId, $role)
     {
+        if ($role == 'teacher') {
+            $selectField = 'teacher_id';
+        } else {
+            $selectField = 'student_id';
+        }
+
+
         $sql = "
             SELECT * FROM `" . $this->getTableName() . "`
             WHERE
-                teacher_id = %d
+                $selectField = %d
         ";
 
         $preparedStatement = $this->wpdb->prepare(
             $sql,
             [
-                $teacherId
+                $userId
             ]
         );
-        $rows = $this->wpdb->get_results($preparedStatement);
+        $lessons = $this->wpdb->get_results($preparedStatement);
 
-        return $rows;
+        foreach ($lessons as $index => $lesson) {
+            // chargement du teacher
+            $teacher = get_user_by('ID', $lesson->teacher_id);
+            $lesson->teacher = $teacher;
+
+            // chargement du student
+            $student = get_user_by('ID', $lesson->student_id);
+            $lesson->student = $student;
+
+            // chargement de l'instrument
+            $instrument = get_term_by('ID', $lesson->instrument, 'instrument');
+            $lesson->instrument = $instrument;
+        }
+        return $lessons;
+    }
+
+    public function getLessonsByTeacherId($teacherId)
+    {
+        return $this->getLessonsByUserId($teacherId, 'teacher');
     }
 
     public function getLessonsByStudentId($studentId)
     {
-        $sql = "
-            SELECT * FROM `" . $this->getTableName() . "`
-            WHERE
-                student_id = %d
-        ";
-
-        $preparedStatement = $this->wpdb->prepare(
-            $sql,
-            [
-                $studentId
-            ]
-        );
-        $rows = $this->wpdb->get_results($preparedStatement);
-
-        return $rows;
+        return $this->getLessonsByUserId($studentId, 'student');
     }
 
     public function delete($lessonId, $teacherId, $studentId)

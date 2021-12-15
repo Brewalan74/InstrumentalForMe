@@ -1,12 +1,23 @@
 <?php
+
+use Instrumental\Models\LessonModel;
+
 the_post();
 
 $teacherInstrument = get_the_terms(
     $post->ID,
     'instrument'
 );
+dump($teacherInstrument);
 
+$datas = $_POST;
+// dump($datas);
+// dump(get_the_author_meta('ID'));
+$teacherId = get_the_author_meta('ID');
 
+$student = wp_get_current_user();
+$studentId = $student->ID;
+dump($studentId);
 // $term = get_queried_object();
 // $termId = $term->term_id;
 // $taxonomyImage = get_field('picture', 'instrument_' . $termId);
@@ -35,6 +46,7 @@ $teacherInstrument = get_the_terms(
 
     <div class="container">
 
+
         <section>
             <div class="profileH2">
                 <p class="profileView">Vous êtes sur la page de profil de</p>
@@ -53,18 +65,80 @@ $teacherInstrument = get_the_terms(
             <div>
                 <p class="center">Vous souhaitez prendre une leçon avec <?= get_the_author(); ?> ?</p>
                 <h4>Choisissez date et horaire de votre leçon</h4>
-                <form action="#">
+                <?php
+                global $router;
+                $url = $router->generate('teacher-take-lesson');
+                ?>
+                <form method="POST" action="<?= $url; ?>">
                     <label for="instrument">Instrument que vous souhaitez apprendre : </label><br>
                     <select name="instrument" id="instrument">
                         <?php foreach ($teacherInstrument as $key => $value) : ?>
-                            <option value="<?= $value->name; ?>"><?= $value->name; ?></option>
+                            <option value="<?= $value->term_id; ?>" id="<?= $value->term_id; ?>"><?= $value->name; ?></option>
                         <?php endforeach; ?>
                     </select><br>
+
+                    <!--
                     <label class="appointmentForm" for="date">Date souhaitée :</label><br>
+                    //-->
+
+                    <input id="date" name="date" type="hidden" />
+
+
+                    <div id="vuecontainer">
+                        <div id="appointment">
+                            <v-app>
+                                <v-main>
+
+                                    <template>
+                                        <v-row>
+
+
+                                            <v-col cols="12" sm="4"></v-col>
+
+                                            <v-col cols="12" sm="2">
+                                                <v-menu ref="menuDate" v-model="menuDate" :close-on-content-click="false" transition="scale-transition" offset-y max-width="290px" min-width="auto">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field v-model="dateFr" label="Date" persistent-hint prepend-icon="mdi-calendar" v-bind="attrs" v-on="on"></v-text-field>
+                                                    </template>
+                                                    <v-date-picker locale="fr" v-model="date" @input="menuDate = false ; updateDate()"></v-date-picker>
+                                                </v-menu>
+                                            </v-col>
+
+
+                                            <v-col cols="12" sm="2">
+                                                <v-menu ref="menu" v-model="menuTime" :close-on-content-click="false" :nudge-right="40" :return-value.sync="time" transition="scale-transition" offset-y max-width="290px" min-width="290px">
+                                                    <template v-slot:activator="{ on, attrs }">
+                                                        <v-text-field v-model="time" label="Choisir une heure" prepend-icon="mdi-clock-time-four-outline" readonly v-bind="attrs" v-on="on"></v-text-field>
+                                                    </template>
+                                                    <v-time-picker format="24hr" v-if="menuTime" v-model="time" full-width @click:minute="$refs.menu.save(time) ; updateDate()"></v-time-picker>
+                                                </v-menu>
+                                            </v-col>
+
+                                            <v-col cols="12" sm="4"></v-col>
+
+                                        </v-row>
+                                    </template>
+                                </v-main>
+                            </v-app>
+                        </div>
+                    </div>
+
+
+                    <script>
+
+                    </script>
+
+
+
+                    <!--
                     <input type="date" name="date" id="date"><br>
                     <label class="appointmentForm" for="time">Horaire souhaitée :</label><br>
                     <input type="time" name="time" id="time"><br>
+                    //-->
+
+
                     <input class="appointmentForm" type="submit" value="Validez">
+                    <input name="teacherId" type="hidden" value="<?= $teacherId; ?>" />
                 </form>
             </div>
             <div class="profileInstrument">

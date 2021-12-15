@@ -2,6 +2,8 @@
 
 namespace Instrumental\Controllers;
 
+use DateTime;
+use Instrumental\Models\LessonModel;
 use Instrumental\Models\TeacherModel;
 
 use WP_Query;
@@ -70,14 +72,14 @@ class UserController extends CoreController
                     wp_update_user($args);
                 }
 
-                
+
                 $password = trim(filter_input(INPUT_POST, 'user_password'));
                 $passwordConfirmation = trim(filter_input(INPUT_POST, 'user_password_confirmation'));
                 if ($password && $password == $passwordConfirmation) {
                     // mise à jour du mot de passe
                     wp_set_password($password, $user->ID);
                 }
-               
+
 
                 global $router;
                 header('Location: ' . $router->generate('user-home'));
@@ -105,8 +107,27 @@ class UserController extends CoreController
         }
     }
 
-  
-    
+    public function takeLesson()
+    {
+        $model = new LessonModel();
+        // $model->createTable();
+
+        $userStudent = wp_get_current_user();
+        $datasLesson = $_POST;
+
+        $datetime = new DateTime($datasLesson['date']);
+        $date = $datetime->format('Y-m-d H:i');
+
+        $userStudentId = $userStudent->ID;
+        $userTeacherId = $datasLesson['teacherId'];
+        $instrument = $datasLesson['instrument'];
+        $date = $datasLesson['date'];
+
+        $model->insert($userStudentId, $userTeacherId, $instrument, $date);
+        global $router;
+        // TODO redirection
+    }
+
 
 
     // public function teachToInstrument($instrumentId)

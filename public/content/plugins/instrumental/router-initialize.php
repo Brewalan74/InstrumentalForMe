@@ -4,7 +4,7 @@
 
 
 use Instrumental\Controllers\UserController;
-use Instrumental\Controllers\AppointmentController;
+// use Instrumental\Controllers\AppointmentController;
 use Instrumental\Controllers\TestController;
 
 global $router;
@@ -50,6 +50,17 @@ $router->map(
         $userController->saveProfile();
     },
     'user-save-profile'
+);
+
+// === LESSON ===
+$router->map(
+    'POST',
+    '/teacher/take-lesson',
+    function () {
+        $userController = new UserController();
+        $userController->takeLesson();
+    },
+    'teacher-take-lesson'
 );
 
 // === APPOINTMENT ===

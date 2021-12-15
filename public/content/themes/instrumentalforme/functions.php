@@ -28,6 +28,44 @@ if (!function_exists('instrumentalforme_loadAssets')) {
     function instrumentalforme_loadAssets()
     {
 
+
+        // ===============================================================
+        // vuejs intégré en mode "yolo"
+        wp_enqueue_script(
+            'vuejs',
+            'https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js',
+            [],
+            '1.0.0',
+            true
+        );
+
+        wp_enqueue_script(
+            'vuetify',
+            'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js',
+            [],
+            '1.0.0',
+            true
+        );
+
+        wp_enqueue_style(
+            'materialdesignicons',
+            'https://cdn.jsdelivr.net/npm/@mdi/font@6.x/css/materialdesignicons.min.css'
+        );
+
+        wp_enqueue_style(
+            'vuetify',
+            'https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css'
+        );
+
+        wp_enqueue_style(
+            'customvuejs',
+            get_theme_file_uri('css/vuejs.css')
+        );
+
+
+        // ===============================================================
+
+
         wp_enqueue_style(
             'instrumentalforme-styles',
             get_theme_file_uri('css/styles.css')
@@ -49,10 +87,21 @@ if (!function_exists('instrumentalforme_loadAssets')) {
         );
 
         wp_enqueue_style(
-            'google-font',
+            'google-font-1',
             'https://fonts.googleapis.com/css?family=Catamaran:100,200,300,400,500,600,700,800,900',
+        );
+
+        wp_enqueue_style(
+            'google-font-2',
             'https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i'
         );
+
+
+        wp_enqueue_style(
+            'instrumental-styles',
+            get_theme_file_uri('css/instrumental.css')
+        );
+
 
         wp_enqueue_script(
             'instrumentalforme-scripts',
@@ -62,9 +111,38 @@ if (!function_exists('instrumentalforme_loadAssets')) {
             true
         );
 
+
+
         wp_enqueue_script(
+            'appointment-js',
+            get_theme_file_uri('js/appointment.js'),
+            [],
+            '1.0.0',
+            true
+        );
+
+        wp_enqueue_script(
+            'calendar-js',
+            get_theme_file_uri('js/calendar.js'),
+            [],
+            '1.0.0',
+            true
+        );
+
+        wp_enqueue_script(
+            'fontawesome-js',
             'https://use.fontawesome.com/releases/v5.15.4/js/all.js',
+            [],
+            '1.0.0',
+            true
+        );
+
+        wp_enqueue_script(
+            'bootstrap-js',
             'https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js',
+            [],
+            '1.0.0',
+            true
         );
     }
 }
