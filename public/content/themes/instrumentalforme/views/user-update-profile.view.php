@@ -2,6 +2,7 @@
 // echo __FILE__ . ':' . __LINE__;
 // exit();
 // the_post();
+use Instrumental\Controllers\UserController;
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
@@ -24,14 +25,12 @@
 
     <?php
     $current_user = wp_get_current_user();
-
     $userdata = get_userdata($current_user->ID);
     $userName = $userdata->description;
     // dump(__FILE__ . ':' . __LINE__, $userName);
     ?>
 
     <h2 class="profileH2">Modifier votre profil</h2>
-
 
     <section>
 
@@ -117,7 +116,7 @@
                 $certificates = get_terms('certificate', array('hide_empty' => false));
 
                 foreach ($certificates as $index => $certificate) :
-                    echo "<input type='checkbox' id='certif' $index '' name='$certificate->name;' value='$certificate->term_id'>";
+                    echo "<input type='checkbox' class='certif' $index '' name='$certificate->name;' value='$certificate->term_id'>";
                     echo "<label for='certif' $index>";
                     echo $certificate->name;
                     echo "</label><br>";
@@ -127,45 +126,41 @@
             }
  
 
-        // INSTRUMENTS    
-        echo "<div id='instrument' class='containerUpdateRadio'>";
-        echo "<br><label class='labelForm'>Vos instruments</label><br>";
-        $instruments = get_terms('instrument', array('hide_empty' => false));
-        //dump($instruments);
+            // INSTRUMENTS    
+            echo "<div id='instrument' class='containerUpdateRadio'>";
+            echo "<br><label class='labelForm'>Vos instruments</label><br>";
+            $instruments = get_terms('instrument', array('hide_empty' => false));
+            //dump($instruments);
 
-        foreach ($instruments as $index => $instrument) :
-            echo "<input type='checkbox' id='instru' $index '' name='$instrument->name;' value='$instrument->term_id'>";
-            echo "<label for='instru' $index>";
-            echo $instrument->name;
-            echo "</label><br>";
-        endforeach;
-        echo '</div>';
-
-
-        //MUSIC STYLE
-        echo "<div id='musicStyle' class='containerUpdateRadio'>";
-        echo "<br><label class='labelForm'>Vos styles de musique</label><br>";
-        $musicStyles = get_terms('music-style', array('hide_empty' => false));
-        //dump($musicStyle);
-
-        foreach ($musicStyles as $index => $musicStyle) :
-            echo "<input type='checkbox' id='music' $index '' name='$musicStyle->name;' value='$musicStyle->term_id'>";
-            echo "<label for='music' $index>";
-            echo $musicStyle->name;
-            echo "</label><br>";
-        endforeach;
-        echo '</div>';
-        ?>
-            </div>
+            foreach ($instruments as $index => $instrument) :
+                echo "<input type='checkbox' class='instru' $index '' name='$instrument->name;' value='$instrument->term_id'>";
+                echo "<label for='instru' $index>";
+                echo $instrument->name;
+                echo "</label><br>";
+            endforeach;
+            echo '</div>';
 
 
+            //MUSIC STYLE
+            echo "<div id='musicStyle' class='containerUpdateRadio'>";
+            echo "<br><label class='labelForm'>Vos styles de musique</label><br>";
+            $musicStyles = get_terms('music-style', array('hide_empty' => false));
+            //dump($musicStyle);
 
+            foreach ($musicStyles as $index => $musicStyle) :
+                echo "<input type='checkbox' class='music' $index '' name='$musicStyle->name;' value='$musicStyle->term_id'>";
+                echo "<label for='music' $index>";
+                echo $musicStyle->name;
+                echo "</label><br>";
+            endforeach;
+            echo '</div>';
+            ?>
+        </div>
 
-            <br>
             <button type="button" class="btn btn-success m-2">Update</button>
         </form>
 
-
+        
         <div class="layoutUpdateButton">
             <h2>Changer mon avatar</h2>
             <?php
@@ -182,7 +177,13 @@
             ?>
         </div>
 
-        <button type='button' class='btn btn-danger m-2' onclick="alertDeleteAccount()">Supprimer votre compte</button>
+
+        <?php 
+        global $router;
+        $deleteAccountURL = $router->generate('user-delete-account');
+        echo 
+        '<button type="button" class="btn btn-danger m-2"><a class="text-dark" href="' . $deleteAccountURL . '">Supprimer votre compte</a></button>';
+        ?>
 
     </section>
 
@@ -206,19 +207,6 @@
                 div.style.display = "none";
             }
 
-        }
-
-        function alertDeleteAccount() {
-
-            //window.confirm("Etes-vous sur de vouloir supprimer votre compte ?");
-
-            if (confirm("Etes-vous sur de vouloir supprimer votre compte ?")) {
-                document.write(
-                '<h1 class="alertDeleteAccount" role="alert">Suppression de votre compte effectuée</h1>');
-                console.log('suppression de votre compte');
-            } else {
-
-            }
         }
     </script>
 
