@@ -1,4 +1,7 @@
 <?php
+
+use Instrumental\Models\LessonModel;
+
 the_post();
 // echo __FILE__ . ':' . __LINE__;
 // exit();
@@ -66,12 +69,94 @@ $userdata = get_userdata($current_user->ID);
 </head>
 
 <body>
-    <div>
-        <!-- Navigation-->
-        <?php get_template_part('partials/navbar.tpl'); ?>
+    <!-- Navigation-->
+    <?php get_template_part('partials/navbar.tpl'); ?>
 
-        <!-- Header-->
-        <?php get_template_part('partials/header.tpl'); ?>
+    <!-- Header-->
+    <?php get_template_part('partials/header.tpl'); ?>
+
+    <div class="container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <section>
+            <?php
+            $user = wp_get_current_user();
+            $userId = $user->ID;
+            $lessonModel = new LessonModel();
+
+            if (in_array('teacher', $user->roles)) {
+                $lessons = $lessonModel->getLessonsByTeacherId($userId);
+            } else {
+                $lessons = $lessonModel->getLessonsByStudentId($userId);
+            }
+
+            ?>
+
+
+
+
+            <div id="calendar">
+
+                <textarea id="lessons" style="display: none; width: 100%; height: 500px"><?= json_encode($lessons, JSON_PRETTY_PRINT); ?></textarea>
+
+
+                <template>
+                    <v-app>
+                        <v-sheet tile height="54" class="d-flex">
+                            <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
+                                <v-icon>mdi-chevron-left</v-icon>
+                            </v-btn>
+                            <v-select v-model="type" :items="types" dense outlined hide-details class="ma-2" label="Calendrier"></v-select>
+
+                            <v-spacer></v-spacer>
+                            <v-btn icon class="ma-2" @click="$refs.calendar.next()">
+                                <v-icon>mdi-chevron-right</v-icon>
+                            </v-btn>
+                        </v-sheet>
+                        <v-sheet height="600">
+                            <v-calendar :interval-format="intervalFormat" ref="calendar" v-model="value" :weekdays="weekday" :type="type" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="30" :event-color="getEventColor" @change="getEvents" locale="fr"></v-calendar>
+                        </v-sheet>
+                    </v-app>
+                </template>
+
+
+            </div>
+
+
+
+        </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
         <?php

@@ -2,6 +2,8 @@
 
 namespace Instrumental\Controllers;
 
+use DateTime;
+use Instrumental\Models\LessonModel;
 use Instrumental\Models\TeacherModel;
 
 use WP_Query;
@@ -76,7 +78,7 @@ class UserController extends CoreController
                     wp_update_user($args);
                 }
 
-                
+
                 $password = trim(filter_input(INPUT_POST, 'user_password'));
                 $passwordConfirmation = trim(filter_input(INPUT_POST, 'user_password_confirmation'));
                 if ($password && $password == $passwordConfirmation) {
@@ -153,6 +155,58 @@ class UserController extends CoreController
     }
 
     public function deleteAccount() 
+
+    {
+        $this->show('views/user-delete-account.view');
+        require_once( ABSPATH.'wp-admin/includes/user.php' );
+        $current_user = wp_get_current_user();
+        wp_delete_user($current_user->ID);
+    }
+    
+    public function takeLesson()
+    {
+        $model = new LessonModel();
+        // $model->createTable();
+
+        $userStudent = wp_get_current_user();
+        $datasLesson = $_POST;
+
+        $datetime = new DateTime($datasLesson['date']);
+        $date = $datetime->format('Y-m-d H:i');
+
+        $userStudentId = $userStudent->ID;
+        $userTeacherId = $datasLesson['teacherId'];
+        $instrument = $datasLesson['instrument'];
+        $date = $datasLesson['date'];
+
+        $model->insert($userStudentId, $userTeacherId, $instrument, $date);
+        global $router;
+        // TODO redirection
+    }
+
+
+
+    // public function teachToInstrument($instrumentId)
+    // {
+    //     $model = new TeacherModel();
+    //     $user = wp_get_current_user();
+    //     $userId = $user->ID;
+
+    //     $model->insert(
+    //         $instrumentId,
+    //         $userId
+
+    //     );
+
+    //     $url = get_post_type_archive_link('instrument');
+    //     header('Location: ' . $url);
+    // }
+    /*
+
+
+
+
+    public function confirmDeleteAccount()
     {
         $this->show('views/user-delete-account.view');
         require_once( ABSPATH.'wp-admin/includes/user.php' );
