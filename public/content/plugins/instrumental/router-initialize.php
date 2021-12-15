@@ -54,15 +54,15 @@ $router->map(
 );
 
 // === APPOINTMENT ===
-$router->map(
-    'GET',
-    '/user/appointment/',
-    function () {
-        $appointmentController = new AppointmentController();
-        $appointmentController->appointment();
-    },
-    'user-appointment'
-);
+// $router->map(
+//     'GET',
+//     '/teacher/appointment/',
+//     function () {
+//         $appointmentController = new AppointmentController();
+//         $appointmentController->appointment();
+//     },
+//     'teacher-appointment'
+// );
 
 // === TEST ===
 $router->map(
@@ -79,6 +79,16 @@ $router->map(
     'model-tests-teacher-instrument-select-by-teacher-id-variable'
 );
 
+// ==== DELETE ACCOUNT ====
+$router->map(
+    'GET',
+    '/user/delete-account/',
+    function () {
+        $userController = new UserController();
+        $userController->deleteAccount();
+    },
+    'user-delete-account'
+);
 
 
 /*

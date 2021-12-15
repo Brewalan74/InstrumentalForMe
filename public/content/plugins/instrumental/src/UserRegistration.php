@@ -86,12 +86,12 @@ class UserRegistration
             $postType = 'student-profile';
         }
 
-        wp_insert_post([
+        $profileId = wp_insert_post([
             'post_author' => $newUserId,
             'post_status' => 'publish',
             'post_title'  => $user->data->display_name . "'s profile",
             'post_type'   => $postType,
-            // 'tax_input'   => array("certificate" => $certificates_ids)
+            //'tax_input'   => array("certificate" => $certificates_ids)
             //'tax_input'   => $certificates
             //'tax_input'   => 'certificate'
             //'tax_input'   => array('certificate', array(2,3,22,23,24,25))
@@ -100,6 +100,9 @@ class UserRegistration
             
          
         ]);
+
+
+        wp_set_post_terms($profileId, $certificates, 'certificate');
         // wp_set_object_terms ( $newUserId, $certificates, 'certificate' , true ) ; 
     }
 

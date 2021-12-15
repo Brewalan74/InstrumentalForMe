@@ -2,7 +2,6 @@
 the_post();
 // echo __FILE__ . ':' . __LINE__;
 // exit();
-
 ?>
 <?php
 //$test = get_terms();
@@ -52,9 +51,11 @@ the_post();
 $current_user = wp_get_current_user();
 // dump(__FILE__ . ':' . __LINE__, $curreny_user);
 $userdata = get_userdata($current_user->ID);
-//dump($userdata);
-// $userName = $userdata->description;
-//dump($userName);
+// dump($userdata->ID);
+// $userDescription = $userdata->user_description;
+// dump($userDescription);
+
+
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
@@ -117,7 +118,7 @@ $userdata = get_userdata($current_user->ID);
 
         <section class="m-5 text-center descriptionPerso">
             <p>';
-            echo get_the_content();
+            get_the_content();
             '</p>
         </section>';
 

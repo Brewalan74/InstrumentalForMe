@@ -78,8 +78,26 @@ class UserController extends CoreController
                     wp_set_password($password, $user->ID);
                 }
                
-                $taxonomies = filter_input(INPUT_POST, 'certificate','instrument','musicStyle');
+
+                $certificates = filter_input(INPUT_POST, 'certificate', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
+                $instruments = filter_input(INPUT_POST, 'instrument', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
+                $musicStyles = filter_input(INPUT_POST, 'musicStyle', FILTER_DEFAULT , FILTER_REQUIRE_ARRAY);
+
+
+
                 $userId = $user->ID;
+                $query = new WP_Query([
+                    'author' => $userId,
+                    'post_type' => 'teacher-profile'
+                ]);
+                if(!empty($query->posts)) {
+                    $profile = $query->posts[0];
+                    wp_set_post_terms($profile->ID, $certificates, 'certificate');
+                    wp_set_post_terms($profile->ID, $instruments, 'instrument');
+                    wp_set_post_terms($profile->ID, $musicStyles, 'music-style');
+                }
+
+                /*
                 $teacherModel = new TeacherModel();
                 $teacherModel->deleteByTeacherId($userId);
 
@@ -93,8 +111,7 @@ class UserController extends CoreController
 
                         );
                     }
-
-
+                */
                 global $router;
                 header('Location: ' . $router->generate('user-home'));
             }
@@ -119,6 +136,14 @@ class UserController extends CoreController
                 'profile' => $profile
             ]);
         }
+    }
+
+    public function deleteAccount() 
+    {
+        $this->show('views/user-delete-account.view');
+        require_once( ABSPATH.'wp-admin/includes/user.php' );
+        $current_user = wp_get_current_user();
+        wp_delete_user($current_user->ID);
     }
 
   
