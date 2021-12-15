@@ -105,6 +105,14 @@ class UserController extends CoreController
         }
     }
 
+    public function deleteAccount() 
+    {
+        $this->show('views/user-delete-account.view');
+        require_once( ABSPATH.'wp-admin/includes/user.php' );
+        $current_user = wp_get_current_user();
+        wp_delete_user($current_user->ID);
+    }
+
   
    
 

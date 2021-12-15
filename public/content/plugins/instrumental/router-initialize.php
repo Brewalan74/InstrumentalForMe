@@ -78,6 +78,16 @@ $router->map(
     'model-tests-teacher-instrument-select-by-teacher-id-variable'
 );
 
+// ==== DELETE ACCOUNT ====
+$router->map(
+    'GET',
+    '/user/delete-account/',
+    function () {
+        $userController = new UserController();
+        $userController->deleteAccount();
+    },
+    'user-delete-account'
+);
 
 
 /*
