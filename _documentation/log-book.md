@@ -168,4 +168,20 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 - Fait:
  
   - Model Student 
+  - abandon de la page appointment, la prise de rdv se fera sur la page teacher-profile
+  - affichage des instrument et musicStyle sur la page update
+  - layout teacher profile avec prise de rendez vous, layout student-profile
+  - Amelioration du style pour le formulaire d'enregistrement et connexion
+  - stuck a lot !!!
+  - coincé sur l'enregistrement des certificats au moment de l'inscription
+  - coincé sur link appointment page au teacher concerné
+  - Page suppression de compte en cours
+
+### Mercredi 15/12/21
+
+-A faire
+
+  - enregistrement des certificats par le formulaire d'inscription(debug =>ne s'enregistre pas en BD)
+  - creation d'une lecon au moment de la prise de rendez vous.
+  - terminer la function suppression de compte
   - 

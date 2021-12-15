@@ -74,8 +74,9 @@ class UserRegistration
     {
         $role = filter_input(INPUT_POST, 'user_type');
         $user = new WP_User($newUserId);
+
         $certificates = isset($_POST['certificates']) ? $_POST['certificates'] : [];
-         dump($_POST);
+         //dump($_POST);
          dump($certificates);
         // die;
 
@@ -90,8 +91,12 @@ class UserRegistration
             'post_status' => 'publish',
             'post_title'  => $user->data->display_name . "'s profile",
             'post_type'   => $postType,
-            // 'tax_input' => ['certificate' => $certificates],
-            'tax_input' => ['certificate' => [36, 35,23]]
+            // 'tax_input'   => array("certificate" => $certificates_ids)
+            //'tax_input'   => $certificates
+            //'tax_input'   => 'certificate'
+            //'tax_input'   => array('certificate', array(2,3,22,23,24,25))
+            //'tax_input'   => ['certificate' =>  $certificates],
+            //'tax_input' => ['certificate' => [36, 35,23]]
             
          
         ]);

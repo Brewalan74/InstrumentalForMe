@@ -95,9 +95,6 @@
                 <label for="student">Student</label>
             </div>  -->
 
-
-
-
             <?php
             $user = wp_get_current_user();
             $roles = $user->roles;
@@ -109,7 +106,7 @@
                 $certificates = get_terms('certificate', array('hide_empty' => false));
 
                 foreach ($certificates as $index => $certificate) :
-                    echo "<input type='checkbox' id='certif' $index '' name='$certificate->name;' value='$certificate->term_id'>";
+                    echo "<input type='checkbox' id='certif' $index '' name='certificate';' value='$certificate->term_id'>";
                     echo "<label for='certif' $index>";
                     echo $certificate->name;
                     echo "</label><br>";

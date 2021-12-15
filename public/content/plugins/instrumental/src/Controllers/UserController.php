@@ -78,6 +78,22 @@ class UserController extends CoreController
                     wp_set_password($password, $user->ID);
                 }
                
+                $taxonomies = filter_input(INPUT_POST, 'certificate','instrument','musicStyle');
+                $userId = $user->ID;
+                $teacherModel = new TeacherModel();
+                $teacherModel->deleteByTeacherId($userId);
+
+                    foreach($taxonomies as [$certificateId,$instrumentId,$musicStyle])
+                    {
+                        $teacherModel->insert(
+                            $userId,
+                            $certificateId,
+                            $instrumentId,
+                            $musicStyle
+
+                        );
+                    }
+
 
                 global $router;
                 header('Location: ' . $router->generate('user-home'));
