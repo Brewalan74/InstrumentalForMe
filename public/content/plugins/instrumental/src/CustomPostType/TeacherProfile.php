@@ -20,8 +20,7 @@ class TeacherProfile
                 'menu_icon' => 'dashicons-buddicons-buddypress-logo',
 
                 'has_archive' => true,
-
-
+                
                 // NOTICE PLUGIN, fonctionnalités activable pour un cpt :  ‘title’, ‘editor’, ‘comments’, ‘revisions’, ‘trackbacks’, ‘author’, ‘excerpt’, ‘page-attributes’, ‘thumbnail’, ‘custom-fields’, and ‘post-formats’.
                 'supports' => [
                     'title',

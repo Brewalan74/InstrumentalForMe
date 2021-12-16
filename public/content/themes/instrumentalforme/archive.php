@@ -1,6 +1,5 @@
 <?php
 //echo __FILE__.':'.__LINE__; exit();
-use Instrumental\Models\TeacherInstrumentModel;
 ?>
 
 <!DOCTYPE html>
@@ -27,8 +26,6 @@ use Instrumental\Models\TeacherInstrumentModel;
     <!-- Header-->
     <?php get_template_part('partials/header.tpl'); ?>
 
-
-
     <?php
     $term = get_queried_object();
     $termId = $term->term_id;
@@ -39,8 +36,6 @@ use Instrumental\Models\TeacherInstrumentModel;
     //dump($taxonomyImage['url']);
     //exit;
     ?>
-
-
     <!-- Content section 1-->
 
     <div class="container">
@@ -61,11 +56,10 @@ use Instrumental\Models\TeacherInstrumentModel;
         </section>
         <section>
             <?php if (have_posts()) : ?>
-                <?php while (have_posts()) : the_post(); ?>
-                    <div class="profileH2">
+                <?php while (have_posts()) : the_post(); ?>               
+                                <div class="profileH2">
                         <div class="profileDescription">
-                            <article class="projet">
-                                
+                            <article class="projet">                              
                                 <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
                                 <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
                                 <h2>
@@ -86,9 +80,6 @@ use Instrumental\Models\TeacherInstrumentModel;
             <?php endif; ?>
         </section>
     </div>
-
-
-
 
     <!-- Footer-->
     <?php get_template_part('partials/footer.tpl'); ?>
