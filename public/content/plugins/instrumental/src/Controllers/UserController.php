@@ -52,8 +52,6 @@ class UserController extends CoreController
                 } else {
                     $postType = 'student-profile';
                 }
-
-
                 $userId = $user->ID;
 
 
@@ -106,10 +104,11 @@ class UserController extends CoreController
                     wp_set_post_terms($profile->ID, $certificates, 'certificate');
                     wp_set_post_terms($profile->ID, $instruments, 'instrument');
                     wp_set_post_terms($profile->ID, $musicStyles, 'music-style');
-                    //wp_set_post_terms($profile->ID, $description, 'description');
+                    
 
-                    // mise à jour de la descroption
+                    // mise à jour de la description
                     $description = filter_input(INPUT_POST, 'user_description');
+                    
                     // DOC https://developer.wordpress.org/reference/functions/wp_update_post/
                     // DOC https://developer.wordpress.org/reference/functions/wp_insert_post/
 
@@ -120,7 +119,7 @@ class UserController extends CoreController
                         'post_content' => $description,
                         'post_type' => $postType
                     ]);
-                    // update_user_meta($user->ID, 'description', $description, );
+                    
                 }
 
                 global $router;
@@ -128,6 +127,7 @@ class UserController extends CoreController
             }
         }
     }
+//============================Update avatar===================================
 
     public function updateProfile()
     {
@@ -146,6 +146,7 @@ class UserController extends CoreController
             ]);
         }
     }
+//===============================suppression de compte=============================
 
     public function deleteAccount()
     {
@@ -155,6 +156,7 @@ class UserController extends CoreController
         wp_delete_user($current_user->ID);
     }
 
+    //===============================Lesson=============================
     public function takeLesson()
     {
         $model = new LessonModel();
@@ -178,29 +180,7 @@ class UserController extends CoreController
 }
 
 
-    // public function teachToInstrument($instrumentId)
-    // {
-    //     $model = new TeacherModel();
-    //     $user = wp_get_current_user();
-    //     $userId = $user->ID;
-
-    //     $model->insert(
-    //         $instrumentId,
-    //         $userId
-
-    //     );
-
-    //     $url = get_post_type_archive_link('instrument');
-    //     header('Location: ' . $url);
-    // }
 
 
 
 
-    // public function confirmDeleteAccount()
-    // {
-    //     $this->show('views/user-delete-account.view');
-    //     require_once( ABSPATH.'wp-admin/includes/user.php' );
-    //     $current_user = wp_get_current_user();
-    //     wp_delete_user($current_user->ID);
-    // }

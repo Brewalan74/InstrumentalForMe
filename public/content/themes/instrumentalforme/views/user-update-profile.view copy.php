@@ -90,33 +90,26 @@ use Instrumental\Controllers\UserController;
            
 
             <div class="containerUpdate">
-               
-
-
-
-                <!--=====================récupération des taxo du user=====================-->
-                
                 <?php
-               
-               $user = wp_get_current_user();
-               $roles = $user->roles;
+                //CERTIFICAT TEACHER
+                $user = wp_get_current_user();
+                $roles = $user->roles;
 
-                // $query = new WP_Query([
-                //     'author' => $user->ID,
-                //     'post_type' => 'teacher-profile'
-                // ]);
-                if (in_array('teacher', $user->roles)) {
-                    $postType = 'teacher-profile';
-                } else {
-                    $postType = 'student-profile';
-                }
-                $profileId = $user->ID;
 
-                //$profileId = $query->posts[0]->ID;
+
+                // ===========================================================
+                // récupération des taxo du user
+
+                $query = new WP_Query([
+                    'author' => $user->ID,
+                    'post_type' => 'teacher-profile'
+                ]);
+
+
+                $profileId = $query->posts[0]->ID;
                // dump($profileId);
-               
-                $selectedInstruments = wp_get_post_terms($profileId, 'instrument');
                 $instrumentsId = [];
+                $selectedInstruments = wp_get_post_terms($profileId, 'instrument');
                 foreach ($selectedInstruments as $term) {
                     $instrumentsId[$term->term_id] = true;
                 }
@@ -134,7 +127,7 @@ use Instrumental\Controllers\UserController;
                     $stylesId[$term->term_id] = true;
                 }
 
-                //=====================CERTIFICAT TEACHER=====================
+                // ===========================================================
 
 
                 if (in_array('teacher', $roles)) {
@@ -147,7 +140,7 @@ use Instrumental\Controllers\UserController;
 
                         $checked = '';
                         if (isset($certificatesId[$certificate->term_id])) {
-                            $checked = 'checked';
+                           $checked = 'checked';
                         }
 
                         echo "<input type='checkbox' id='certif' $index  name='certificate[]' value='$certificate->term_id' $checked>";
@@ -157,10 +150,11 @@ use Instrumental\Controllers\UserController;
                     endforeach;
                     echo '</div>';
                 } else {
+                   
                 }
 
 
-                // =====================INSTRUMENTS=====================    
+                // INSTRUMENTS    
                 echo "<div id='instrument' class='containerUpdateRadio'>";
                 echo "<br><label class='labelForm'>Vos instruments</label><br>";
                 $instruments = get_terms('instrument', array('hide_empty' => false));
@@ -183,7 +177,7 @@ use Instrumental\Controllers\UserController;
                 echo '</div>';
 
 
-                //=====================MUSIC STYLE=====================
+                //MUSIC STYLE
                 echo "<div id='musicStyle' class='containerUpdateRadio'>";
                 echo "<br><label class='labelForm'>Vos styles de musique</label><br>";
                 $musicStyles = get_terms('music-style', array('hide_empty' => false));
@@ -209,11 +203,9 @@ use Instrumental\Controllers\UserController;
 
         </form>
 
-<!--============================Avatar===================================-->
 
         <div class="layoutUpdateButton">
             <h2>Changer mon avatar</h2>
-            <p>Veuillez selectionner votre avatar en format .png</p>
             <?php
             $options = array(
                 'post_id' => 'user_' . $current_user->ID,
@@ -228,7 +220,7 @@ use Instrumental\Controllers\UserController;
             ?>
         </div>
 
-<!--===============================suppression de compte=============================-->
+
         <?php
         global $router;
         $deleteAccountURL = $router->generate('user-delete-account');
@@ -245,7 +237,6 @@ use Instrumental\Controllers\UserController;
     <!-- wp footer -->
     <?php get_footer(); ?>
 
-<!--======================================================================================-->
     <script>
         function viewCertificate() {
 
