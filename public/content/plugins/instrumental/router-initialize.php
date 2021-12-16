@@ -1,7 +1,8 @@
 <?php
 
 use Instrumental\Controllers\UserController;
-// use Instrumental\Controllers\AppointmentController;
+use Instrumental\Controllers\AppointmentController;
+use Instrumental\Controllers\TestController;
 
 global $router;
 
@@ -57,15 +58,15 @@ $router->map(
 );
 
 // === APPOINTMENT ===
-// $router->map(
-//     'GET',
-//     '/teacher/appointment/',
-//     function () {
-//         $appointmentController = new AppointmentController();
-//         $appointmentController->appointment();
-//     },
-//     'teacher-appointment'
-// );
+$router->map(
+    'GET',
+    '/teacher/appointment/',
+    function () {
+        $appointmentController = new AppointmentController();
+        $appointmentController->appointment();
+    },
+    'appointment'
+);
 
 // === TEST ===
 
@@ -80,14 +81,3 @@ $router->map(
     },
     'user-delete-account'
 );
-
-
-
-
-
-
-
-
-
-
-

@@ -175,7 +175,10 @@ class UserController extends CoreController
 
         $model->insert($userStudentId, $userTeacherId, $instrument, $date);
         global $router;
+
         // TODO redirection
+        $url = $router->generate('appointment');
+        header('Location: ' . $url);
     }
 }
 
