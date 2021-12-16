@@ -26,6 +26,8 @@ use Instrumental\Controllers\UserController;
 
     <div class="alert alert-danger p-5 m-5 text-center" role="alert">
         Votre compte a bien été supprimé !
+        <br>
+        <a href="<?= get_home_url(); ?>" class="text-dark">Revenir à l'accueil</a>
     </div>
 
     <?php
