@@ -6,10 +6,11 @@ body{
     background-color:black;
     
     
+    
 }
 .login h1 a {
      background-image: url('/public/content/themes/instrumentalforme/assets/img/logo.png');
-     position:relative;
+
      border-radius:black;
      padding-bottom: 20px;
      
@@ -28,4 +29,3 @@ body{
 .login .message {
     display:none;
 }
-  

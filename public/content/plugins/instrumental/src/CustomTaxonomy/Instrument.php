@@ -13,12 +13,15 @@ class Instrument
 
         register_taxonomy(
             'instrument',   // idenfiant de la taxonomy
-            'teacher-profile',   // la taxonomy technologie peut s'appliquer sur les CPT developer-profile et project
             [
-                'show_in_rest' => true, // la taxonomy est accessible en mode API ; nécessaire pour l'éditeur de bloc (Gutemberg)
+                'teacher-profile',
+                'student-profile'
+            ] , 
+            [
+                'show_in_rest' => true, 
                 'label' => 'Instrument',
-                'hierarchical' => true, // les technologies peuvent avoir des "technologies enfantes"
-                'public' => true // la taxonomy est administrable depuis le backoffice de wp
+                'hierarchical' => true, 
+                'public' => true 
             ]
         );
     }
