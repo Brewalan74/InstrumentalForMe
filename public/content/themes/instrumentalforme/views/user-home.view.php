@@ -1,7 +1,3 @@
-PAGE PROFIL OK AVEC SYNTAXE PAS COOL 
-
-
-
 <?php
 
 use Instrumental\Models\LessonModel;
@@ -12,12 +8,24 @@ $teacherId = get_the_author_meta('ID');
 // exit();
 ?>
 <?php
+//$test = get_post();
+//dump($test);
+
+//$test = get_user_meta(13);
+//dump($test);
+//dump($args);
+
+
+//$post   = get_post();
+//$output =  apply_filters( 'the_content', $post->post_content );
+//dump($output);
+
 //$test = get_terms();
 //dump($test);  
 //RENVOIE TAXO ASSOCIEES AU PROFIL CONNECTE
 
 //$test = the_post();
-// dump($test);    
+//dump($test);    
 //RENVOIE NULL 
 
 //$test = get_field('description');
