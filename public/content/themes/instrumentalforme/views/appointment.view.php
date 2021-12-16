@@ -1,8 +1,8 @@
 <?php
 // echo __FILE__ . ':' . __LINE__;
 // exit();
-$appointment = get_previous_posts_link();
-dump(__FILE__ . ':' . __LINE__, $appointment);
+$user = wp_get_current_user();
+// dump($user->display_name);
 
 ?>
 
@@ -30,22 +30,7 @@ dump(__FILE__ . ':' . __LINE__, $appointment);
     <!-- Header-->
     <?php get_template_part('partials/header.tpl'); ?>
 
-    <div class="profileAppointment">
-        <p class="center">Prendre rendez-vous avec</p>
-        <h4><?= $appointment->first_name . $appointment->last_name ?></h4>
-    </div>
-
-    <div class="profileDescription">
-        <p><?= $appointment->description; ?></p>
-    </div>
-
-    <div class="profileAppointment">
-        <h4>Choisissez date et horaire de votre leçon</h4>
-        <form action="">
-            <input type="date" name="" id="">
-            <input type="submit" value="Submit">
-        </form>
-    </div>
+    <h4 class="m-5">Merci <?= $user->display_name ?>, votre rendez-vous a bien été pris en compte.</h4>
 
     <!-- Footer-->
     <?php get_template_part('partials/footer.tpl'); ?>

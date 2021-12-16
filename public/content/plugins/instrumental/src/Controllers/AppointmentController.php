@@ -10,6 +10,6 @@ class AppointmentController extends CoreController
 
     public function appointment()
     {
-        $this->show('views/appointment');
+        $this->show('views/appointment.view');
     }
 }
