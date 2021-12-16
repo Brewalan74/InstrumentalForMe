@@ -8,7 +8,7 @@ $teacherInstrument = get_the_terms(
     $post->ID,
     'instrument'
 );
-dump($teacherInstrument);
+// dump($teacherInstrument);
 
 $datas = $_POST;
 // dump($datas);
@@ -17,7 +17,7 @@ $teacherId = get_the_author_meta('ID');
 
 $student = wp_get_current_user();
 $studentId = $student->ID;
-dump($studentId);
+// dump($studentId);
 // $term = get_queried_object();
 // $termId = $term->term_id;
 // $taxonomyImage = get_field('picture', 'instrument_' . $termId);
@@ -173,9 +173,10 @@ dump($studentId);
                 $teacherMusicStyle = get_the_terms(
                     $post->ID,
                     'music-style'
-                ); ?>
+                );
+                ?>
                 <ul>
-                    <?php if (!isset($teacherMusicStyle)) : ?>
+                    <?php if (isset($teacherMusicStyle)) : ?>
                         <?php foreach ($teacherMusicStyle as $key => $value) : ?>
                             <h6 class="profileMusicStyle_ul-p"><a href="<?= get_term_link($value->term_id); ?>"><?= $value->name; ?></a></h6>
                             <p class="taxoLayout"><?= substr($value->description, 0, 500) . '...'; ?></p>

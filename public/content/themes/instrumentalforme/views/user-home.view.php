@@ -3,6 +3,8 @@
 use Instrumental\Models\LessonModel;
 
 the_post();
+$teacherId = get_the_author_meta('ID');
+dump($teacherId);
 // echo __FILE__ . ':' . __LINE__;
 // exit();
 ?>
