@@ -201,6 +201,7 @@ $userdata = get_userdata($current_user->ID);
     </div>
 
     <div class="container">
+        <!--Affichage des données(des leçons) dans le calendrier-->
         <section>
             <?php
             $user = wp_get_current_user();

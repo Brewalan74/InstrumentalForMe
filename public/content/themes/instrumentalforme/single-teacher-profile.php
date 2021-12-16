@@ -83,7 +83,7 @@ $studentId = $student->ID;
 
                     <input id="date" name="date" type="hidden" />
 
-
+                            <!-- Données pour layout + enregistrement en BDD, des données dates/heures -->
                     <div id="vuecontainer">
                         <div id="appointment">
                             <v-app>
