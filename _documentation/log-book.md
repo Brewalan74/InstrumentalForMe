@@ -179,9 +179,32 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 
 ### Mercredi 15/12/21
 
--A faire
+-A faire:
 
   - enregistrement des certificats par le formulaire d'inscription(debug =>ne s'enregistre pas en BD)
   - creation d'une lecon au moment de la prise de rendez vous.
   - terminer la function suppression de compte
-  - 
+  
+- Fait:
+
+  - les certificats s'enregistrent bien par le biais du formulaire d'inscription,reste à debuger le soucis dans le formulaire update profile
+  - function suppression de compte terminer
+  - installation d'un calendrier en vue.js (avec l'aide de Julien) qui se retrouve sur les pages de profils personnels des users reprenant les rendez vous: reste à placer au bon endroit dans la page et gérer le css.
+  - prise de rendez-vous mis en place (lesson)
+
+### Jeudi 16/12/21
+
+- A faire:
+
+  - Debug du formulaire update concernant les maj des taxonomies
+  - layout calendar 
+  - page de confirmation pour les rendez-vous
+  - regler l'affichage des icone de réseaux sociaux (dans le css.js)
+  - récuperer le contenu des profs et élèves dans les pages de  profils
+  - Validation des nouvelles demande de rendez-vous 
+  - Dynamisation de la liste des cours , des élèves ou profs suivant le profil
+  - page 404
+    - CSS :
+        - regler taille icones des avatars 
+        - affichage du logo du site (header et form inscription)
+        - refaire un tour sur toutes les pages pour vérifier

@@ -112,7 +112,7 @@ use Instrumental\Controllers\UserController;
 
 
                 $profileId = $query->posts[0]->ID;
-                dump($profileId);
+               // dump($profileId);
                 $instrumentsId = [];
                 $selectedInstruments = wp_get_post_terms($profileId, 'instrument');
                 foreach ($selectedInstruments as $term) {
