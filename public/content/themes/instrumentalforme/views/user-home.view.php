@@ -128,12 +128,31 @@ $userdata = get_userdata($current_user->ID);
             </section>';
             echo '<section class="m-5">
                 <div class="container containerRecap">
-            
-                <ul class="recap m-5">
                 <h3>Vos nouvelles demandes de RDV</h3>
-                    <li>Eleve / Date + Heure A DYNAMISER</li>
+                <ul class="recap m-5">
+                ';
+
+                $user = wp_get_current_user();
+                $userId = $user->ID;
+                $lessonModel = new LessonModel();
+                $lessonsTeacher = $lessonModel->getLessonsByTeacherId($userId);
+                $lessonsStudent = $lessonModel->getLessonsByStudentId($userId);
+
+                foreach ($lessonsTeacher as $lesson) : ;
+
+                    if ($lesson->status = 0): 
+                        echo '<li>Eleve / Date + Heure A DYNAMISER</li>
                     <button type="button" class="btn btn-success">Valider</button>
-                    <button type="button" class="btn btn-danger">Refuser</button>
+                    <button type="button" class="btn btn-danger">Refuser</button>';
+                    else : ;
+                        
+                    endif;
+                endforeach;
+
+                '
+                
+                
+                    
                 </ul>
             
                 <ul class="recap m-5">
@@ -149,6 +168,18 @@ $userdata = get_userdata($current_user->ID);
             
             </section>';
         } else {
+            
+
+            $user = wp_get_current_user();
+            $userId = $user->ID;
+            $lessonModel = new LessonModel();
+            if (in_array('student', $user->roles)) {
+                $lessons = $lessonModel->getLessonsByStudentId($userId);
+                dump($lessons);
+            }
+            
+            
+
             echo '<section class="text-center">
                 <h1 class="m-5"> ';
             if (is_user_logged_in()) {
