@@ -21,7 +21,7 @@ if (!function_exists('instrumentalforme_initializeTheme')) {
         add_theme_support('title-tag');
         add_theme_support('post-thumbnails');
         add_theme_support('menus');
-        add_theme_support('custom-logo');
+       
     }
 }
 
@@ -87,10 +87,7 @@ if (!function_exists('instrumentalforme_loadAssets')) {
             get_theme_file_uri('css/instrumental.css')
         );
 
-        wp_enqueue_style(
-            'userRegistration-styles',
-            get_theme_file_uri('css/userRegistration.css')
-        );
+       
 
         wp_enqueue_style(
             'google-font-1',

@@ -65,6 +65,9 @@ class UserController extends CoreController
                 // mise à jour de l'email
                 $email = trim(filter_input(INPUT_POST, 'user_email'));
 
+                // mise à jour de la description
+                $description = trim(filter_input(INPUT_POST, 'user_description'));
+
                 if ($email) {
                     $args = [
                         'ID' => $user->ID,
@@ -104,11 +107,11 @@ class UserController extends CoreController
                     wp_set_post_terms($profile->ID, $certificates, 'certificate');
                     wp_set_post_terms($profile->ID, $instruments, 'instrument');
                     wp_set_post_terms($profile->ID, $musicStyles, 'music-style');
-                    
+
 
                     // mise à jour de la description
                     $description = filter_input(INPUT_POST, 'user_description');
-                    
+
                     // DOC https://developer.wordpress.org/reference/functions/wp_update_post/
                     // DOC https://developer.wordpress.org/reference/functions/wp_insert_post/
 
@@ -119,7 +122,6 @@ class UserController extends CoreController
                         'post_content' => $description,
                         'post_type' => $postType
                     ]);
-                    
                 }
 
                 global $router;
@@ -127,7 +129,7 @@ class UserController extends CoreController
             }
         }
     }
-//============================Update avatar===================================
+    //============================Update avatar===================================
 
     public function updateProfile()
     {
@@ -146,7 +148,7 @@ class UserController extends CoreController
             ]);
         }
     }
-//===============================suppression de compte=============================
+    //===============================suppression de compte=============================
 
     public function deleteAccount()
     {
@@ -175,12 +177,9 @@ class UserController extends CoreController
 
         $model->insert($userStudentId, $userTeacherId, $instrument, $date);
         global $router;
+
         // TODO redirection
+        $url = $router->generate('appointment');
+        header('Location: ' . $url);
     }
 }
-
-
-
-
-
-

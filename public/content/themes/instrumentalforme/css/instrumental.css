@@ -35,9 +35,10 @@
 
 }
 
-.logo{
-    width:50px;
+.logo {
+    width: 50px;
 }
+
 .instrument-container {
     margin-top: 2em;
     margin-bottom: 2em;
@@ -160,17 +161,6 @@ h2 a:hover {
 .taxoLayout {
     margin: 0 2em;
 }
-
-.name-profil-perso {
-    /*text-align: center;*/
-    margin: 1em;
-}
-
-.profile-perso {
-    font-size: 1.5em;
-    text-align: center;
-}
-
 
 .descriptionPerso {
     border: solid black 2px !important;
