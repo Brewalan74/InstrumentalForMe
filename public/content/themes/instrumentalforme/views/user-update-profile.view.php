@@ -28,6 +28,7 @@ use Instrumental\Controllers\UserController;
     $userdata = get_userdata($current_user->ID);
     $userName = $userdata->description;
     // dump(__FILE__ . ':' . __LINE__, $userName);
+   
     ?>
 
     <h2 class="profileH2">Modifier votre profil</h2>
@@ -85,13 +86,15 @@ use Instrumental\Controllers\UserController;
                     <label for="user_description" class='labelForm'>Votre description</label><br>
                     <textarea name="user_description" id="user_description" class="textareaDescription" size="250" autocapitalize="off"><?= $userdata->description ?></textarea>
                 </p>
+                
             </div>
 
-           
-
+           <?php
+            
+                    ?>
             <div class="containerUpdate">
                
-
+          
 
 
                 <!--=====================récupération des taxo du user=====================-->
@@ -100,7 +103,7 @@ use Instrumental\Controllers\UserController;
                
                $user = wp_get_current_user();
                $roles = $user->roles;
-
+              
                 // $query = new WP_Query([
                 //     'author' => $user->ID,
                 //     'post_type' => 'teacher-profile'
