@@ -6,63 +6,12 @@ the_post();
 $teacherId = get_the_author_meta('ID');
 // echo __FILE__ . ':' . __LINE__;
 // exit();
+$user = wp_get_current_user();
+$userId = $user->ID;
+$lessonModel = new LessonModel();
 ?>
 <?php
-//$test = get_post();
-//dump($test);
 
-//$test = get_user_meta(13);
-//dump($test);
-//dump($args);
-
-
-//$post   = get_post();
-//$output =  apply_filters( 'the_content', $post->post_content );
-//dump($output);
-
-//$test = get_terms();
-//dump($test);  
-//RENVOIE TAXO ASSOCIEES AU PROFIL CONNECTE
-
-//$test = the_post();
-//dump($test);    
-//RENVOIE NULL 
-
-//$test = get_field('description');
-//dump($test);
-// RENVOIE NULL
-
-//$test = get_fields();
-//dump($test);
-//RENVOIE NULL
-
-//$test = get_the_post_type_description();
-//dump($test);
-// RENVOIE ""
-
-//$test = get_post_types();
-//dump($test); 
-//RENVOIE TABLEAU
-
-//$args = array ('name' => 'teacher-profile');
-//$test = get_post_types($args);
-//dump($test); 
-//RENVOIE TABLEAU "teacher-profile" => "teacher-profile"
-
-//$test = get_role('teacher');
-//dump($test);
-// RENVOIE TABLEAU CAPABILITIES
-
-//$test = have_posts();
-//dump($test);
-// RENVOIE TRUE
-
-//$test = get_post_meta(get_the_ID(), 'teacher', true);
-//dump($test);
-// RENVOIE ""
-
-//$test = get_the_content();
-//dump($test);
 
 $current_user = wp_get_current_user();
 //dump(__FILE__ . ':' . __LINE__, $curreny_user);
@@ -130,29 +79,28 @@ $userdata = get_userdata($current_user->ID);
                 <div class="container containerRecap">
                 <h3>Vos nouvelles demandes de RDV</h3>
                 <ul class="recap m-5">
-                ';
-
-                $user = wp_get_current_user();
-                $userId = $user->ID;
-                $lessonModel = new LessonModel();
-                $lessonsTeacher = $lessonModel->getLessonsByTeacherId($userId);
-                $lessonsStudent = $lessonModel->getLessonsByStudentId($userId);
-
-                foreach ($lessonsTeacher as $lesson) : ;
-
-                    if ($lesson->status = 0): 
-                        echo '<li>Eleve / Date + Heure A DYNAMISER</li>
-                    <button type="button" class="btn btn-success">Valider</button>
-                    <button type="button" class="btn btn-danger">Refuser</button>';
-                    else : ;
-                        
-                    endif;
-                endforeach;
-
                 '
+                ;
+
+
+                if (in_array('teacher', $user->roles)) :
+                    $lessons = $lessonModel->getLessonsByTeacherId($userId);
+                    foreach ($lessons as $lesson => $value) : ;
+
+                        if ($value->status === 0): 
+                            echo '<li> ' . $value->user_nicename . ' / ' . $value->appointment . '</li>
+                        <button type="button" class="btn btn-success">Valider</button>
+                        <button type="button" class="btn btn-danger">Refuser</button>';
+                        // else : ;
+                            
+                        endif;
+                    endforeach;
+
+                endif;
+
                 
-                
-                    
+                echo
+                ' 
                 </ul>
             
                 <ul class="recap m-5">
@@ -170,12 +118,17 @@ $userdata = get_userdata($current_user->ID);
         } else {
             
 
-            $user = wp_get_current_user();
-            $userId = $user->ID;
-            $lessonModel = new LessonModel();
+            
+            //$user = wp_get_current_user();
+            //dump($user);
+            //$userId = $user->ID;
+            //$lessonModel = new LessonModel();
             if (in_array('student', $user->roles)) {
                 $lessons = $lessonModel->getLessonsByStudentId($userId);
-                dump($lessons);
+                //dump($lessons->student_id);
+                //dump($lessons['lesson_id']);
+                //dump($lessons['instrument']['name']);
+                
             }
             
             
@@ -234,9 +187,9 @@ $userdata = get_userdata($current_user->ID);
     <div class="container">
         <section>
             <?php
-            $user = wp_get_current_user();
-            $userId = $user->ID;
-            $lessonModel = new LessonModel();
+            // $user = wp_get_current_user();
+            // $userId = $user->ID;
+            // $lessonModel = new LessonModel();
             if (in_array('teacher', $user->roles)) {
                 $lessons = $lessonModel->getLessonsByTeacherId($userId);
             } else {
