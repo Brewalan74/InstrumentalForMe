@@ -162,17 +162,6 @@ h2 a:hover {
     margin: 0 2em;
 }
 
-.name-profil-perso {
-    /*text-align: center;*/
-    margin: 1em;
-}
-
-.profile-perso {
-    font-size: 1.5em;
-    text-align: center;
-}
-
-
 .descriptionPerso {
     border: solid black 2px !important;
     border-radius: 20px;
