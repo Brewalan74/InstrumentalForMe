@@ -1,3 +1,7 @@
+PAGE PROFIL OK AVEC SYNTAXE PAS COOL 
+
+
+
 <?php
 
 use Instrumental\Models\LessonModel;
@@ -53,13 +57,11 @@ $teacherId = get_the_author_meta('ID');
 //dump($test);
 
 $current_user = wp_get_current_user();
-// dump(__FILE__ . ':' . __LINE__, $curreny_user);
+//dump(__FILE__ . ':' . __LINE__, $curreny_user);
 $userdata = get_userdata($current_user->ID);
 // dump($userdata->ID);
-// $userDescription = $userdata->user_description;
-// dump($userDescription);
-
-
+ //$userDescription = $userdata->description;
+ //dump($userDescription);
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
@@ -78,39 +80,6 @@ $userdata = get_userdata($current_user->ID);
 
     <div class="container">
 
-        <section>
-            <?php
-            $user = wp_get_current_user();
-            $userId = $user->ID;
-            $lessonModel = new LessonModel();
-            if (in_array('teacher', $user->roles)) {
-                $lessons = $lessonModel->getLessonsByTeacherId($userId);
-            } else {
-                $lessons = $lessonModel->getLessonsByStudentId($userId);
-            }
-            ?>
-            <div id="calendar">
-                <textarea id="lessons" style="display: none; width: 100%; height: 500px"><?= json_encode($lessons, JSON_PRETTY_PRINT); ?></textarea>
-                <template>
-                    <v-app>
-                        <v-sheet tile height="54" class="d-flex">
-                            <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
-                                <v-icon>mdi-chevron-left</v-icon>
-                            </v-btn>
-                            <v-select v-model="type" :items="types" dense outlined hide-details class="ma-2" label="Calendrier"></v-select>
-                            <v-spacer></v-spacer>
-                            <v-btn icon class="ma-2" @click="$refs.calendar.next()">
-                                <v-icon>mdi-chevron-right</v-icon>
-                            </v-btn>
-                        </v-sheet>
-                        <v-sheet height="600">
-                            <v-calendar :interval-format="intervalFormat" ref="calendar" v-model="value" :weekdays="weekday" :type="type" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="30" :event-color="getEventColor" @change="getEvents" locale="fr"></v-calendar>
-                        </v-sheet>
-                    </v-app>
-                </template>
-            </div>
-        </section>
-
         <?php
         $user = wp_get_current_user();
         // dump(__FILE__ . ':' . __LINE__, $user);
@@ -121,8 +90,8 @@ $userdata = get_userdata($current_user->ID);
             $isTeacher = false;
         }
         if ($isTeacher) {
-            echo '<section class="name-profil-perso text-center">
-                <h1 class="profil-perso"> ';
+            echo '<section class="text-center">
+                <h1 class="m-5"> ';
             if (is_user_logged_in()) {
                 $user = wp_get_current_user();
                 echo "Bonjour " . $user->display_name;
@@ -131,13 +100,13 @@ $userdata = get_userdata($current_user->ID);
             '</h1>';
             echo '</section>
             
-            <p class="text-center">';
+            <div class="text-center">';
             // affichage de l'avatar
             $avatar = get_field('avatar', 'user_' . $user->ID);
             if ($avatar) {
                 echo '<img src="' . $avatar['url'] . '"/>';
             }
-            '</p>
+            '</div>
             <div>';
             global $router;
             $updateProfileURL = $router->generate('user-update-profile');
@@ -146,7 +115,7 @@ $userdata = get_userdata($current_user->ID);
             </div>
             <section class="m-5 text-center descriptionPerso">
                 <p>';
-            get_the_content();
+            echo get_the_content();
             '</p>
             </section>';
             echo '<section class="m-5">
@@ -181,24 +150,26 @@ $userdata = get_userdata($current_user->ID);
             };
             '</h1>';
             echo '</section>
-            <section>
-                <p class="text-center">';
+
+            
+            <div class="text-center">';
             // affichage de l'avatar
             $avatar = get_field('avatar', 'user_' . $user->ID);
             if ($avatar) {
                 echo '<img src="' . $avatar['url'] . '"/>';
             }
-            echo '</p>
-                <div>';
+            '</div>
+            <div>';
             global $router;
             $updateProfileURL = $router->generate('user-update-profile');
-            echo '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
+            echo 
+            '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
                 . $updateProfileURL . '">Modifier votre profile</a></p>
-                </div>
-            </section>
+            </div>
+            
             <section class="m-5 text-center descriptionPerso">
                 <p>';
-            echo get_the_content();
+             echo get_the_content();
             '</p>
             </section>';
             echo '<section class="m-5">
@@ -219,7 +190,46 @@ $userdata = get_userdata($current_user->ID);
             </section>';
         }
         ?>
+    </div>
 
+    <div class="container">
+        <section>
+            <?php
+            $user = wp_get_current_user();
+            $userId = $user->ID;
+            $lessonModel = new LessonModel();
+            if (in_array('teacher', $user->roles)) {
+                $lessons = $lessonModel->getLessonsByTeacherId($userId);
+            } else {
+                $lessons = $lessonModel->getLessonsByStudentId($userId);
+            }
+            ?>
+            <div id="calendar">
+                <textarea id="lessons"
+                    style="display: none; width: 100%; height: 500px"><?= json_encode($lessons, JSON_PRETTY_PRINT); ?></textarea>
+                <template>
+                    <v-app>
+                        <v-sheet tile height="54" class="d-flex">
+                            <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
+                                <v-icon>mdi-chevron-left</v-icon>
+                            </v-btn>
+                            <v-select v-model="type" :items="types" dense outlined hide-details class="ma-2"
+                                label="Calendrier"></v-select>
+                            <v-spacer></v-spacer>
+                            <v-btn icon class="ma-2" @click="$refs.calendar.next()">
+                                <v-icon>mdi-chevron-right</v-icon>
+                            </v-btn>
+                        </v-sheet>
+                        <v-sheet height="600">
+                            <v-calendar :interval-format="intervalFormat" ref="calendar" v-model="value"
+                                :weekdays="weekday" :type="type" :events="events" :event-overlap-mode="mode"
+                                :event-overlap-threshold="30" :event-color="getEventColor" @change="getEvents"
+                                locale="fr"></v-calendar>
+                        </v-sheet>
+                    </v-app>
+                </template>
+            </div>
+        </section>
     </div>
 
     <section>
