@@ -182,4 +182,6 @@ class UserController extends CoreController
         $url = $router->generate('appointment');
         header('Location: ' . $url);
     }
+ 
+
 }

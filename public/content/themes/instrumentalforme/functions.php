@@ -211,7 +211,17 @@ add_filter('get_the_excerpt', function ($excerpt) {
     return substr($excerpt, 0, 250) . '...';
 });
 
-
+/**
+ * Function and filter to force archive.php ( archives) to display only teacher custom post types. 
+ */
+function add_custom_types_to_archive( $query ) {
+    if( is_archive() && empty( $query->query_vars['suppress_filters'] ) ) {
+        $post_types = array( 'teacher-profile' );
+        $query->set( 'post_type', $post_types );
+        return $query;
+    }
+}
+add_filter( 'pre_get_posts', 'add_custom_types_to_archive' ); 
 
 // function wpdocs_check_user_updated($user_id, $oldUserData)
 // {
