@@ -112,6 +112,11 @@ h4 {
     color: black;
 }
 
+img {
+    width: 10rem;
+    height: auto;
+}
+
 /* CSS update profile */
 .layoutUpdateButton {
     margin: 1em auto;
