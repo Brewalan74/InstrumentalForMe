@@ -150,6 +150,14 @@ h4 {
 }
 
 /* General */
+h1 {
+    font-size: 4rem;
+}
+
+h2 {
+    font-size: 3rem !important;
+}
+
 h2 a {
     color: #660000;
 }
@@ -204,5 +212,5 @@ h2 a:hover {
 }
 
 .linkInstrument a {
-    color:black !important;
+    color: black !important;
 }
