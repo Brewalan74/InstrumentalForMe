@@ -68,7 +68,7 @@
                                     </a>
                                 </h2>
                                 <div>
-                                    <p><?php the_terms($post->ID, 'instrument'); ?></p>
+                                    <p class="linkInstrument"><?php the_terms($post->ID, 'instrument'); ?></p>
                                 </div>
                                 <div>
                                     <?php the_content(); ?>

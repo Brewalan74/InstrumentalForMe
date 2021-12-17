@@ -202,3 +202,7 @@ h2 a:hover {
 .appointmentForm {
     margin-top: 1em;
 }
+
+.linkInstrument a {
+    color:black !important;
+}
