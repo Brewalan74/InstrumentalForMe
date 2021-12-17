@@ -66,6 +66,45 @@ class LessonModel extends CoreModel
         );
     }
 
+    public function getLessonById($lessonId)
+    {
+        $tablePrefix = $this->wpdb->prefix;
+        $tableName = $tablePrefix . 'lesson';
+
+        $sql = "
+            SELECT * FROM `" . $tableName . "`
+            WHERE
+               lesson_id  = %d
+        ";
+
+        $preparedStatement = $this->wpdb->prepare(
+            $sql,
+            [
+                $lessonId
+            ]
+        );
+        $rows = $this->wpdb->get_results($preparedStatement);
+
+        return $rows;
+    }
+
+    public function updateStatus($lessonId, $status)
+    {
+        $conditions = [
+            'lesson_id' => $lessonId,
+        ];
+
+        $data = [
+            'status' => $status,
+        ];
+
+        $this->wpdb->update(
+            $this->getTableName(),
+            $data,
+            $conditions
+        );
+    }
+
     public function getLessonsByUserId($userId, $role)
     {
         if ($role == 'teacher') {
