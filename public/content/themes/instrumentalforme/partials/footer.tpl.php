@@ -4,11 +4,15 @@
             <p class="m-0 text-center text-white small">Copyright &copy; Instrumental For me! 2021</p>
         </div>
 
-        <div class="text-center">
-            <a href="#" class="fa fa-facebook"></a>
-            <a href="#" class="fa fa-twitter"></a>
-            <a href="#" class="fa fa-youtube"></a>
-            <a href="#" class="fa fa-instagram"></a>
+        <div class="container-fluid footerCenter">
+            <a href="https://www.facebook.com" target="_blank">
+                <img class="footerLogos" src="<?= get_theme_file_uri('assets/image/LogoFacebook.png') ?>" alt="Facebook Icon"></a>
+            <a href="https://twitter.com" target="_blank">
+                <img class="footerLogos" src="<?= get_theme_file_uri('assets/image/LogoTwitter.png') ?>" alt="Twitter Icon"></a>
+            <a href="https://www.youtube.com" target="_blank">
+                <img class="footerLogos" src="<?= get_theme_file_uri('assets/image/LogoYoutube.png') ?>" alt="Linkedin Icon"></a>
+            <a href="https://www.instagram.com" target="_blank">
+                <img class="footerLogos" src="<?= get_theme_file_uri('assets/image/LogoInstagram.png') ?>" alt="Instagram Icon"></a>
         </div>
     </div>
 </footer>
