@@ -115,6 +115,15 @@ h4 {
 /* CSS update profile */
 .layoutUpdateButton {
     margin: 1em auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.divDeleteAccount {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .containerUpdate {

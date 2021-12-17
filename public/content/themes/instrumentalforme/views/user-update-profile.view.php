@@ -180,8 +180,11 @@ use Instrumental\Controllers\UserController;
 
             <!--============================Avatar===================================-->
             <div class="layoutUpdateButton">
+                <div class="m-5">
                 <h2>Changer mon avatar</h2>
                 <p>Veuillez selectionner votre avatar en format .png</p>
+                
+                <p class="mb-5">
                 <?php
                 $options = array(
                     'post_id' => 'user_' . $current_user->ID,
@@ -194,15 +197,19 @@ use Instrumental\Controllers\UserController;
                 );
                 acf_form($options);
                 ?>
+                </p>
+                </div>
             </div>
 
             <!--===============================suppression de compte=============================-->
+            <div class="divDeleteAccount">
             <?php
             global $router;
             $deleteAccountURL = $router->generate('user-delete-account');
             echo
             '<button type="button" class="btn btn-danger m-2"><a class="text-dark" href="' . $deleteAccountURL . '">Supprimer votre compte</a></button>';
             ?>
+            </div>
         </section>
     </div>
 
