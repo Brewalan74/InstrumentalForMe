@@ -22,7 +22,7 @@ function status($lessonId, $status)
 }
 
 $lessons = $lessonModel->getLessonsByTeacherId($userId);
-//dump($lessons);
+// dump($lessons);
 
 $current_user = wp_get_current_user();
 //dump(__FILE__ . ':' . __LINE__, $curreny_user);
@@ -85,10 +85,6 @@ $userdata = get_userdata($current_user->ID);
             <section class="m-5 descriptionPerso">
                 <div class="container containerRecap">
 
-                    <p>
-                        <?= get_the_content(); ?>
-                    </p>
-
                     <ul class="recap m-8">
                         <h3>Vos nouvelles demandes de RDV</h3>
 
@@ -98,12 +94,12 @@ $userdata = get_userdata($current_user->ID);
                                 <?php if ($lesson->status == 0) : ?>
                                     <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->appointment ?></li>
                                     <form method="post" action="">
-                                        <input type="submit" name="agree" class="btn btn-success" value="Valider" />
-                                        <input type="submit" name="disagree" class="btn btn-danger" value="Refuser" />
+                                        <input type="submit" name="agree<?= $lesson->lesson_id ?>" class="btn btn-success" value="Valider" />
+                                        <input type="submit" name="disagree<?= $lesson->lesson_id ?>" class="btn btn-danger" value="Refuser" />
                                     </form>
-                                    <?php if (array_key_exists('agree', $_POST)) {
+                                    <?php if (array_key_exists('agree' . $lesson->lesson_id, $_POST)) {
                                         status($lesson->lesson_id, 1);
-                                    } else if (array_key_exists('disagree', $_POST)) {
+                                    } else if (array_key_exists('disagree' . $lesson->lesson_id, $_POST)) {
                                         status($lesson->lesson_id, 2);
                                     } ?>
                                     <!-- else : -->
@@ -121,8 +117,6 @@ $userdata = get_userdata($current_user->ID);
                             <?php foreach ($lessons as $lesson) : ?>
                                 <?php if ($lesson->status == 1) : ?>
                                     <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->appointment ?></li>
-                                <?php else : ?>
-                                    <p>Vous n'avez pas de cours prévu</p>
                             <?php endif;
                             endforeach; ?>
                         <?php endif; ?>
@@ -136,8 +130,7 @@ $userdata = get_userdata($current_user->ID);
                             <?php foreach ($lessons as $lesson) : ?>
                                 <?php if ($lesson->status == 1) : ?>
                                     <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->instrument->name ?></li>
-                                <?php else : ?>
-                                    <p>Vous n'avez pas d'eleves</p>
+
                             <?php endif;
                             endforeach; ?>
                         <?php endif; ?>
@@ -176,10 +169,6 @@ $userdata = get_userdata($current_user->ID);
 
             <section class="m-5 descriptionPerso">
                 <div class="container containerRecap">
-
-                    <p>
-                        <?php get_the_content(); ?>
-                    </p>
 
                     <ul class="recap m-5">
                         <h3>Vos prochains cours</h3>
