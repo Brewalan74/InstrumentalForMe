@@ -53,7 +53,7 @@ class UserController extends CoreController
                     $postType = 'student-profile';
                 }
                 $userId = $user->ID;
-
+                
 
                 // mise à jour des champs custom
                 $firstName = filter_input(INPUT_POST, 'user_firstname');
@@ -87,7 +87,7 @@ class UserController extends CoreController
                 // =============================================================================
 
                 // gestion des taxonomies
-
+                
                 $certificates = filter_input(INPUT_POST, 'certificate', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
                 $instruments = filter_input(INPUT_POST, 'instrument', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
                 $musicStyles = filter_input(INPUT_POST, 'musicStyle', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
@@ -103,6 +103,7 @@ class UserController extends CoreController
 
 
                 if (!empty($query->posts)) {
+                    
                     $profile = $query->posts[0];
                     wp_set_post_terms($profile->ID, $certificates, 'certificate');
                     wp_set_post_terms($profile->ID, $instruments, 'instrument');
@@ -114,8 +115,6 @@ class UserController extends CoreController
 
                     // DOC https://developer.wordpress.org/reference/functions/wp_update_post/
                     // DOC https://developer.wordpress.org/reference/functions/wp_insert_post/
-
-
 
                     wp_update_post([
                         'ID' => $profile->ID,

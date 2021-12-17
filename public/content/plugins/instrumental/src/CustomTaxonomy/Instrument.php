@@ -13,10 +13,10 @@ class Instrument
 
         register_taxonomy(
             'instrument',   // idenfiant de la taxonomy
-            [
+            
                 'teacher-profile',
-                'student-profile'
-            ] , 
+                
+           
             [
                 'show_in_rest' => true, 
                 'label' => 'Instrument',
