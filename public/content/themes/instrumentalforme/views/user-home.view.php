@@ -23,18 +23,11 @@ function status($lessonId, $status)
 
 $lessons = $lessonModel->getLessonsByTeacherId($userId);
 //dump($lessons);
-foreach ($lessons as $lesson) :
-
-
-endforeach;
-?>
-<?php
-
 
 $current_user = wp_get_current_user();
 //dump(__FILE__ . ':' . __LINE__, $curreny_user);
 $userdata = get_userdata($current_user->ID);
-dump($userdata->ID);
+// dump($userdata->ID);
 //$userDescription = $userdata->description;
 //dump($userDescription);
 ?>
@@ -165,7 +158,7 @@ dump($userdata->ID);
                     <?php endif; ?>
                 </h1>
             </section>
-            <div class="text-center">';
+            <div class="text-center">
                 <!-- affichage de l'avatar -->
                 <?php $avatar = get_field('avatar', 'user_' . $user->ID);
                 if ($avatar) : ?>
