@@ -9,13 +9,13 @@ $teacherInstrument = get_the_terms(
     'instrument'
 );
 // dump($teacherInstrument);
-
 $datas = $_POST;
 // dump($datas);
 // dump(get_the_author_meta('ID'));
 $teacherId = get_the_author_meta('ID');
 
 $student = wp_get_current_user();
+
 $studentId = $student->ID;
 // dump($studentId);
 // $term = get_queried_object();
@@ -83,7 +83,7 @@ $studentId = $student->ID;
 
                     <input id="date" name="date" type="hidden" />
 
-                            <!-- Données pour layout + enregistrement en BDD, des données dates/heures -->
+
                     <div id="vuecontainer">
                         <div id="appointment">
                             <v-app>
