@@ -16,7 +16,7 @@ $router->setBasePath($baseURI);
 // === HOME===
 
 $router->map(
-    'GET', // surveille les appels HTTP de type GET
+    'GET, POST', // surveille les appels HTTP de type GET
     '/user/dashboard/', // url a surveiller
     function () {
         $userController = new UserController();

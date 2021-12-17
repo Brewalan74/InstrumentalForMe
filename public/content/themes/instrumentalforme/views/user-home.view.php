@@ -6,70 +6,34 @@ the_post();
 $teacherId = get_the_author_meta('ID');
 // echo __FILE__ . ':' . __LINE__;
 // exit();
+$user = wp_get_current_user();
+$userId = $user->ID;
+$lessonModel = new LessonModel();
+
+
+
+function status($lessonId, $status)
+{
+    $statusUpdate = new LessonModel();
+    $statusUpdate->updateStatus($lessonId, $status);
+}
+
+$lessons = $lessonModel->getLessonsByTeacherId($userId);
+//dump($lessons);
+foreach ($lessons as $lesson) :
+
+
+endforeach;
 ?>
 <?php
-//$test = get_post();
-//dump($test);
 
-//$test = get_user_meta(13);
-//dump($test);
-//dump($args);
-
-
-//$post   = get_post();
-//$output =  apply_filters( 'the_content', $post->post_content );
-//dump($output);
-
-//$test = get_terms();
-//dump($test);  
-//RENVOIE TAXO ASSOCIEES AU PROFIL CONNECTE
-
-//$test = the_post();
-//dump($test);    
-//RENVOIE NULL 
-
-//$test = get_field('description');
-//dump($test);
-// RENVOIE NULL
-
-//$test = get_fields();
-//dump($test);
-//RENVOIE NULL
-
-//$test = get_the_post_type_description();
-//dump($test);
-// RENVOIE ""
-
-//$test = get_post_types();
-//dump($test); 
-//RENVOIE TABLEAU
-
-//$args = array ('name' => 'teacher-profile');
-//$test = get_post_types($args);
-//dump($test); 
-//RENVOIE TABLEAU "teacher-profile" => "teacher-profile"
-
-//$test = get_role('teacher');
-//dump($test);
-// RENVOIE TABLEAU CAPABILITIES
-
-//$test = have_posts();
-//dump($test);
-// RENVOIE TRUE
-
-//$test = get_post_meta(get_the_ID(), 'teacher', true);
-//dump($test);
-// RENVOIE ""
-
-//$test = get_the_content();
-//dump($test);
 
 $current_user = wp_get_current_user();
 //dump(__FILE__ . ':' . __LINE__, $curreny_user);
 $userdata = get_userdata($current_user->ID);
 // dump($userdata->ID);
- //$userDescription = $userdata->description;
- //dump($userDescription);
+//$userDescription = $userdata->description;
+//dump($userDescription);
 ?>
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
@@ -89,114 +53,161 @@ $userdata = get_userdata($current_user->ID);
     <div class="container">
 
         <?php
-        $user = wp_get_current_user();
-        // dump(__FILE__ . ':' . __LINE__, $user);
         $roles = $user->roles;
-        if (in_array('teacher', $roles)) {
+        if (in_array('teacher', $roles)) :
             $isTeacher = true;
-        } else {
+        else :
             $isTeacher = false;
-        }
-        if ($isTeacher) {
-            echo '<section class="text-center">
-                <h1 class="m-5"> ';
-            if (is_user_logged_in()) {
-                $user = wp_get_current_user();
-                echo "Bonjour " . $user->display_name;
-                //dump($user);
-            };
-            '</h1>';
-            echo '</section>
-            
-            <div class="text-center">';
-            // affichage de l'avatar
-            $avatar = get_field('avatar', 'user_' . $user->ID);
-            if ($avatar) {
-                echo '<img src="' . $avatar['url'] . '"/>';
-            }
-            '</div>
-            <div>';
-            global $router;
-            $updateProfileURL = $router->generate('user-update-profile');
-            echo
-            '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="' . $updateProfileURL . '">Modifier votre profil</a></p>
-            </div>
-            <section class="m-5 text-center descriptionPerso">
-                <p>';
-            echo get_the_content();
-            '</p>
-            </section>';
-            echo '<section class="m-5">
-                <div class="container containerRecap">
-            
-                <ul class="recap m-5">
-                <h3>Vos nouvelles demandes de RDV</h3>
-                    <li>Eleve / Date + Heure A DYNAMISER</li>
-                    <button type="button" class="btn btn-success">Valider</button>
-                    <button type="button" class="btn btn-danger">Refuser</button>
-                </ul>
-            
-                <ul class="recap m-5">
-                <h3>Liste de vos cours</h3>
-                    <li><a class="linkProfile"href="#">Cours 1 A DYNAMISER</a></li>
-                </ul>
-            
-                <ul class="recap m-5">
-                <h3>Liste de vos élèves</h3>
-                    <li><a class="linkProfile" href="#">Eleve 1 A DYNAMISER</a></li>
-                </ul>
-                </div>
-            
-            </section>';
-        } else {
-            echo '<section class="text-center">
-                <h1 class="m-5"> ';
-            if (is_user_logged_in()) {
-                $user = wp_get_current_user();
-                echo "Bonjour " . $user->display_name;
-                //dump($user);
-            };
-            '</h1>';
-            echo '</section>
+        endif;
 
-            
-            <div class="text-center">';
-            // affichage de l'avatar
-            $avatar = get_field('avatar', 'user_' . $user->ID);
-            if ($avatar) {
-                echo '<img src="' . $avatar['url'] . '"/>';
-            }
-            '</div>
-            <div>';
-            global $router;
-            $updateProfileURL = $router->generate('user-update-profile');
-            echo 
-            '<p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="'
-                . $updateProfileURL . '">Modifier votre profile</a></p>
+        if ($isTeacher) : ?>
+            <section class="text-center">
+                <h1 class="m-5">
+                    <?php if (is_user_logged_in()) :
+                        $user = wp_get_current_user(); ?>
+                        <p>Bonjour <?= $user->display_name; ?></p>
+                    <?php endif; ?>
+                </h1>
+            </section>
+
+            <div class="text-center">
+                <!-- affichage de l'avatar -->
+                <?php $avatar = get_field('avatar', 'user_' . $user->ID); ?>
+                <?php if ($avatar) : ?>
+                    <img src="<?= $avatar['url'] ?>" />
+                <?php endif; ?>
             </div>
-            
-            <section class="m-5 text-center descriptionPerso">
-                <p>';
-             echo get_the_content();
-            '</p>
-            </section>';
-            echo '<section class="m-5">
-                <div class="container containerRecap">
-            
-                <ul class="recap m-5">
-                <h3>Vos prochains cours</h3>
-                    <li>Date - Heure - Prof A DYNAMISER</li>
-                    <button type="button" class="btn btn-danger">Annuler le RDV</button>
-                </ul>
-            
-                <ul class="recap m-5">
-                <h3>Vos professeurs</h3>
-                    <li><a class="linkProfile" href="#">Prof / instrument A DYNAMISER</a></li>
-                </ul>
+
+            <div>
+                <?php global $router;
+                $updateProfileURL = $router->generate('user-update-profile'); ?>
+                <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="<?= $updateProfileURL ?>">Modifier votre profil</a></p>
+            </div>
+
+
+
+                <section class="m-5 descriptionPerso">
+                    <div class="container containerRecap">
+
+                    <p>
+                        <?= get_the_content(); ?>
+                    </p>
+
+                    <ul class="recap m-8">
+                        <h3>Vos nouvelles demandes de RDV</h3>
+
+                            <?php if (in_array('teacher', $user->roles)) :
+                                $lessons = $lessonModel->getLessonsByTeacherId($userId); ?>
+                                <?php foreach ($lessons as $lesson) : ?>
+                                    <?php if ($lesson->status == 0) : ?>
+                                        <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->appointment ?></li>
+                                        <form method="post" action="">
+                                            <input type="submit" name="agree" class="btn btn-success" value="Valider" />
+                                            <input type="submit" name="disagree" class="btn btn-danger" value="Refuser" />
+                                        </form>
+                                        <?php if (array_key_exists('agree', $_POST)) {
+                                            status($lesson->lesson_id, 1);
+                                        } else if (array_key_exists('disagree', $_POST)) {
+                                            status($lesson->lesson_id, 2);
+                                        } ?>
+                                        <!-- else : -->
+                                <?php endif;
+                                endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+
+
+                        <ul class="recap m-8">
+                            <h3>Liste de vos cours</h3>
+
+                            <?php if (in_array('teacher', $user->roles)) :
+                                $lessons = $lessonModel->getLessonsByTeacherId($userId); ?>
+                                <?php foreach ($lessons as $lesson) : ?>
+                                    <?php if ($lesson->status == 1) : ?>
+                                        <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->appointment ?></li>
+                                <?php endif;
+                                endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+
+
+                        <ul class="recap m-8">
+                        <h3>Liste de vos élèves</h3>
+                            <?php if (in_array('teacher', $user->roles)) :
+                                $lessons = $lessonModel->getLessonsByTeacherId($userId); ?>
+                                <?php foreach ($lessons as $lesson) : ?>
+                                    <?php if ($lesson->status == 1) : ?>
+                                        <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->instrument->name ?></li>
+                                <?php endif;
+                                endforeach; ?>
+                            <?php endif; ?>
+                        </ul>
+                    
+                </section>
+
+            <?php else :
+
+                $lessons = $lessonModel->getLessonsByStudentId($userId);
+                ?>
+                <section class="text-center">
+                    <h1 class="m-5">
+                        <?php if (is_user_logged_in()) :
+                            $user = wp_get_current_user(); ?>
+                            <p>Bonjour <?= $user->display_name; ?> </p>
+                            <!-- <?php dump($user); ?> -->
+                        <?php endif; ?>
+                    </h1>
+                </section>
+                <div class="text-center">';
+                    <!-- affichage de l'avatar -->
+                    <?php $avatar = get_field('avatar', 'user_' . $user->ID);
+                    if ($avatar) : ?>
+                        <img src="<?= $avatar['url'] ?>" />
+                    <?php endif; ?>
                 </div>
-            
-            </section>';
-        }
+                <div>
+                    <?php global $router;
+                    $updateProfileURL = $router->generate('user-update-profile'); ?>
+                    <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="<?= $updateProfileURL ?>">Modifier votre profile</a></p>
+                </div>
+
+
+
+
+                <section class="m-5 descriptionPerso">
+                    <div class="container containerRecap">
+
+                    <p>
+                        <?php get_the_content(); ?>
+                    </p>
+
+                        <ul class="recap m-5">
+                            <h3>Vos prochains cours</h3>
+                            <?php
+  
+                            if (in_array('student', $user->roles)) :
+                            $lessons = $lessonModel->getLessonsByStudentId($userId);
+                            //dump($lessons);
+                            foreach ($lessons as $lesson) : ?>
+                          
+                          
+                            <?php if ($lesson->status == 1) : ?>
+                            <li> <?= $lesson->teacher->data->user_nicename ?> / <?= $lesson->appointment ?></li>
+                            <!-- else : -->
+                          
+                            <?php endif;
+                            endforeach;
+                          endif; ?>
+                        </ul>
+
+                        <ul class="recap m-5">
+                            <h3>Vos professeurs</h3>
+                            <li><a class="linkProfile" href="#"><?= $lesson->teacher->data->user_nicename ?> / <?= $lesson->instrument->name ?></a></li>
+                        </ul>
+                    </div>
+                </section>
+            </div>
+        <?php endif;
         ?>
     </div>
 
@@ -204,36 +215,31 @@ $userdata = get_userdata($current_user->ID);
         <!--Affichage des données(des leçons) dans le calendrier-->
         <section>
             <?php
-            $user = wp_get_current_user();
-            $userId = $user->ID;
-            $lessonModel = new LessonModel();
-            if (in_array('teacher', $user->roles)) {
+            // $user = wp_get_current_user();
+            // $userId = $user->ID;
+            // $lessonModel = new LessonModel();
+            if (in_array('teacher', $user->roles)) :
                 $lessons = $lessonModel->getLessonsByTeacherId($userId);
-            } else {
+            else :
                 $lessons = $lessonModel->getLessonsByStudentId($userId);
-            }
+            endif;
             ?>
             <div id="calendar">
-                <textarea id="lessons"
-                    style="display: none; width: 100%; height: 500px"><?= json_encode($lessons, JSON_PRETTY_PRINT); ?></textarea>
+                <textarea id="lessons" style="display: none; width: 100%; height: 500px"><?= json_encode($lessons, JSON_PRETTY_PRINT); ?></textarea>
                 <template>
                     <v-app>
                         <v-sheet tile height="54" class="d-flex">
                             <v-btn icon class="ma-2" @click="$refs.calendar.prev()">
                                 <v-icon>mdi-chevron-left</v-icon>
                             </v-btn>
-                            <v-select v-model="type" :items="types" dense outlined hide-details class="ma-2"
-                                label="Calendrier"></v-select>
+                            <v-select v-model="type" :items="types" dense outlined hide-details class="ma-2" label="Calendrier"></v-select>
                             <v-spacer></v-spacer>
                             <v-btn icon class="ma-2" @click="$refs.calendar.next()">
                                 <v-icon>mdi-chevron-right</v-icon>
                             </v-btn>
                         </v-sheet>
                         <v-sheet height="600">
-                            <v-calendar :interval-format="intervalFormat" ref="calendar" v-model="value"
-                                :weekdays="weekday" :type="type" :events="events" :event-overlap-mode="mode"
-                                :event-overlap-threshold="30" :event-color="getEventColor" @change="getEvents"
-                                locale="fr"></v-calendar>
+                            <v-calendar :interval-format="intervalFormat" ref="calendar" v-model="value" :weekdays="weekday" :type="type" :events="events" :event-overlap-mode="mode" :event-overlap-threshold="30" :event-color="getEventColor" @change="getEvents" locale="fr"></v-calendar>
                         </v-sheet>
                     </v-app>
                 </template>
@@ -247,6 +253,7 @@ $userdata = get_userdata($current_user->ID);
         <!-- wp footer -->
         <?php get_footer(); ?>
     </section>
+
 </body>
 
 </html>
