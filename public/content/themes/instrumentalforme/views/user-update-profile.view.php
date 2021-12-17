@@ -142,6 +142,8 @@ use Instrumental\Controllers\UserController;
                     } else {
                     }
                     // =====================INSTRUMENTS=====================
+                    if (in_array('teacher', $roles)) {
+                        $isTeacher = true;
                     echo "<div id='instrument' class='containerUpdateRadio'>";
                     echo "<br><label class='labelForm'>Vos instruments</label><br>";
                     $instruments = get_terms('instrument', array('hide_empty' => false));
@@ -157,6 +159,8 @@ use Instrumental\Controllers\UserController;
                         echo "</label><br>";
                     endforeach;
                     echo '</div>';
+                    } else {
+                    }
                     //=====================MUSIC STYLE=====================
                     echo "<div id='musicStyle' class='containerUpdateRadio'>";
                     echo "<br><label class='labelForm'>Vos styles de musique</label><br>";

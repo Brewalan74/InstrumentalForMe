@@ -179,7 +179,7 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 
 ### Mercredi 15/12/21
 
--A faire:
+- A faire:
 
   - enregistrement des certificats par le formulaire d'inscription(debug =>ne s'enregistre pas en BD)
   - creation d'une lecon au moment de la prise de rendez vous.
@@ -219,7 +219,7 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
   - regler l'affichage des icone de réseaux sociaux (dans le css.js)
   - récuperer le contenu des profs et élèves dans les pages de  profils
   - Dynamisation de la liste des cours , des élèves ou profs suivant le profil
-  - page 404 :en cous
+  - page 404 :en cours
   - Afficher la liste des profs dans la page archive (affiche pour le moment profs et élèves) ok
   - CSS :
         - regler taille icones des avatars 
