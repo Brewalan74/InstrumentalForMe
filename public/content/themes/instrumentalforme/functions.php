@@ -212,7 +212,7 @@ add_filter('get_the_excerpt', function ($excerpt) {
 });
 
 /**
- * Function and filter to force archive.php ( archives) to display only teacher custom post types. 
+ * Function and filter to force archive.php to display only teacher custom post types. 
  */
 function add_custom_types_to_archive( $query ) {
     if( is_archive() && empty( $query->query_vars['suppress_filters'] ) ) {

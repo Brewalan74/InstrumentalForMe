@@ -197,14 +197,32 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 - A faire:
 
   - Debug du formulaire update concernant les maj des taxonomies
+  - Afficher la liste des profs dans la page archive (affiche pour le moment profs et élèves)
   - layout calendar 
   - page de confirmation pour les rendez-vous
-  - regler l'affichage des icone de réseaux sociaux (dans le css.js)
-  - récuperer le contenu des profs et élèves dans les pages de  profils
   - Validation des nouvelles demande de rendez-vous 
   - Dynamisation de la liste des cours , des élèves ou profs suivant le profil
   - page 404
-    - CSS :
+    
+
+- Fait:
+
+  - page de confirmation pour les rendez-vous
+  - Debug du formulaire update concernant les maj des taxonomies
+  - Validation des nouvelles demande de rendez-vous:EN COURS
+
+
+### Vendredi 17/12/21
+
+- A faire:
+
+  - regler l'affichage des icone de réseaux sociaux (dans le css.js)
+  - récuperer le contenu des profs et élèves dans les pages de  profils
+  - Dynamisation de la liste des cours , des élèves ou profs suivant le profil
+  - page 404 :en cous
+  - Afficher la liste des profs dans la page archive (affiche pour le moment profs et élèves) ok
+  - CSS :
         - regler taille icones des avatars 
-        - affichage du logo du site (header et form inscription)
+        - affichage du logo du site (header )
         - refaire un tour sur toutes les pages pour vérifier
+
