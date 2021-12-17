@@ -50,13 +50,10 @@ $studentId = $student->ID;
         <section>
             <div class="profileH2">
                 <p class="profileView">Vous êtes sur la page de profil de</p>
-                <p><?= get_avatar(
-                        $post->ID,
-                        $size = 96,
-                        $default = '',
-                        $alt = '',
-                        $args = null
-                    ); ?></p>
+                <p><?php $urlAvatar = get_field('avatar', 'user_' . $teacherId)['url'];
+                    // dump($urlAvatar); 
+                    ?></p>
+                <img src="<?= $urlAvatar ?>" alt="">
                 <h2><?= get_the_author(); ?></h2>
             </div>
             <div class="profileDescription">
