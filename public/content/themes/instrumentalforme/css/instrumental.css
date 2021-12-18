@@ -117,6 +117,11 @@ h4 {
     height: auto;
 }
 
+.profileH2 :nth-child(3) {
+    width: 10rem;
+    height: auto;
+}
+
 /* CSS update profile */
 .layoutUpdateButton {
     margin: 1em auto;
