@@ -210,7 +210,7 @@ if (in_array('teacher', $user->roles)) {
 
                     <ul class="recap m-5">
                         <h3>Vos professeurs</h3>
-                        <?php if (in_array('teacher', $user->roles)) :
+                        <?php if (in_array('student', $user->roles)) :
                             $lessons = $lessonModel->getLessonsByStudentId($userId); ?>
                             <?php foreach ($lessons as $lesson) : ?>
                                 <?php if ($lesson->status == 1) : ?>
