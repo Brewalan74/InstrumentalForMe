@@ -14,6 +14,7 @@ wp
 
 wp-config.php
 wp-config.php.bak
+wp-config.2021-12-18.10-42-12.php
 
 content/*
 !wp-content
