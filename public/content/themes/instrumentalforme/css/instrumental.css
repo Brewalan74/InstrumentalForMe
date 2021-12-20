@@ -2,6 +2,7 @@
 @media (max-width: 575px) {
     h1 {
         font-size: 1.5em !important;
+        
     }
 
     h2 {
@@ -34,9 +35,18 @@
     color: #B00000 !important;
 
 }
+header  {
 
-.logo {
-    width: 50px;
+    padding-top: 4rem !important;
+    padding-bottom: 3rem !important;
+    
+}
+.logo{
+    margin-bottom: 3em !important;
+}
+.logo img {
+    background-color:#f4e4e6;
+    border-radius: 50%;
 }
 
 .instrument-container {
