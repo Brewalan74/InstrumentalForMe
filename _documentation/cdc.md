@@ -18,9 +18,9 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 - Connexion
 - Inscription
-- page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument, diaporama...)
+- page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument...)
 - Page profil :
-  - profs (necessité d'une presentation, necessité d'un certificat sous forme de taxonomy + niveau possible des cours : debutant, faux debutant, intermediaire, avancé...)
+  - profs (necessité d'un certificat sous forme de taxonomy )
   - eleves (possibilité de prendre rdv sur un creneau libre d'un prof. gestion basique d'un compte client, possibilité d'effacer son compte)
 - link profs/instruments/eleves
 - Prise de rendez-vous sous forme de formulaire
@@ -34,7 +34,7 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
   | --            | Page inscription                | page modifier son profil                                                               | --                            |
-  | --            | page profil (prof + eleve)      | Diaporama (carousel) si le temps                                                       | --                            |
+  | --            | page profil (prof + eleve)      | Suppression de compte                                                                  | --                            |
   | --            |                                 | --                                                                                     | --                            |
 
 
@@ -43,6 +43,8 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
     - Home (affichage des instruments/profs?)
     - catégories pour les instruments
     - page eleve (depot d'avis)
+    - niveau possible des cours : debutant, faux debutant, intermediaire, avancé...
+    - supprimer un rendez-vous
 
 - V3:
     - envoie auto d'un lien (pour l'élève et le prof) vers google meet aprés inscription de l'élève à son cours 
@@ -57,9 +59,8 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 - wordpress
 - php
-- vue.js (carousel)
+- vue.js (calendrier)
 - bootstrap
-- axios
 
 
 ### Définition de la cible du projet
@@ -109,31 +110,34 @@ A tester
 
 - home
 - register
-- delete
+- delete-account
 - login
 - signup
 - student-profile
 - teacher-profile
+- certificate
+- music-style
 - instrument
-- update
+- update-profile
 - appointment
 - 404
  
   ## A mettre à jour
   
- | URL                 | HTTP Method | Controller | Method            | Title                   | Content         | Comment |
- | ------------------- | ----------- | ---------- | ----------------- | ----------------------- | --------------- | ------- |
- | `/`                 | `GET`       | `---`      | `home`            | Page d'accueil          | home page       | -       |
- | `/register/`        | `POST`      | `---`      | `register`        | page d'inscription      | register page   | -       |
- | `/delete/`          | `POST`      | `---`      | `delete`          | page suppression compte | delete account  | -       |
- | `/update/`          | `POST`      | `---`      | `update`          | MAJ compte              | update account  | -       |
- | `/login/`           | `GET`       | `---`      | `login`           | Connexion               | login           | -       |
- | `/student/profile/` | `GET`       | `---`      | `student-profile` | profil élève            | student profile | -       |
- | `/teacher/profile/` | `GET`       | `---`      | `teacher-profile` | profil prof             | teacher profile | -       |
- | `/instrument/[id]`  | `GET`       | `---`      | `instrument`      | page instrument         | instrument      | -       |
- | `/appointment/`     | `POST`      | `---`      | `appointment`     | page appointment        | RDV             | -       |
- | `/update/`          | `POST`      | `---`      | `update`          | page update             | update          | -       |
- | `/404/`             | `GET`       | `---`      | `404`             | page erreur             | 404             | -       |
+ | URL                     | HTTP Method | Controller | Method            | Title                   | Content         | Comment |
+ | -------------------     | ----------- | ---------- | ----------------- | ----------------------- | --------------- | ------- |
+ | `/`                     | `GET`       | `---`      | `home`            | Page d'accueil          | home page       | -       |
+ | `/register/`            | `POST`      | `---`      | `register`        | page d'inscription      | register page   | -       |
+ | `/delete-account/`      | `POST`      | `---`      | `delete`          | page suppression compte | delete account  | -       |
+ | `/update-profile/`      | `POST`      | `---`      | `update`          | MAJ compte              | update account  | -       |
+ | `/login/`               | `GET`       | `---`      | `login`           | Connexion               | login           | -       |
+ | `/student/profile/`     | `GET`       | `---`      | `student-profile` | profil élève            | student profile | -       |
+ | `/teacher/profile/`     | `GET`       | `---`      | `teacher-profile` | profil prof             | teacher profile | -       |
+ | `/instrument/[id]`      | `GET`       | `---`      | -                 | page instrument         | instrument      | -       |
+ | `/teacher-appointment/` | `POST`      | `---`      | `appointment`     | page appointment        | RDV             | -       |
+ | `/certificate/`         | `GET`       | `---`      | -                 | page certificat         | certificate     | -       |
+ | `/music-style/`         | `GET`       | `---`      | -                 | page style musique      | musi style      | -       |
+ | `/404/`                 | `GET`       | `---`      | `404`             | page erreur             | 404             | -       |
 
 
 - V2
@@ -151,7 +155,6 @@ A tester
  | Elève       | pouvoir consulter sa page perso                     | --                             |
  | Elève       | pouvoir modifier ma page de profil                  | --                             |
  | Elève       | pouvoir prendre rendez-vous                         | --                             |
- | Elève       | pouvoir supprimer un rendez-vous                    | --                             |
  | Elève       | pouvoir consulter la liste des instruments          | --                             |
  | Elève       | pouvoir consulter la liste des professeurs          | --                             |
  | Elève       | pouvoir consulter la page de profil d'un professeur | --                             |
@@ -160,7 +163,6 @@ A tester
  | Professeur  | pouvoir consulter sa page perso                     | --                             |
  | Professeur  | pouvoir modifier ma page de profil                  | --                             |
  | Professeur  | pouvoir confirmer un rendez-vous                    | --                             |
- | Professeur  | pouvoir supprimer un rendez-vous                    | --                             |
  | Professeur  | pouvoir consulter mon agenda                        | --                             |
  | Professeur  | pouvoir supprimer son compte                        | --                             |
 
