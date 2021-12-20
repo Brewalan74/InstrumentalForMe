@@ -1,6 +1,3 @@
-
-
-
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
 
@@ -16,13 +13,13 @@
     <!-- Header-->
     <?php get_template_part('partials/header.tpl'); ?>
 
-    <div class="container">
+    <div class="container img404">
 
-    <img src="https://drive.google.com/file/d/1HEcFqQAz8-UpvyaRvKqCQk41Dx7dcfUv/view?usp=sharing">
-       
+        <img src="<?= get_theme_file_uri('assets/image/img404.png') ?>">
+
     </div>
 
-   
+
     <section>
         <!-- Footer-->
         <?php get_template_part('partials/footer.tpl'); ?>
