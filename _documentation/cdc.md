@@ -51,8 +51,7 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
     - page d'activité (page activité regroupant des projet/propositions faits par les profs ou clients : par exemple se retrouver un jour donné sur google meet (ou autre) pour l'enregistrement d'une video youtube OU se retrouver a un endroit donné pour participer a un evenement musical et monter sur scene pour une apparition, un concert remunéré ou bénévole...)
 
 - V4:
-    - Calendrier
-    - like
+    - like (maybe)
     - upload certificate
 
 ### Liste des technologies
@@ -69,9 +68,11 @@ Le projet cible un public adulte et enfant souhaitant apprendre à jouer d'un in
 
 ### Navigateurs compatibles
 
-A tester
+Compatible :
 - Chrome
 - Firefox
+- 
+A tester :
 - Edge
 - Safari
 
@@ -125,7 +126,7 @@ A tester
   ## A mettre à jour
   
  | URL                     | HTTP Method | Controller | Method            | Title                   | Content         | Comment |
- | -------------------     | ----------- | ---------- | ----------------- | ----------------------- | --------------- | ------- |
+ | ----------------------- | ----------- | ---------- | ----------------- | ----------------------- | --------------- | ------- |
  | `/`                     | `GET`       | `---`      | `home`            | Page d'accueil          | home page       | -       |
  | `/register/`            | `POST`      | `---`      | `register`        | page d'inscription      | register page   | -       |
  | `/delete-account/`      | `POST`      | `---`      | `delete`          | page suppression compte | delete account  | -       |
