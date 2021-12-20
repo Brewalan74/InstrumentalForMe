@@ -216,7 +216,7 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
 
 - A faire:
 
-  - regler l'affichage des icone de réseaux sociaux (dans le css.js)
+  - regler l'affichage des icone de réseaux sociaux 
   - récuperer le contenu des profs et élèves dans les pages de  profils
   - Dynamisation de la liste des cours , des élèves ou profs suivant le profil
   - page 404 :en cours
@@ -226,3 +226,21 @@ Nous avons eu quelques difficultées avec le MCD et la mise en place des routes
         - affichage du logo du site (header )
         - refaire un tour sur toutes les pages pour vérifier
 
+- Fait:
+
+  - regler l'affichage des icone de réseaux sociaux 
+  - récuperer le contenu des profs et élèves dans les pages de  profils => Annuler car l'affichage de descrpitif inutil à cette endroit
+  - suppresion pour le moment de la taxo instrument pour les élèves 
+  - regler taille icones des avatars
+
+#### Lundi 20/12/21
+
+- A faire:
+ 
+  - page 404
+  - Checkbox qui ne garde pas en mémoire la selection dans la mis a jour du profil
+  
+- Fait:
+
+  - 404
+  - 
