@@ -1,4 +1,3 @@
-
 <?php
 // echo __FILE__ . ':' . __LINE__;
 // exit();
@@ -144,21 +143,21 @@ use Instrumental\Controllers\UserController;
                     // =====================INSTRUMENTS=====================
                     if (in_array('teacher', $roles)) {
                         $isTeacher = true;
-                    echo "<div id='instrument' class='containerUpdateRadio'>";
-                    echo "<br><label class='labelForm'>Vos instruments</label><br>";
-                    $instruments = get_terms('instrument', array('hide_empty' => false));
-                    //dump($instruments);
-                    foreach ($instruments as $index => $instrument) :
-                        $checked = '';
-                        if (isset($instrumentsId[$instrument->term_id])) {
-                            $checked = 'checked';
-                        }
-                        echo "<input type='checkbox' class='instru' $index name='instrument[]' value='$instrument->term_id' " . $checked . ">";
-                        echo "<label for='instru' $index>";
-                        echo $instrument->name;
-                        echo "</label><br>";
-                    endforeach;
-                    echo '</div>';
+                        echo "<div id='instrument' class='containerUpdateRadio'>";
+                        echo "<br><label class='labelForm'>Vos instruments</label><br>";
+                        $instruments = get_terms('instrument', array('hide_empty' => false));
+                        //dump($instruments);
+                        foreach ($instruments as $index => $instrument) :
+                            $checked = '';
+                            if (isset($instrumentsId[$instrument->term_id])) {
+                                $checked = 'checked';
+                            }
+                            echo "<input type='checkbox' class='instru' $index name='instrument[]' value='$instrument->term_id' " . $checked . ">";
+                            echo "<label for='instru' $index>";
+                            echo $instrument->name;
+                            echo "</label><br>";
+                        endforeach;
+                        echo '</div>';
                     } else {
                     }
                     //=====================MUSIC STYLE=====================
@@ -185,34 +184,34 @@ use Instrumental\Controllers\UserController;
             <!--============================Avatar===================================-->
             <div class="layoutUpdateButton">
                 <div class="m-5">
-                <h2>Changer mon avatar</h2>
-                <p>Veuillez selectionner votre avatar en format .png</p>
-                
-                <p class="mb-5">
-                <?php
-                $options = array(
-                    'post_id' => 'user_' . $current_user->ID,
-                    // 'field_groups' => array(77),
-                    // 'form' => false,
-                    // 'return' => add_query_arg('updated', 'true', '?'),
-                    'html_before_fields' => '',
-                    'html_after_fields' => '',
-                    'submit_value' => 'Update'
-                );
-                acf_form($options);
-                ?>
-                </p>
+                    <h2>Changer mon avatar</h2>
+                    <p>Veuillez selectionner votre avatar en format .png</p>
+
+                    <p class="mb-5">
+                        <?php
+                        $options = array(
+                            'post_id' => 'user_' . $current_user->ID,
+                            // 'field_groups' => array(77),
+                            // 'form' => false,
+                            // 'return' => add_query_arg('updated', 'true', '?'),
+                            'html_before_fields' => '',
+                            'html_after_fields' => '',
+                            'submit_value' => 'Update'
+                        );
+                        acf_form($options);
+                        ?>
+                    </p>
                 </div>
             </div>
 
             <!--===============================suppression de compte=============================-->
             <div class="divDeleteAccount">
-            <?php
-            global $router;
-            $deleteAccountURL = $router->generate('user-delete-account');
-            echo
-            '<button type="button" class="btn btn-danger m-2"><a class="text-dark" href="' . $deleteAccountURL . '">Supprimer votre compte</a></button>';
-            ?>
+                <?php
+                global $router;
+                $deleteAccountURL = $router->generate('user-delete-account');
+                echo
+                '<button type="button" class="btn btn-danger m-2"><a class="text-dark" href="' . $deleteAccountURL . '">Supprimer votre compte</a></button>';
+                ?>
             </div>
         </section>
     </div>
