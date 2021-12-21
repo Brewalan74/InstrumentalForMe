@@ -98,7 +98,7 @@ A tester :
  Home-Instrument--->Inscription-->**Profil-élève**
  Inscription-->**Profil-prof**
 
- Home-Instrument--->Instrument-->**Profil-prof**-->**Appointment**
+ Home-Instrument--->Instrument-->**Profil-prof**-->**Confirmation\prise\de\RDV
 
    
 
@@ -167,12 +167,12 @@ A tester :
  | Professeur  | pouvoir consulter mon agenda                        | --                             |
  | Professeur  | pouvoir supprimer son compte                        | --                             |
 
-### La liste des rôles de chacun
+### La liste des rôles de chacun
 
-- PRODUCT OWNER : Stefan
-- SCRUM MASTER, : Stephanie B
-- LEAD DEV : Stephanie M
-- GIT MASTER : Stefan 
-- REFERENT TECHNIQUE : Stephanie B
+- PRODUCT OWNER: Stefan
+- SCRUM MASTER,: Stephanie B
+- LEAD DEV: Stephanie M
+- GIT MASTER: Stefan 
+- REFERENT TECHNIQUE: Stephanie B
 
 
