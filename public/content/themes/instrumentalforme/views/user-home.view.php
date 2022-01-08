@@ -183,7 +183,7 @@ if (in_array('teacher', $user->roles)) {
             <div>
                 <?php global $router;
                 $updateProfileURL = $router->generate('user-update-profile'); ?>
-                <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="<?= $updateProfileURL ?>">Modifier votre profile</a></p>
+                <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="<?= $updateProfileURL ?>">Modifier votre profil</a></p>
             </div>
 
             <section class="m-5 descriptionPerso">
