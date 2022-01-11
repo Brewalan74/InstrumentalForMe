@@ -98,17 +98,13 @@ if (in_array('teacher', $user->roles)) {
                 <p class="text-end mx-5"><a class="fs-5 text-end linkProfile" href="<?= $updateProfileURL ?>">Modifier votre profil</a></p>
             </div>
 
-
-
             <section class="m-5 descriptionPerso">
                 <div class="container containerRecap">
 
                     <ul class="recap m-8">
                         <h3>Vos nouvelles demandes de RDV</h3>
 
-
-                        <?php  ?>
-
+                        <!-- Teacher -->
                         <?php if (in_array('teacher', $user->roles)) :
 
                             $lessons = $lessonModel->getLessonsByTeacherId($userId);
@@ -159,6 +155,7 @@ if (in_array('teacher', $user->roles)) {
 
             </section>
 
+            <!-- Student -->
         <?php else :
 
             $lessons = $lessonModel->getLessonsByStudentId($userId);
