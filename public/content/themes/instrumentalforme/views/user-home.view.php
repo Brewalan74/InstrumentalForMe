@@ -15,7 +15,7 @@ $lessonModel = new LessonModel();
 // $el = get_userdata($current_user->ID);
 // dump($el->post_content);
 
-function status($lessonId, $status)
+function setLessonStatus($lessonId, $status)
 {
     $statusUpdate = new LessonModel();
     $statusUpdate->updateStatus($lessonId, $status);
@@ -38,12 +38,11 @@ if (in_array('teacher', $user->roles)) {
 
     foreach ($lessons as $lesson) {
         if (array_key_exists('agree' . $lesson->lesson_id, $_POST)) {
-            status($lesson->lesson_id, 1);
-
+            setLessonStatus($lesson->lesson_id, 1);
             header('Location: ?');
             exit();
         } elseif (array_key_exists('disagree' . $lesson->lesson_id, $_POST)) {
-            status($lesson->lesson_id, 2);
+            setLessonStatus($lesson->lesson_id, 2);
             header('Location: ?');
             exit();
         }
