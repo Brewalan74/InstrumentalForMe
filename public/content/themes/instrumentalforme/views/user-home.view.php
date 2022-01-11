@@ -151,7 +151,7 @@ if (in_array('teacher', $user->roles)) {
                             $lessons = $lessonModel->getLessonsByTeacherId($userId); ?>
                             <?php foreach ($lessons as $lesson) : ?>
                                 <?php if ($lesson->status == 1) : ?>
-                                    <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->instrument->name ?></li>
+                                    <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->instrument->name ?> / <?= $lesson->student->data->user_email ?></li>
 
                             <?php endif;
                             endforeach; ?>
@@ -214,7 +214,7 @@ if (in_array('teacher', $user->roles)) {
                             $lessons = $lessonModel->getLessonsByStudentId($userId); ?>
                             <?php foreach ($lessons as $lesson) : ?>
                                 <?php if ($lesson->status == 1) : ?>
-                                    <li class="userProfileLi"> <?= $lesson->teacher->data->user_nicename ?> / <?= $lesson->instrument->name ?></li>
+                                    <li class="userProfileLi"> <?= $lesson->teacher->data->user_nicename ?> / <?= $lesson->instrument->name ?> / <?= $lesson->teacher->data->user_email ?></li>
 
                             <?php endif;
                             endforeach; ?>
