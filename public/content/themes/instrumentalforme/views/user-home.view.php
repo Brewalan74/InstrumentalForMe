@@ -114,7 +114,7 @@ if (in_array('teacher', $user->roles)) {
 
 
                                 <?php if ($lesson->status == 0) : ?>
-                                    <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->appointment ?></li>
+                                    <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->appointment ?> / <?= $lesson->instrument->name ?></li>
                                     <form method="post" action="?q=<?= uniqid() ?>">
                                         <input type="submit" name="agree<?= $lesson->lesson_id ?>" class="btn btn-success" value="Valider" />
                                         <input type="submit" name="disagree<?= $lesson->lesson_id ?>" class="btn btn-danger" value="Refuser" />
