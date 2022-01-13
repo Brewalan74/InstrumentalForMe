@@ -26,6 +26,7 @@ use Instrumental\Controllers\UserController;
     <?php
     $current_user = wp_get_current_user();
     $userdata = get_userdata($current_user->ID);
+    dump($userdata);
     $userName = $userdata->description;
     // dump(__FILE__ . ':' . __LINE__, $userName);
     ?>

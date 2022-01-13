@@ -30,11 +30,7 @@ $user = wp_get_current_user();
     <!-- Header-->
     <?php get_template_part('partials/header.tpl'); ?>
 
-    <?php if (!is_user_logged_in()) : ?>
-        <h4 class="m-5"><a href="<?= wp_login_url() ?>">Vous devez etre connecté pour pouvoir prendre rendez-vous</a></h4>
-    <?php else : ?>
-        <h4 class="m-5">Merci <?= $user->display_name ?>, votre rendez-vous a bien été pris en compte.</h4>
-    <?php endif; ?>
+    <h4 class="m-5">Merci <?= $user->display_name ?>, votre rendez-vous a bien été pris en compte.</h4>
     <!-- Footer-->
     <?php get_template_part('partials/footer.tpl'); ?>
 
