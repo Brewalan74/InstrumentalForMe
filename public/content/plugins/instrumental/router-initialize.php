@@ -58,15 +58,15 @@ $router->map(
 );
 
 // === APPOINTMENT ===
-// $router->map(
-//     'GET',
-//     '/teacher/appointment/',
-//     function () {
-//         $appointmentController = new AppointmentController();
-//         $appointmentController->appointment();
-//     },
-//     'appointment'
-// );
+$router->map(
+    'GET',
+    '/teacher/appointment/',
+    function () {
+        $appointmentController = new AppointmentController();
+        $appointmentController->appointment();
+    },
+    'appointment'
+);
 
 // === TEST ===
 
