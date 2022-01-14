@@ -35,10 +35,12 @@ new Vue({
                 end.setTime(end.getTime() + 50 * 60 * 1000);
 
                 let color;
-                if (lesson.status == 0) {
+                if (lesson.status == 2) {
                     color = '#f00';
-                } else {
+                } else if (lesson.status == 1) {
                     color = '#0f0';
+                } else {
+                    color = '#00f'
                 }
 
                 events.push({
