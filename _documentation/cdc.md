@@ -1,7 +1,6 @@
 # Instrumental for me!
 
-### Présentation 
-Un website mettant en relation des personnes enseignant à jouer d'un instrument de musique, avec des personnes souhaitant apprendre.  
+### Présentation  
 Le but du website serait de mettre en relation des gens qui souhaitent enseigner à jouer d'un instrument de musique avec des personnes qui souhaitent apprendre. Les cours se ferait en visio (google meet ou autre...).  
 
 
@@ -9,8 +8,9 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 - Côtés pratique pour les personnes habitants loin d'un lieu d'enseignement.
 - En cas de confinement (ex:nouvelle pandémie).
-- Facilité d'apprentissage pour les personnes introverties.
-- Gestion de l'emploi du temps (pas de déplacement,...).
+- Facilité d'apprentissage pour les personnes introverties qui souhaite éviter la foule ou tout simplement les interactions sociales que l'on est obligé d'avoir quand on croise trop de monde.
+- Gestion de l'emploi du temps (pas de déplacement,...). Apprendre à jouer d'un instrument en visio, cela permet de limiter les déplacements, on gagne du temps pour pouvoir faire autre chose.
+- ...
 
 ### Fonctionnalitées du projet:
 
@@ -18,19 +18,19 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 - Connexion
 - Inscription
-- page instruments (contenu de presentation, lien vers les profs qui enseignent l'instrument...)
-- Page profil :
-  - profs (necessité d'un certificat sous forme de taxonomy )
-  - eleves (possibilité de prendre rdv sur un creneau libre d'un prof. gestion basique d'un compte client, possibilité d'effacer son compte)
-- link profs/instruments/eleves
-- Prise de rendez-vous sous forme de formulaire
-- Taxonomy : instruments, certificates, music styles
+- page instruments (homepage)
+- Page profil perso :
+  - profs (teacher)
+  - eleves (student)
+- link profs/instrument
+- Prise de rendez-vous (date & time picker)
+- Taxonomies : instruments, certificates, music styles
 
 #####  Planning de dévelopement
 
   | SPRINT 0      | SPRINT 1                        | SPRINT 2                                                                               | SPRINT 3                      |
   | ------------- | ------------------------------- | -------------------------------------------------------------------------------------- | ----------------------------- |
-  | --            | Integration theme + plugins     | Taxonomies                                                                             | --                            |
+  | --            | Integration theme + plugin      | Taxonomies                                                                             | --                            |
   | documentation | page instrument ( presentation) | page instrument (presentation + lien vers les professeurs qui enseignent l’instrument) | test/debug                    |
   | --            | page connexion                  | page professeur (prise de RDV)                                                         | amelioration visuelle du site |
   | --            | Page inscription                | page modifier son profil                                                               | --                            |
@@ -39,8 +39,8 @@ Le but du website serait de mettre en relation des gens qui souhaitent enseigner
 
 
   - V2:
-    - gestion des paiements en ligne (woo commerce - le site prend une commission)
-    - Home (affichage des instruments/profs?)
+    - gestion des paiements en ligne (woo commerce)
+    - Home (affichage des profs/instrument?)
     - catégories pour les instruments
     - page eleve (depot d'avis)
     - niveau possible des cours : debutant, faux debutant, intermediaire, avancé...
@@ -111,34 +111,36 @@ A tester :
 
 - home
 - register
-- delete-account
 - login
-- signup
+- delete-account
 - student-profile
 - teacher-profile
 - certificate
 - music-style
 - instrument
+- user-home
 - update-profile
 - appointment
 - 404
  
-  ## A mettre à jour
+  ## liste des routes à créer
   
- | URL                     | HTTP Method | Controller | Method            | Title                   | Content         | Comment |
- | ----------------------- | ----------- | ---------- | ----------------- | ----------------------- | --------------- | ------- |
- | `/`                     | `GET`       | `---`      | `home`            | Page d'accueil          | home page       | -       |
- | `/register/`            | `POST`      | `---`      | `register`        | page d'inscription      | register page   | -       |
- | `/delete-account/`      | `POST`      | `---`      | `delete`          | page suppression compte | delete account  | -       |
- | `/update-profile/`      | `POST`      | `---`      | `update`          | MAJ compte              | update account  | -       |
- | `/login/`               | `GET`       | `---`      | `login`           | Connexion               | login           | -       |
- | `/student/profile/`     | `GET`       | `---`      | `student-profile` | profil élève            | student profile | -       |
- | `/teacher/profile/`     | `GET`       | `---`      | `teacher-profile` | profil prof             | teacher profile | -       |
- | `/instrument/[id]`      | `GET`       | `---`      | -                 | page instrument         | instrument      | -       |
- | `/teacher-appointment/` | `POST`      | `---`      | `appointment`     | page appointment        | RDV             | -       |
- | `/certificate/`         | `GET`       | `---`      | -                 | page certificat         | certificate     | -       |
- | `/music-style/`         | `GET`       | `---`      | -                 | page style musique      | musi style      | -       |
- | `/404/`                 | `GET`       | `---`      | `404`             | page erreur             | 404             | -       |
+ | URL                                | HTTP Method | Controller              | Method          | Title                   | Content         | Comment |
+ | ---------------------------------- | ----------- | ----------------------- | --------------- | ----------------------- | --------------- | ------- |
+ | `/`                                | `GET, POST` | `---`                   | `---`           | Page d'accueil          | home page       | wp      |
+ | `/wp/wp-login.php?action=register` | `POST`      | `---`                   | `---`           | page d'inscription      | register page   | wp      |
+ | `/wp/wp-login.php`                 | `GET`       | `---`                   | `login`         | Connexion               | login           | -       |
+ | `/user/delete-account/`            | `GET`       | `UserController`        | `deleteAccount` | page suppression compte | delete account  | -       |
+ | `/user/update-profile/`            | `GET`       | `UserController`        | `updateProfile` | MAJ compte              | update account  | -       |
+ | `/user/update-profile/`            | `POST`      | `UserController`        | `saveProfile`   | MAJ compte              | update account  | -       |
+ | `/student/profile/`                | `GET`       | `---`                   | `---`           | profil élève            | student profile | wp      |
+ | `/teacher/profile/`                | `GET`       | `---`                   | `---`           | profil prof             | teacher profile | wp      |
+ | `/instrument/nameofinstrument/`    | `GET`       | `---`                   | `---`           | page instrument         | instrument      | wp      |
+ | `/teacher/take-lesson`             | `POST`      | `UserController`        | `takeLesson`    | page non apparente      | ---             | -       |
+ | `/teacher-appointment/`            | `GET`       | `AppointmentController` | `appointment`   | page appointment        | RDV             | -       |
+ | `/certificate/`                    | `GET`       | `---`                   | `---`           | page certificat         | certificate     | wp      |
+ | `/music-style/`                    | `GET`       | `---`                   | `---`           | page style musique      | music style     | wp      |
+ | `/404/`                            | `GET`       | `---`                   | `---`           | page erreur             | 404             | wp      |
 
 
 - V2
@@ -147,25 +149,25 @@ A tester :
  
  ### Users stories
 
- | En tant que | Je veux                                             | Afin de (si besoin/nécessaire) |
- | ----------- | --------------------------------------------------- | ------------------------------ |
- | Visiteur    | pouvoir consulter la liste des instruments          | --                             |
- | Visiteur    | pouvoir consulter la liste des professeurs          | --                             |
- | Visiteur    | pouvoir s'inscrire                                  | --                             |
- | Elève       | pouvoir se connecter                                | --                             |
- | Elève       | pouvoir consulter sa page perso                     | --                             |
- | Elève       | pouvoir modifier ma page de profil                  | --                             |
- | Elève       | pouvoir prendre rendez-vous                         | --                             |
- | Elève       | pouvoir consulter la liste des instruments          | --                             |
- | Elève       | pouvoir consulter la liste des professeurs          | --                             |
- | Elève       | pouvoir consulter la page de profil d'un professeur | --                             |
- | Elève       | pouvoir supprimer son compte                        | --                             |
- | Professeur  | pouvoir se connecter                                | --                             |
- | Professeur  | pouvoir consulter sa page perso                     | --                             |
- | Professeur  | pouvoir modifier ma page de profil                  | --                             |
- | Professeur  | pouvoir confirmer un rendez-vous                    | --                             |
- | Professeur  | pouvoir consulter mon agenda                        | --                             |
- | Professeur  | pouvoir supprimer son compte                        | --                             |
+ | En tant que | Je veux                                             | Afin de (si besoin/nécessaire)           |
+ | ----------- | --------------------------------------------------- | ---------------------------------------- |
+ | Visiteur    | pouvoir consulter la liste des instruments          | voir quels instruments sont enseignés    |
+ | Visiteur    | pouvoir consulter la liste des professeurs          | voir les professeurs qui enseignent      |
+ | Visiteur    | pouvoir m'inscrire                                  | prendre des leçons                       |
+ | Elève       | pouvoir me connecter                                | vérifier mon compte, prendre des rdv     |
+ | Elève       | pouvoir consulter ma page perso                     | vérifier mes informations                |
+ | Elève       | pouvoir modifier ma page de profil                  | mettre mes informations à jour           |
+ | Elève       | pouvoir prendre rendez-vous                         | prendre une leçon                        |
+ | Elève       | pouvoir consulter la liste des instruments          | voir quels instruments sont enseignés    |
+ | Elève       | pouvoir consulter la liste des professeurs          | voir les professeurs qui enseignent      |
+ | Elève       | pouvoir consulter la page de profil d'un professeur | voir les disponibilités de ce professeur |
+ | Elève       | pouvoir supprimer mon compte                        | pouvoir le faire si j'en ai envie        |
+ | Professeur  | pouvoir me connecter                                | vérifier mon compte, prendre des rdv     |
+ | Professeur  | pouvoir consulter ma page perso                     | vérifier mes informations                |
+ | Professeur  | pouvoir modifier ma page de profil                  | mettre mes informations à jour           |
+ | Professeur  | pouvoir confirmer un rendez-vous                    | pouvoir donner des leçons                |
+ | Professeur  | pouvoir consulter mon agenda                        | vérifier mes rdv confirmés               |
+ | Professeur  | pouvoir supprimer mon compte                        | pouvoir le faire si j'en ai envie        |
 
 ### La liste des rôles de chacun
 
