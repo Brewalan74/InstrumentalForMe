@@ -12,6 +12,7 @@ class LessonModel extends CoreModel
         return $tableName;
     }
 
+    // TODO : check lesson_id AI & why 3 primary keys
     public function createTable()
     {
         $tableName = $this->getTableName();
