@@ -1,9 +1,8 @@
 <?php
-// echo __FILE__ . ':' . __LINE__;
-// exit();
-// the_post();
+
 use Instrumental\Controllers\UserController;
 ?>
+
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
 
@@ -26,11 +25,9 @@ use Instrumental\Controllers\UserController;
     <?php
     $current_user = wp_get_current_user();
     $userdata = get_userdata($current_user->ID);
-    // dump($userdata);
     $userName = $userdata->description;
-    // dump(__FILE__ . ':' . __LINE__, $userName);
     ?>
-
+    <!-- User datas -->
     <div class="container">
         <h2 class="profileH2">Modifier votre profil</h2>
 
@@ -88,96 +85,93 @@ use Instrumental\Controllers\UserController;
 
                 <div class="containerUpdate">
 
-                    <!--=====================récupération des taxo du user=====================-->
+                    <!-- User taxonomies -->
 
                     <?php
 
                     $user = wp_get_current_user();
                     $roles = $user->roles;
-                    // $query = new WP_Query([
-                    //     'author' => $user->ID,
-                    //     'post_type' => 'teacher-profile'
-                    // ]);
+
                     if (in_array('teacher', $user->roles)) {
                         $postType = 'teacher-profile';
                     } else {
                         $postType = 'student-profile';
                     }
+
                     $profileId = $user->ID;
-                    //$profileId = $query->posts[0]->ID;
-                    // dump($profileId);
 
                     $selectedInstruments = wp_get_post_terms($profileId, 'instrument');
                     $instrumentsId = [];
                     foreach ($selectedInstruments as $term) {
                         $instrumentsId[$term->term_id] = true;
                     }
+
                     $selectedCertificates = wp_get_post_terms($profileId, 'certificate');
                     $certificatesId = [];
                     foreach ($selectedCertificates as $term) {
                         $certificatesId[$term->term_id] = true;
                     }
+
                     $selectedStyles = wp_get_post_terms($profileId, 'music-style');
                     $stylesId = [];
                     foreach ($selectedStyles as $term) {
                         $stylesId[$term->term_id] = true;
                     }
-                    //=====================CERTIFICAT TEACHER=====================
-                    if (in_array('teacher', $roles)) {
-                        $isTeacher = true;
-                        echo "<div id='certificate' class='containerUpdateRadio'>";
-                        echo "<label class='labelForm'>Vos certificats</label><br>";
-                        $certificates = get_terms('certificate', array('hide_empty' => false));
-                        foreach ($certificates as $index => $certificate) :
-                            $checked = '';
-                            if (isset($certificatesId[$certificate->term_id])) {
-                                $checked = 'checked';
-                            }
-                            echo "<input type='checkbox' id='certif' $index  name='certificate[]' value='$certificate->term_id' $checked>";
-                            echo "<label for='certif' $index>";
-                            echo $certificate->name;
-                            echo "</label><br>";
-                        endforeach;
-                        echo '</div>';
-                    } else {
-                    }
-                    // =====================INSTRUMENTS=====================
-                    if (in_array('teacher', $roles)) {
-                        $isTeacher = true;
-                        echo "<div id='instrument' class='containerUpdateRadio'>";
-                        echo "<br><label class='labelForm'>Vos instruments</label><br>";
-                        $instruments = get_terms('instrument', array('hide_empty' => false));
-                        //dump($instruments);
-                        foreach ($instruments as $index => $instrument) :
-                            $checked = '';
-                            if (isset($instrumentsId[$instrument->term_id])) {
-                                $checked = 'checked';
-                            }
-                            echo "<input type='checkbox' class='instru' $index name='instrument[]' value='$instrument->term_id' " . $checked . ">";
-                            echo "<label for='instru' $index>";
-                            echo $instrument->name;
-                            echo "</label><br>";
-                        endforeach;
-                        echo '</div>';
-                    } else {
-                    }
-                    //=====================MUSIC STYLE=====================
-                    echo "<div id='musicStyle' class='containerUpdateRadio'>";
-                    echo "<br><label class='labelForm'>Vos styles de musique</label><br>";
-                    $musicStyles = get_terms('music-style', array('hide_empty' => false));
-                    //dump($musicStyle);
-                    foreach ($musicStyles as $index => $musicStyle) :
-                        $checked = '';
-                        if (isset($stylesId[$musicStyle->term_id])) {
-                            $checked = 'checked';
-                        }
-                        echo "<input type='checkbox' class='music' $index  name='musicStyle[]' value='$musicStyle->term_id' $checked>";
-                        echo "<label for='music' $index>";
-                        echo $musicStyle->name;
-                        echo "</label><br>";
-                    endforeach;
-                    echo '</div>';
                     ?>
+
+                    <!-- Certificate -->
+                    <?php if (in_array('teacher', $roles)) :
+                        $isTeacher = true; ?>
+                        <div id="certificate" class="containerUpdateRadio"><br>
+                            <label class="labelForm">Vos certificats</label><br>
+                            <?php $certificates = get_terms('certificate', array('hide_empty' => false));
+                            foreach ($certificates as $index => $certificate) :
+                                $checked = '';
+                                if (isset($certificatesId[$certificate->term_id])) :
+                                    $checked = 'checked';
+                                endif; ?>
+                                <input type="checkbox" id="certif" $index name="certificate[]" value="<?= $certificate->term_id; ?>" <?= $checked ?>>
+                                <label for="certif<?= $index ?>">
+                                    <?= $certificate->name; ?>
+                                </label><br>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Instruments -->
+                    <?php if (in_array('teacher', $roles)) :
+                        $isTeacher = true; ?>
+                        <div id="instrument" class="containerUpdateRadio"><br>
+                            <label class='labelForm'>Vos instruments</label><br>
+                            <?php $instruments = get_terms('instrument', array('hide_empty' => false));
+                            foreach ($instruments as $index => $instrument) :
+                                $checked = '';
+                                if (isset($instrumentsId[$instrument->term_id])) :
+                                    $checked = 'checked';
+                                endif ?>
+                                <input type="checkbox" class="instru" $index name="instrument[]" value="<?= $instrument->term_id; ?>" <?= $checked ?>>
+                                <label for="certif<?= $index ?>">
+                                    <?= $instrument->name; ?>
+                                </label><br>
+                            <?php endforeach; ?>
+                        </div>
+                    <?php endif; ?>
+
+                    <!-- Music style -->
+                    <div id='musicStyle' class='containerUpdateRadio'><br>
+                        <label class='labelForm'>Vos styles de musique</label><br>
+                        <?php $musicStyles = get_terms('music-style', array('hide_empty' => false));
+                        foreach ($musicStyles as $index => $musicStyle) :
+                            $checked = '';
+                            if (isset($stylesId[$musicStyle->term_id])) :
+                                $checked = 'checked';
+                            endif; ?>
+                            <input type="checkbox" class="music" $index name="musicStyle[]" value="<?= $musicStyle->term_id ?>" <?= $checked; ?>>
+                            <label for='music' $index>
+                                <?= $musicStyle->name; ?>
+                            </label><br>
+                        <?php endforeach; ?>
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-success m-2">Update</button>
             </form>
@@ -230,7 +224,6 @@ use Instrumental\Controllers\UserController;
 
             let radioTeacher = document.querySelector("#teacher");
             let div = document.querySelector("#certificate");
-
 
             if (radioTeacher.checked == true) {
                 div.style.display = "block";
