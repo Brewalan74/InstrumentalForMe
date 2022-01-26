@@ -2,18 +2,13 @@
 
 use Instrumental\Models\LessonModel;
 
-
 the_post();
-$teacherId = get_the_author_meta('ID');
-// echo __FILE__ . ':' . __LINE__;
-// exit();
-$user = wp_get_current_user();
-$userId = $user->ID;
-$lessonModel = new LessonModel();
 
-// dump(get_post());
-// $el = get_userdata($current_user->ID);
-// dump($el->post_content);
+$teacherId = get_the_author_meta('ID'); // Get teacher ID ?
+$user = wp_get_current_user();
+$userId = $user->ID; // Get current user ID
+
+$lessonModel = new LessonModel();
 
 function setLessonStatus($lessonId, $status)
 {
@@ -22,19 +17,10 @@ function setLessonStatus($lessonId, $status)
 }
 
 $lessons = $lessonModel->getLessonsByTeacherId($userId);
-// dump($lessons);
-
-$current_user = wp_get_current_user();
-//dump(__FILE__ . ':' . __LINE__, $curreny_user);
-$userdata = get_userdata($current_user->ID);
-// dump($userdata->ID);
-//$userDescription = $userdata->description;
-//dump($userDescription);
 
 if (in_array('teacher', $user->roles)) {
 
     $lessons = $lessonModel->getLessonsByTeacherId($userId);
-
 
     foreach ($lessons as $lesson) {
         if (array_key_exists('agree' . $lesson->lesson_id, $_POST)) {
@@ -49,6 +35,7 @@ if (in_array('teacher', $user->roles)) {
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="<?= get_bloginfo('language'); ?>">
 
@@ -66,6 +53,7 @@ if (in_array('teacher', $user->roles)) {
 
     <div class="container">
 
+        <!-- Teacher Part -->
         <?php
         $roles = $user->roles;
         if (in_array('teacher', $roles)) :
@@ -104,7 +92,6 @@ if (in_array('teacher', $user->roles)) {
                     <ul class="recap m-8">
                         <h3>Vos nouvelles demandes de RDV</h3>
 
-                        <!-- Teacher -->
                         <?php if (in_array('teacher', $user->roles)) :
 
                             $lessons = $lessonModel->getLessonsByTeacherId($userId);
@@ -125,7 +112,6 @@ if (in_array('teacher', $user->roles)) {
                         <?php endif; ?>
                     </ul>
 
-
                     <ul class="recap m-8">
                         <h3>Liste de vos cours</h3>
 
@@ -138,7 +124,6 @@ if (in_array('teacher', $user->roles)) {
                             endforeach; ?>
                         <?php endif; ?>
                     </ul>
-
 
                     <ul class="recap m-8">
                         <h3>Liste de vos élèves</h3>
@@ -155,7 +140,7 @@ if (in_array('teacher', $user->roles)) {
 
             </section>
 
-            <!-- Student -->
+            <!-- Student Part -->
         <?php else :
 
             $lessons = $lessonModel->getLessonsByStudentId($userId);
@@ -191,13 +176,10 @@ if (in_array('teacher', $user->roles)) {
 
                         if (in_array('student', $user->roles)) :
                             $lessons = $lessonModel->getLessonsByStudentId($userId);
-                            //dump($lessons);
                             foreach ($lessons as $lesson) : ?>
-
 
                                 <?php if ($lesson->status == 1) : ?>
                                     <li> <?= $lesson->teacher->data->user_nicename ?> / <?= $lesson->appointment ?></li>
-
 
                         <?php endif;
                             endforeach;
@@ -224,13 +206,10 @@ if (in_array('teacher', $user->roles)) {
 ?>
 </div>
 
+<!-- Display lesson into calendar-->
 <div class="container">
-    <!--Affichage des données(des leçons) dans le calendrier-->
     <section>
         <?php
-        // $user = wp_get_current_user();
-        // $userId = $user->ID;
-        // $lessonModel = new LessonModel();
         if (in_array('teacher', $user->roles)) :
             $lessons = $lessonModel->getLessonsByTeacherId($userId);
         else :
