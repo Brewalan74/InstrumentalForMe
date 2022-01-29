@@ -14,5 +14,9 @@
             <a href="https://www.instagram.com" target="_blank">
                 <img class="footerLogos" src="<?= get_theme_file_uri('assets/image/LogoInstagram.png') ?>" alt="Instagram Icon"></a>
         </div>
+        <br>
+        <div>
+            <p class="text-center text-white"><a href="#">Mentions légales</a></p>
+        </div>
     </div>
 </footer>
