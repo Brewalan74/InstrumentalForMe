@@ -13,6 +13,7 @@ class LessonModel extends CoreModel
     }
 
     // TODO : check lesson_id AI & why 3 primary keys
+    // `lesson_id` int(8) PRIMARY KEY NOT NULL AUTO_INCREMENT, -> instead of first line
     public function createTable()
     {
         $tableName = $this->getTableName();
