@@ -2,7 +2,6 @@
 
 use Instrumental\Controllers\UserController;
 use Instrumental\Controllers\AppointmentController;
-use Instrumental\Controllers\TestController;
 
 global $router;
 
@@ -67,9 +66,6 @@ $router->map(
     },
     'appointment'
 );
-
-// === TEST ===
-
 
 // ==== DELETE ACCOUNT ====
 $router->map(
