@@ -1,6 +1,7 @@
 <?php
-
-use Instrumental\Controllers\UserController;
+$current_user = wp_get_current_user();
+$userdata = get_userdata($current_user->ID);
+$userName = $userdata->description;
 ?>
 
 <!DOCTYPE html>
@@ -13,20 +14,12 @@ use Instrumental\Controllers\UserController;
 
 <body id="page-top">
 
-
     <!-- Navigation-->
     <?php get_template_part('partials/navbar.tpl'); ?>
 
     <!-- Header-->
     <?php get_template_part('partials/header.tpl'); ?>
 
-
-
-    <?php
-    $current_user = wp_get_current_user();
-    $userdata = get_userdata($current_user->ID);
-    $userName = $userdata->description;
-    ?>
     <!-- User datas -->
     <div class="container">
         <h2 class="profileH2">Modifier votre profil</h2>
@@ -186,9 +179,6 @@ use Instrumental\Controllers\UserController;
                         <?php
                         $options = array(
                             'post_id' => 'user_' . $current_user->ID,
-                            // 'field_groups' => array(77),
-                            // 'form' => false,
-                            // 'return' => add_query_arg('updated', 'true', '?'),
                             'html_before_fields' => '',
                             'html_after_fields' => '',
                             'submit_value' => 'Update'
@@ -210,7 +200,6 @@ use Instrumental\Controllers\UserController;
             </div>
         </section>
     </div>
-
 
     <!-- Footer-->
     <?php get_template_part('partials/footer.tpl'); ?>

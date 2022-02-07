@@ -73,7 +73,7 @@ if (in_array('teacher', $user->roles)) {
             </section>
 
             <div class="text-center">
-                <!-- affichage de l'avatar -->
+                <!-- Teacher avatar -->
                 <?php $avatar = get_field('avatar', 'user_' . $user->ID); ?>
                 <?php if ($avatar) : ?>
                     <img src="<?= $avatar['url'] ?>" />
@@ -89,16 +89,14 @@ if (in_array('teacher', $user->roles)) {
             <section class="m-5 descriptionPerso">
                 <div class="container containerRecap">
 
+                    <!-- New appointment -->
                     <ul class="recap m-8">
                         <h3>Vos nouvelles demandes de RDV</h3>
 
                         <?php if (in_array('teacher', $user->roles)) :
 
-                            $lessons = $lessonModel->getLessonsByTeacherId($userId);
-
-                        ?>
+                            $lessons = $lessonModel->getLessonsByTeacherId($userId); ?>
                             <?php foreach ($lessons as $lesson) : ?>
-
 
                                 <?php if ($lesson->status == 0) : ?>
                                     <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->appointment ?> / <?= $lesson->instrument->name ?></li>
@@ -106,13 +104,15 @@ if (in_array('teacher', $user->roles)) {
                                         <input type="submit" name="agree<?= $lesson->lesson_id ?>" class="btn btn-success" value="Valider" />
                                         <input type="submit" name="disagree<?= $lesson->lesson_id ?>" class="btn btn-danger" value="Refuser" />
                                     </form>
-                                    <!-- else : -->
                             <?php endif;
+
                             endforeach; ?>
+
                         <?php endif; ?>
                     </ul>
 
                     <ul class="recap m-8">
+                        <!-- Lesson list -->
                         <h3>Liste de vos cours</h3>
 
                         <?php if (in_array('teacher', $user->roles)) :
@@ -126,6 +126,7 @@ if (in_array('teacher', $user->roles)) {
                     </ul>
 
                     <ul class="recap m-8">
+                        <!-- Student list -->
                         <h3>Liste de vos élèves</h3>
                         <?php if (in_array('teacher', $user->roles)) :
                             $lessons = $lessonModel->getLessonsByTeacherId($userId); ?>
@@ -155,7 +156,7 @@ if (in_array('teacher', $user->roles)) {
                 </h1>
             </section>
             <div class="text-center">
-                <!-- affichage de l'avatar -->
+                <!-- Student avatar -->
                 <?php $avatar = get_field('avatar', 'user_' . $user->ID);
                 if ($avatar) : ?>
                     <img src="<?= $avatar['url'] ?>" />
@@ -171,6 +172,7 @@ if (in_array('teacher', $user->roles)) {
                 <div class="container containerRecap">
 
                     <ul class="recap m-5">
+                        <!-- Lesson list -->
                         <h3>Vos prochains cours</h3>
                         <?php
 
@@ -187,6 +189,7 @@ if (in_array('teacher', $user->roles)) {
                     </ul>
 
                     <ul class="recap m-5">
+                        <!-- Teacher list -->
                         <h3>Vos professeurs</h3>
                         <?php if (in_array('student', $user->roles)) :
                             $lessons = $lessonModel->getLessonsByStudentId($userId); ?>
@@ -216,6 +219,7 @@ if (in_array('teacher', $user->roles)) {
             $lessons = $lessonModel->getLessonsByStudentId($userId);
         endif;
         ?>
+        <!-- Vuetify calendar -->
         <div id="calendar">
             <textarea id="lessons" style="display: none; width: 100%; height: 500px"><?= json_encode($lessons, JSON_PRETTY_PRINT); ?></textarea>
             <template>

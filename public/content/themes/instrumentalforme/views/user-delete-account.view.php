@@ -1,7 +1,5 @@
 <?php
-// echo __FILE__ . ':' . __LINE__;
-// exit();
-// the_post();
+
 use Instrumental\Controllers\UserController;
 ?>
 <!DOCTYPE html>
@@ -14,13 +12,11 @@ use Instrumental\Controllers\UserController;
 
 <body id="page-top">
 
-
     <!-- Navigation-->
     <?php get_template_part('partials/navbar.tpl'); ?>
 
     <!-- Header-->
     <?php get_template_part('partials/header.tpl'); ?>
-
 
     <h1 class="text-center m-5">Suppression de votre compte</h1>
 
@@ -31,16 +27,10 @@ use Instrumental\Controllers\UserController;
     </div>
 
     <?php
-        //$current_user = wp_get_current_user();
-        //wp_delete_user( $current_user->ID );
-        //dump($current_user);
-        if(is_user_logged_in()) {
-            $user = wp_get_current_user();
-            //dump($user->ID);
-            $userId = $user->ID;
-            //wp_delete_user($userId);
-            //echo "Oh no ! " . $user->display_name . ' are you sure to wish to leave our beautiful community';
-        }
+    if (is_user_logged_in()) {
+        $user = wp_get_current_user();
+        $userId = $user->ID;
+    }
     ?>
 
 
