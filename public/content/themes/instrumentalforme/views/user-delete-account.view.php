@@ -33,18 +33,11 @@ use Instrumental\Controllers\UserController;
     }
     ?>
 
-
-
-
-
-
-
     <!-- Footer-->
     <?php get_template_part('partials/footer.tpl'); ?>
 
     <!-- wp footer -->
     <?php get_footer(); ?>
-
 
 </body>
 
