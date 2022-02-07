@@ -1,6 +1,7 @@
 <?php
 
 use Instrumental\Models\LessonModel;
+use Symfony\Component\Translation\Dumper\MoFileDumper;
 
 the_post();
 
@@ -132,7 +133,8 @@ if (in_array('teacher', $user->roles)) {
                             $lessons = $lessonModel->getLessonsByTeacherId($userId); ?>
                             <?php foreach ($lessons as $lesson) : ?>
                                 <?php if ($lesson->status == 1) : ?>
-                                    <li class="userProfileLi"> <?= $lesson->student->data->user_nicename ?> / <?= $lesson->instrument->name ?> / <?= $lesson->student->data->user_email ?></li>
+
+                                    <li class="userProfileLi"><?= $lesson->student->data->user_nicename ?> / <?= $lesson->instrument->name ?> / <?= $lesson->student->data->user_email ?></li>
 
                             <?php endif;
                             endforeach; ?>
