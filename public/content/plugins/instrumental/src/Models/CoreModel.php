@@ -1,11 +1,10 @@
 <?php
+
 namespace Instrumental\Models;
 
 class CoreModel
 {
-
     protected $wpdb;
-
 
     public function __construct()
     {
