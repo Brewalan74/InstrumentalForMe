@@ -4,10 +4,9 @@ namespace Instrumental;
 
 class CustomFields
 {
-
     public function __construct()
     {
-        if( function_exists('acf_add_local_field_group') ):
+        if (function_exists('acf_add_local_field_group')) :
 
             acf_add_local_field_group(array(
                 'key' => 'group_6185262830b57',
@@ -57,7 +56,6 @@ class CustomFields
                 'description' => '',
             ));
 
-            endif;
+        endif;
     }
 }
-

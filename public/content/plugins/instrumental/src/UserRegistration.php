@@ -4,12 +4,10 @@ namespace Instrumental;
 
 use WP_User;
 
-
 class UserRegistration
 {
     public function __construct()
     {
-
         add_action( //Charger un css custom sur nos pages login & register
             'login_enqueue_scripts',
             [$this, 'loadAssets']
@@ -76,9 +74,6 @@ class UserRegistration
         $user = new WP_User($newUserId);
 
         $certificates = isset($_POST['certificates']) ? $_POST['certificates'] : [];
-         //dump($_POST);
-         //dump($certificates);
-        // die;
 
         if ($role === 'teacher') {
             $postType = 'teacher-profile';
@@ -90,12 +85,10 @@ class UserRegistration
             'post_author' => $newUserId,
             'post_status' => 'publish',
             'post_title'  => $user->data->display_name . "'s profile",
-            'post_type'   => $postType,           
+            'post_type'   => $postType,
         ]);
 
-
         wp_set_post_terms($profileId, $certificates, 'certificate');
-        // wp_set_object_terms ( $newUserId, $certificates, 'certificate' , true ) ; 
     }
 
     public function setUserPassword($newUserId)
@@ -155,7 +148,6 @@ class UserRegistration
             );
         }
 
-
         if (!preg_match('/\W/', $password0)) {
             $errors->add(
                 'password-no-special-character',
@@ -169,10 +161,8 @@ class UserRegistration
         Customisation du formulaire
       =============================== */
 
-
     public function loadAssets()
     {
-
         wp_enqueue_style(
             'login-form-css',
             get_theme_file_uri('css/userRegistration.css')
@@ -181,7 +171,6 @@ class UserRegistration
 
     public function addCustomFields()
     {
-
         echo '
           
             <p>
@@ -213,7 +202,6 @@ class UserRegistration
                 '<label for="certif' . $index . '">' . $certificat->name . '</label><br>';
         }
 
-
         echo '
              </div>
  
@@ -224,13 +212,11 @@ class UserRegistration
                 let radioTeacher = document.querySelector("#teacher");
                 let div = document.querySelector("#certificate");
                 
-                
                 if (radioTeacher.checked == true){
                     div.style.display = "block";
                 } else {
                     div.style.display = "none";
                 }
-
             }
             </script>
             ';

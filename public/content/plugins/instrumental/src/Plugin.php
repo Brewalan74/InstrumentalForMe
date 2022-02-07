@@ -11,8 +11,6 @@ use Instrumental\CustomTaxonomy\MusicStyle;
 
 use Instrumental\Models\LessonModel;
 
-
-
 class Plugin
 {
     /*===================CPT===================*/
@@ -73,8 +71,7 @@ class Plugin
 
     protected $lessonModel;
 
-    /*============================================
-       ============================================*/
+    /*===========================================*/
     public function __construct()
     {
         add_action(
@@ -93,7 +90,7 @@ class Plugin
         $this->instrumentTaxonomy = new Instrument();
         $this->certificateTaxonomy = new Certificate();
         $this->musicStyleTaxonomy = new MusicStyle();
-        
+
         /*===================UTILE===================*/
         $this->roleManager = new RoleManager();
         $this->userRegistration = new UserRegistration();
@@ -102,13 +99,11 @@ class Plugin
 
         /*===================MODEL===================*/
         $this->lessonModel = new LessonModel();
-        
-      
     }
 
     public function activate()
     {
-        // à l'activation du plugin, nous initialisons ce dernier
+        // initialize plugin when activate
         $this->initialize();
 
         // nous donnons tous les droits à l'administrateur sur les cpt studentProfile et teacherProfile
@@ -120,7 +115,6 @@ class Plugin
         $this->roleManager->createStudentRole();
 
         $this->lessonModel->createTable();
-        
     }
 
     public function deactivate()
