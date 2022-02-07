@@ -18,7 +18,6 @@ $studentMusicStyle = get_the_terms(
 
 <body id="page-top">
 
-
     <!-- Navigation-->
     <?php get_template_part('partials/navbar.tpl'); ?>
 

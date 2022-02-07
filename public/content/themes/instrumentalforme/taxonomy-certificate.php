@@ -8,7 +8,6 @@
 
 <body id="page-top">
 
-
     <!-- Navigation-->
     <?php get_template_part('partials/navbar.tpl'); ?>
 

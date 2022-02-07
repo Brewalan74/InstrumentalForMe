@@ -1,24 +1,12 @@
-<?php
-//echo __FILE__.':'.__LINE__; exit();
-?>
-
 <!DOCTYPE html>
-<html lang="en">
+<html lang="<?= get_bloginfo('language'); ?>">
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Instrumental For Me!</title>
-    <link rel="icon" type="image/x-icon" href="assets/favicon.icon" />
-
+    <!-- wp header -->
+    <?php get_header(); ?>
 </head>
 
 <body id="page-top">
-
-    <!-- wp header -->
-    <?php get_header(); ?>
 
     <!-- Navigation-->
     <?php get_template_part('partials/navbar.tpl'); ?>
@@ -31,13 +19,9 @@
     $termId = $term->term_id;
 
     $taxonomyImage = get_field('picture', 'instrument_' . $termId);
-    //dump($term);
-
-    //dump($taxonomyImage['url']);
-    //exit;
     ?>
-    <!-- Content section 1-->
 
+    <!-- Content section -->
     <div class="container">
         <section id="scroll">
             <div class="container px-5">
@@ -56,10 +40,10 @@
         </section>
         <section>
             <?php if (have_posts()) : ?>
-                <?php while (have_posts()) : the_post(); ?>               
-                                <div class="profileH2">
+                <?php while (have_posts()) : the_post(); ?>
+                    <div class="profileH2">
                         <div class="profileDescription">
-                            <article class="projet">                              
+                            <article class="projet">
                                 <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
                                 <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
                                 <h2>

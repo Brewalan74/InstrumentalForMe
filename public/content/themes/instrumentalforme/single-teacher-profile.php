@@ -8,22 +8,14 @@ $teacherInstrument = get_the_terms(
     $post->ID,
     'instrument'
 );
-// dump($teacherInstrument);
+
 $datas = $_POST;
-// dump($datas);
-// dump(get_the_author_meta('ID'));
+
 $teacherId = get_the_author_meta('ID');
 
 $student = wp_get_current_user();
 
 $studentId = $student->ID;
-// dump($studentId);
-// $term = get_queried_object();
-// $termId = $term->term_id;
-// $taxonomyImage = get_field('picture', 'instrument_' . $termId);
-// dump($term);
-// dump($taxonomyImage['url']);
-//exit;
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +29,6 @@ $studentId = $student->ID;
 
 <body id="page-top">
 
-
     <!-- Navigation-->
     <?php get_template_part('partials/navbar.tpl'); ?>
 
@@ -46,12 +37,10 @@ $studentId = $student->ID;
 
     <div class="container">
 
-
         <section>
             <div class="profileH2">
                 <p class="profileView">Vous êtes sur la page de profil de</p>
                 <p><?php $urlAvatar = get_field('avatar', 'user_' . $teacherId)['url'];
-                    // dump($urlAvatar); 
                     ?></p>
                 <img src="<?= $urlAvatar ?>" alt="">
                 <h2><?= get_the_author(); ?></h2>
@@ -74,13 +63,9 @@ $studentId = $student->ID;
                         <?php endforeach; ?>
                     </select><br>
 
-                    <!--
-                    <label class="appointmentForm" for="date">Date souhaitée :</label><br>
-                    //-->
-
                     <input id="date" name="date" type="hidden" />
 
-
+                    <!-- Vuetify appointment module -->
                     <div id="vuecontainer">
                         <div id="appointment">
                             <v-app>
@@ -88,7 +73,6 @@ $studentId = $student->ID;
 
                                     <template>
                                         <v-row>
-
 
                                             <v-col cols="12" sm="4"></v-col>
 
@@ -100,7 +84,6 @@ $studentId = $student->ID;
                                                     <v-date-picker locale="fr" v-model="date" @input="menuDate = false ; updateDate()"></v-date-picker>
                                                 </v-menu>
                                             </v-col>
-
 
                                             <v-col cols="12" sm="2">
                                                 <v-menu ref="menu" v-model="menuTime" :close-on-content-click="false" :nudge-right="40" :return-value.sync="time" transition="scale-transition" offset-y max-width="290px" min-width="290px">
@@ -120,20 +103,6 @@ $studentId = $student->ID;
                         </div>
                     </div>
 
-
-                    <script>
-
-                    </script>
-
-
-
-                    <!--
-                    <input type="date" name="date" id="date"><br>
-                    <label class="appointmentForm" for="time">Horaire souhaitée :</label><br>
-                    <input type="time" name="time" id="time"><br>
-                    //-->
-
-
                     <input class="appointmentForm" type="submit" value="Validez">
                     <input name="teacherId" type="hidden" value="<?= $teacherId; ?>" />
                 </form>
@@ -144,9 +113,6 @@ $studentId = $student->ID;
                 foreach ($teacherInstrument as $key => $value) :
                     $taxonomyImageData = get_field('picture', 'instrument_' . $value->term_id);
                     $taxonomyImage = $taxonomyImageData['url']; ?>
-                    <!-- <ul>
-                        <li><?= $value->name; ?></li>
-                    </ul> -->
                     <section class="instrument-container">
                         <div class="container px-5">
                             <div class="row gx-5 align-items-center instrument">
