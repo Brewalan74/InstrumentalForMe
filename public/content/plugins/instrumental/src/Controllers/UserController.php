@@ -53,7 +53,6 @@ class UserController extends CoreController
                     $postType = 'student-profile';
                 }
                 $userId = $user->ID;
-                
 
                 // mise à jour des champs custom
                 $firstName = filter_input(INPUT_POST, 'user_firstname');
@@ -76,7 +75,6 @@ class UserController extends CoreController
                     wp_update_user($args);
                 }
 
-
                 $password = trim(filter_input(INPUT_POST, 'user_password'));
                 $passwordConfirmation = trim(filter_input(INPUT_POST, 'user_password_confirmation'));
                 if ($password && $password == $passwordConfirmation) {
@@ -87,12 +85,10 @@ class UserController extends CoreController
                 // =============================================================================
 
                 // gestion des taxonomies
-                
+
                 $certificates = filter_input(INPUT_POST, 'certificate', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
                 $instruments = filter_input(INPUT_POST, 'instrument', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
                 $musicStyles = filter_input(INPUT_POST, 'musicStyle', FILTER_DEFAULT, FILTER_REQUIRE_ARRAY);
-
-
 
                 $userId = $user->ID;
                 $query = new WP_Query([
@@ -100,10 +96,8 @@ class UserController extends CoreController
                     'post_type' => $postType
                 ]);
 
-
-
                 if (!empty($query->posts)) {
-                    
+
                     $profile = $query->posts[0];
                     wp_set_post_terms($profile->ID, $certificates, 'certificate');
                     wp_set_post_terms($profile->ID, $instruments, 'instrument');
@@ -181,6 +175,4 @@ class UserController extends CoreController
         $url = $router->generate('appointment');
         header('Location: ' . $url);
     }
- 
-
 }
