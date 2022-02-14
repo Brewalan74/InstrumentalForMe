@@ -264,6 +264,4 @@ add_filter('get_the_excerpt', function ($excerpt) {
 // Security
 remove_action("wp_head", "wp_generator");
 
-add_filter('login_errors',create_function('$a', "return null;"));
-
 define('DISALLOW_FILE_EDIT',true);
