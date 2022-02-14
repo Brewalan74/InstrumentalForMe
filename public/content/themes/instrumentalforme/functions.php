@@ -261,4 +261,7 @@ add_filter('get_the_excerpt', function ($excerpt) {
 // }
 // add_action('profile_update', 'wpdocs_check_user_updated', 10, 2);
 
+// Security
 remove_action("wp_head", "wp_generator");
+
+add_filter('login_errors',create_function('$a', "return null;"));
