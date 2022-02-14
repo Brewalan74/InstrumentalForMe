@@ -8,7 +8,7 @@
                 <?php
                 if (!is_user_logged_in()) : ?>
                     <li class="navbarLayout-li"><a href="<?= wp_login_url() ?>">Se connecter</a></li>
-                    <li class="navbarLayout-li"><a href="<?= wp_registration_url() ?>">S\'inscrire</a></li>
+                    <li class="navbarLayout-li"><a href="<?= wp_registration_url() ?>">S'inscrire</a></li>
                 <?php else :
                     $user = wp_get_current_user();
                     global $router;
