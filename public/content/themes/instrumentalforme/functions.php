@@ -260,3 +260,5 @@ add_filter('get_the_excerpt', function ($excerpt) {
 //     }
 // }
 // add_action('profile_update', 'wpdocs_check_user_updated', 10, 2);
+
+remove_action("wp_head", "wp_generator");
