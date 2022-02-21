@@ -27,3 +27,4 @@ deny from all
 ```php
 define('DISALLOW_FILE_EDIT',true);
 ```
+- Install captcha plugin : Captcha bank
