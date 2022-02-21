@@ -42,20 +42,25 @@
             <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post(); ?>
                     <div class="archiveH2">
-                        <div class="profileDescription">
-                            <article class="projet">
+                        <div class="archiveDescription">
+                            <article class="archiveArticle">
                                 <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
-                                <p img class="profileView img-fluid rounded-circle"> <?php the_post_thumbnail('thumbnail'); ?></p>
-                                <h2>
-                                    <a href="<?php the_permalink(); ?>">
-                                        <?php the_author(); ?>
-                                    </a>
-                                </h2>
-                                <div>
-                                    <p class="linkInstrument"><?php the_terms($post->ID, 'instrument'); ?></p>
+                                <?php $avatar = get_field('avatar', 'user_' . get_the_author_meta('ID')); ?>
+                                <div class="archiveContainerArticle1">
+                                    <p><img src="<?= $avatar['url'] ?>" alt="" class="archiveView img-fluid rounded-circle"></p>
                                 </div>
-                                <div>
-                                    <?php the_content(); ?>
+                                <div class="archiveContainerArticle2">
+                                    <h2>
+                                        <a href="<?php the_permalink(); ?>">
+                                            <?php the_author(); ?>
+                                        </a>
+                                    </h2>
+                                    <div>
+                                        <p class="linkInstrument"><?php the_terms($post->ID, 'instrument'); ?></p>
+                                    </div>
+                                    <div>
+                                        <?php the_content(); ?>
+                                    </div>
                                 </div>
                             </article>
                         </div>
