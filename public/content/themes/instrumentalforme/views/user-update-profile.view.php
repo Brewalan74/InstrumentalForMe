@@ -2,6 +2,8 @@
 $current_user = wp_get_current_user();
 $userdata = get_userdata($current_user->ID);
 $userName = $userdata->description;
+$userId = $current_user->ID;
+$roles = $current_user->roles;
 ?>
 
 <!DOCTYPE html>
@@ -82,30 +84,25 @@ $userName = $userdata->description;
 
                     <?php
 
-                    $user = wp_get_current_user();
-                    $roles = $user->roles;
-
-                    if (in_array('teacher', $user->roles)) {
+                    if (in_array('teacher', $current_user->roles)) {
                         $postType = 'teacher-profile';
                     } else {
                         $postType = 'student-profile';
                     }
 
-                    $profileId = $user->ID;
-
-                    $selectedInstruments = wp_get_post_terms($profileId, 'instrument');
+                    $selectedInstruments = wp_get_post_terms($userId, 'instrument', array('fields' => 'ids'));
                     $instrumentsId = [];
                     foreach ($selectedInstruments as $term) {
                         $instrumentsId[$term->term_id] = true;
                     }
 
-                    $selectedCertificates = wp_get_post_terms($profileId, 'certificate');
+                    $selectedCertificates = wp_get_post_terms($userId, 'certificate');
                     $certificatesId = [];
                     foreach ($selectedCertificates as $term) {
                         $certificatesId[$term->term_id] = true;
                     }
 
-                    $selectedStyles = wp_get_post_terms($profileId, 'music-style');
+                    $selectedStyles = wp_get_post_terms($userId, 'music-style');
                     $stylesId = [];
                     foreach ($selectedStyles as $term) {
                         $stylesId[$term->term_id] = true;
