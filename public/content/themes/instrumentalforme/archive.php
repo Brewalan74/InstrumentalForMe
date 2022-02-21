@@ -41,7 +41,7 @@
         <section>
             <?php if (have_posts()) : ?>
                 <?php while (have_posts()) : the_post(); ?>
-                    <div class="profileH2">
+                    <div class="archiveH2">
                         <div class="profileDescription">
                             <article class="projet">
                                 <?php the_terms($post->ID, 'type', 'Type : '); ?><br>
